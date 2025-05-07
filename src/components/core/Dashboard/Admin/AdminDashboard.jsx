@@ -79,7 +79,7 @@ const AdminDashboard = () => {
             <p>{totalCourses()}</p>
           </div>
 
-          <div className="border rounded-xl p-6 shadow dark:bg-dark-richblack-700">
+          <div className="border rounded-xl p-6 py-15  shadow dark:bg-dark-richblack-700">
             <p className="text-lg font-semibold">Total Instructors</p>
             <p>{totalInstructor()}</p>
           </div>
