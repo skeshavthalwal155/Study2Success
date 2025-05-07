@@ -30,7 +30,7 @@ const AdminDashboard = () => {
     getAllUsers()
   }, [])
 
-  // console.log("user", userData)
+  console.log("user", userData)
   // console.log("category", category)
 
   if (loading) {
@@ -43,12 +43,20 @@ const AdminDashboard = () => {
 
   const totalCourses = () => {
     if (!category) return 0;
-  
+
     return category.reduce((acc, currCategory) => {
       return acc + (currCategory.courses?.length || 0);
     }, 0);
   };
-  
+
+  const totalInstructor = () => {
+    if (!userData) return 0;
+
+    return userData.reduce((acc, user) => {
+      return user?.accountType === "Instructor" ? acc + 1 : acc
+    }, 0)
+  }
+
   return (
     <div className='mx-auto w-11/12 max-w-[1000px] py-10'>
       <div>
@@ -64,15 +72,15 @@ const AdminDashboard = () => {
         <div>
           Total Categories
           {category?.length}
-        </div>       
+        </div>
         <div>
           Total Courses
           {totalCourses()}
-        </div>       
+        </div>
         <div>
           Total Instructor
-          {totalCourses()}
-        </div>       
+          {totalInstructor()}
+        </div>
       </div>
     </div>
   )
