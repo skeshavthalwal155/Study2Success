@@ -53,7 +53,7 @@ export default function CourseDetailsCard({ course, setConfirmationModal, handle
           className='max-h-[300px] min-h-[180px] w-[400px] rounded-2xl object-cover md:max-w-full'
         />
         <div className='px-4'>
-          <div className='space-x-3 pb-4 text-3xl font-semibold'>
+          <div className='space-x-3 pb-4 text-3xl font-semibold dark:text-dark-richblack-5 text-light-richblack-5'>
             Rs. {currentPrice}
           </div>
           <div className='flex flex-col gap-4'>

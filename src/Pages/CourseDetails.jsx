@@ -165,10 +165,10 @@ const CourseDetails = () => {
                             </div>
                         </div>
                         <div className='flex w-full flex-col border-y border-y-light-richblack-500 dark:border-y-dark-richblack-500 py-4 lg:hidden'>
-                            <p className='space-x-3 pb-4 text-3xl font-semibold dark text-light-richblack-5 dark:text-dark-richblack-5'>
+                            <p className='space-x-3 pb-4 text-3xl font-semibold text-light-richblack-5 dark:text-dark-richblack-5'>
                                 Rs. {price}
                             </p>
-                            <button className='yellowButton' onClick={handleBuyCourse}>
+                            <button className='yellowButton mb-4' onClick={handleBuyCourse}>
                                 Buy Now
                             </button>
                             <button className='blackButton' onClick={handleAddToCart}>Add to Cart</button>
