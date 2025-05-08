@@ -1,7 +1,11 @@
 import React from 'react'
 
 const AddCategory = () => {
-  
+
+  const {
+    setValue,
+    error
+  }
 
   return (
     <div>
