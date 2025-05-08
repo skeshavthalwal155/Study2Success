@@ -18,7 +18,7 @@ import ConfirmatinModal from '../../../common/ConfirmationModal'
 import { formatDuration } from "../../../../services/formattedTime"
 
 export default function CourseTable({ courses, setCourses }) {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const navigate = useNavigate()
     const { token } = useSelector((state) => state.auth)
     const [loading, setLoading] = useState(false)

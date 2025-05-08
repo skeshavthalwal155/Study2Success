@@ -14,7 +14,8 @@ const {
     getFullCourseDetails,
     deleteCourse,
     searchCourse,
-    markLectureAsComplete
+    markLectureAsComplete,
+    viewAllCourses
 } = require("../controllers/Course")
 
 // Category Controllers Import
@@ -107,6 +108,7 @@ router.post('/createCategory', auth, isAdmin, createCategory)
 router.get('/showAllCategories', showAllCategory)
 router.post('/getCategoryPageDetails', categoryPageDetails)
 router.post('/addCourseToCategory',auth, isInstructor, addCourseToCategory)
+router.get('/viewAllCourses',viewAllCourses)
 
 // ****************************************************************************************************************************************************************
 //                                                  Rating and Review

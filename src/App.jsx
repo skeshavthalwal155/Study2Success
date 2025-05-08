@@ -38,6 +38,7 @@ import AllCategory from "./components/core/Dashboard/Admin/AllCategory";
 import AddCategory from "./components/core/Dashboard/Admin/AddCategory";
 import AllUsers from "./components/core/Dashboard/Admin/AllUsers";
 import AdminDashboard from "./components/core/Dashboard/Admin/AdminDashboard";
+import ViewAllCourses from "./components/core/Dashboard/Admin/ViewAllCourses";
 function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -178,6 +179,7 @@ function App() {
               <Route path="dashboard/add-Category" element={<AddCategory />} />
               <Route path="dashboard/all-categories" element={<AllCategory />} />
               <Route path="dashboard/admin" element={<AdminDashboard />} />
+              <Route path="dashboard/all-courses" element={<ViewAllCourses/>}/>
             </>
           )}
         </Route>

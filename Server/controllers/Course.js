@@ -221,6 +221,29 @@ exports.getAllCourses = async (req, res) => {
     }
 }
 
+exports.viewAllCourses = async (req, res) => {
+    try {
+        const allCourses = await Course.find({})
+            .populate('instructor')
+            .populate({
+                path:"courseContent",
+                populate:"SubSection"
+            }).populate("ratingAndReviews")
+            .exec()
+        res.status(200).json({
+            success: true,
+            message: "All Courses fetched Successfully",
+            data: allCourses
+        })
+    } catch (err) {
+        res.status(400).json({
+            success: false,
+            message: "Something went wrong",
+            error: err
+        })
+    }
+}
+
 // getCourseDetails Handler
 exports.getCourseDetails = async (req, res) => {
     try {
