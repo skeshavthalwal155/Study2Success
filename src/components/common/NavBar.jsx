@@ -50,7 +50,7 @@ const NavBar = () => {
       }
     }
     fetchSublinks()
-  }, [])
+  }, [subLinks])
   const inputRef = useRef(null);
 
 

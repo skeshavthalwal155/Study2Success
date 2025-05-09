@@ -19,7 +19,7 @@ const CategoryTable = ({ category, setCategories }) => {
         if (result) {
             setCategories(result)
         }
-        // localStorage.setItem("sublinks", JSON.stringify(result.data.data))
+        localStorage.setItem("sublinks", JSON.stringify(result))
         setConfirmationModal(null)
         setLoading(false)
 

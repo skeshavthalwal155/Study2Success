@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import IconBtn from '../../../common/IconBtn'
-import { createCategory } from '../../../../services/operations/courseDetailsAPI'
+import { createCategory, fetchCourseCategories } from '../../../../services/operations/courseDetailsAPI'
 import { useSelector } from 'react-redux'
 
 const AddCategory = () => {
@@ -21,10 +21,11 @@ const AddCategory = () => {
     formData.append("description", data.description);
     setLoading(true)
     const result = await createCategory(formData, token)    
+    const response = await fetchCourseCategories()
     setLoading(false)
-     localStorage.setItem("sublinks", JSON.stringify(result))
+     localStorage.setItem("sublinks", JSON.stringify(response))
     // console.log("PRINTING FORMDATA : ", formData)
-    // console.log("PRINTING RESULT : ", result)
+    console.log("PRINTING RESULT : ", response)
   }
 
   return (

@@ -4,7 +4,7 @@ import Logo1 from '../../../assets/TimeLineLogo/Logo1.svg'
 import Logo2 from '../../../assets/TimeLineLogo/Logo2.svg'
 import Logo3 from '../../../assets/TimeLineLogo/Logo3.svg'
 import Logo4 from '../../../assets/TimeLineLogo/Logo4.svg'
-import TimeLinePhoto from '../../../assets/Images/TimelineImage.png'
+import TimeLinePhoto from '../../../assets/Images/TimelineImage.jpg'
 import { motion } from 'motion/react'
 const timeLine = [
     {

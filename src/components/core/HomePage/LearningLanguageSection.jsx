@@ -2,7 +2,7 @@ import React from 'react'
 import HighlightText from '../HomePage/HighlightText'
 import CTAButton from '../HomePage/Button'
 import KnowYourProgress from '../../../assets/Images/Know_your_progress.png'
-import CompareWithOthers from '../../../assets/Images/Compare_with_others.svg'
+import CompareWithOthers from '../../../assets/Images/Compare_with_others.png'
 import PlanYourLesson from '../../../assets/Images/Plan_your_lessons.svg'
 import { motion } from 'motion/react'
 const LearningLanguageSection = () => {
@@ -77,7 +77,7 @@ const LearningLanguageSection = () => {
         <div className='flex flex-col lg:flex-row items-center justify-center mt-5'>
           <img src={KnowYourProgress} alt="Know Your Progress" className='object-contain md:-mr-32' />
           <img src={CompareWithOthers} alt="Compare With Others" className='object-contain' />
-          <img src={PlanYourLesson} alt="Plan Your Lesson" className='object-contain md:-ml-36' />
+          <img src={PlanYourLesson} alt="Plan Your Lesson" className='md:w-[500px] md:-ml-36' />
         </div>
         </motion.div>
 

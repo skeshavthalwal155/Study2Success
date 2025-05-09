@@ -4,11 +4,12 @@ import { useSelector } from "react-redux"
 import frameImg from '../../../assets/Images/frame.png'
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
-import AdminLogin from "../../../Pages/AdminLogin"
 import AdminLoginForm from "./AdminLoginForm"
+
 
 const Template = ({ title, description1, description2, image, formType }) => {
   const { loading } = useSelector((state) => state.auth)
+
   return (
     <div className="grid min-h-[calc(100vh - 3.5rem)] place-items-center">
       {
@@ -26,13 +27,14 @@ const Template = ({ title, description1, description2, image, formType }) => {
               </p>
               {formType === "signup" ? <SignupForm/> : formType==="admin" ? <AdminLoginForm /> : <LoginForm />}
             </div>
-            <div className="relative mx-auto w-11/12 max-w-[450px] md:mx-0">
+            <div className={`relative mx-auto w-11/12 max-w-[450px] md:mx-0`}>
               <img
                 src={frameImg}
                 alt="frame"
                 width={558}
                 height={504}
                 loading="lazy"
+ 
               />
               <img
                 src={image}
