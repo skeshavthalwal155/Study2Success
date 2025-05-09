@@ -29,7 +29,6 @@ import Instructor from "./components/core/Dashboard/InstructorDashboard/Instruct
 import EditCourse from "./components/core/Dashboard/EditCourse/EditCourse";
 import { useEffect } from "react";
 import { RiWifiOffLine } from "react-icons/ri";
-import ScrollToTop from './components/common/ScrollToTop'
 import SearchCourse from "./Pages/SearchCourse";
 import { checkAuth } from "./slices/authSlice";
 import AllCategory from "./components/core/Dashboard/Admin/AllCategory";
@@ -37,21 +36,20 @@ import AddCategory from "./components/core/Dashboard/Admin/AddCategory";
 import AllUsers from "./components/core/Dashboard/Admin/AllUsers";
 import AdminDashboard from "./components/core/Dashboard/Admin/AdminDashboard";
 import ViewAllCourses from "./components/core/Dashboard/Admin/ViewAllCourses";
+
 function App() {
+
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   const { user } = useSelector((state) => state.profile)
   const theme = useSelector((state) => state.theme)
 
   useEffect(() => {
-
     dispatch(checkAuth());
-
     const interval = setInterval(dispatch(checkAuth()), 300000) //300000 means it check every 5 mintues
     return () => clearInterval(interval)
   }, [dispatch])
 
-  // Apply theme class to HTML element
+
   useEffect(() => {
     const root = document.documentElement
     const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -82,8 +80,7 @@ function App() {
             </button>
           </div>
         )
-      }
-      <ScrollToTop />
+      }  
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/catalog/:catalogName" element={<Catalog />}></Route>
@@ -177,7 +174,7 @@ function App() {
               <Route path="dashboard/add-Category" element={<AddCategory />} />
               <Route path="dashboard/all-categories" element={<AllCategory />} />
               <Route path="dashboard/admin" element={<AdminDashboard />} />
-              <Route path="dashboard/all-courses" element={<ViewAllCourses/>}/>
+              <Route path="dashboard/all-courses" element={<ViewAllCourses />} />
             </>
           )}
         </Route>

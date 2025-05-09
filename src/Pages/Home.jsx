@@ -311,7 +311,7 @@ const Home = () => {
                 }}
               >
                 <div className='text-[16px]'>
-                  The modern Study2Success is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.
+                  The Study2Success is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.
                 </div>
               </motion.div>
 

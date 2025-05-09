@@ -38,7 +38,7 @@ const About = () => {
 
 
                         >
-                            <p className='text-[16px] leading-6 text-medium text-center dark:text-dark-richblack-200  text-light-richblack-200 mb-9'>About Us</p>
+                            <p className='text-[16px] leading-6 text-medium text-center dark:text-dark-richblack-200  text-light-richblack-200 underline mb-9'>About Us</p>
                         </motion.div>
 
                         <motion.div
@@ -82,7 +82,7 @@ const About = () => {
 
                         >
 
-                            <p className='mx-auto mt-3 text-center text-base font-medium dark:text-dark-richblack-300 text-light-richblack-300 lg:w-[95%]'>Study2Success is at the forefront of driving innovation in online education. We're passionate about creating a brighter future by offering cutting-edge courses, leveraging emerging technologies, and nurturing a vibrant learning community.</p>
+                            <p className='mx-auto mt-3 text-center text-base font-medium dark:text-dark-richblack-300 text-light-richblack-300 lg:w-[95%]'>Study2Success is a EdTech project of Keshav Thalwal, Ayush Kukreti, Lakshya Kumar  MIT, Rishikesh BCA Batch 2022-25 Final Year's Students</p>
                         </motion.div>
                     </header>
                     <div className='sm:h-[70px] lg:h-[150px]'></div>
@@ -207,8 +207,8 @@ const About = () => {
                             {/* founding story left side our founding story */}
                             <div className='my-24 flex  flex-col gap-10'>
                                 <h1 className='bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCB045] bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%]'>Our Founding Story</h1>
-                                <p className='text-base font-medium dark:text-dark-richblack-300 text-light-richblack-300 lg:w-[95%] text-justify'>Our e-learning platform was born out of a shared vision and passion for transforming education. It all began with a group of educators, technologists, and lifelong learners who recognized the need for accessible, flexible, and high-quality learning opportunities in a rapidly evolving digital world.</p>
-                                <p className='text-base font-medium dark:text-dark-richblack-300 text-light-richblack-300 lg:w-[95%] text-justify'>As experienced educators ourselves, we witnessed firsthand the limitations and challenges of traditional education systems. We believed that education should not be confined to the walls of a classroom or restricted by geographical boundaries. We envisioned a platform that could bridge these gaps and empower individuals from all walks of life to unlock their full potential.</p>
+                                <p className='text-base font-medium dark:text-dark-richblack-300 text-light-richblack-300 lg:w-[95%] text-justify'>Our e-learning platform was founded with a bold mission: to reshape the way the world learns. It all started with a group of passionate educators, technologists, and lifelong learners who saw the growing need for accessible, flexible, and high-quality education in today’s fast-changing digital landscape.</p>
+                                <p className='text-base font-medium dark:text-dark-richblack-300 text-light-richblack-300 lg:w-[95%] text-justify'>Drawing from our own experiences in traditional education, we knew the system had its limits—rigid structures, geographic barriers, and one-size-fits-all approaches. We believed learning should be available to anyone, anywhere, at any time. That belief sparked the idea for a platform designed to break down those barriers and open doors for learners everywhere, helping them reach their full potential on their own terms.</p>
                             </div>
                         </motion.div>
                         {/* founding story right box image */}
