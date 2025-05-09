@@ -288,7 +288,7 @@ const About = () => {
 
 
                             <div className='my-24 flex  flex-col gap-10'>
-                                <h1 className='bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] bg-clip-text text-transparent text-4xl font-semibold lg:w-[70%]'>What We Offer</h1>
+                                <h1 className='dark:bg-gradient-to-b from-[#1FA2FF] text-[#227BF3] via-[#12D8FA] to-[#A6FFCB] bg-clip-text dark:text-transparent text-4xl font-semibold lg:w-[70%]'>What We Offer</h1>
                                 <p className='text-justify text-base text-light-richblack-500 dark:text-dark-richblack-300  lg:w-[95%]'>From industry-certified courses and real-time mentoring to hands-on projects and community support, our platform is designed to meet the diverse needs of today’s learners.</p>
                             </div>
                         </motion.div>
