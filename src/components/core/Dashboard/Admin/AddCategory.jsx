@@ -22,6 +22,8 @@ const AddCategory = () => {
     setLoading(true)
     const result = await createCategory(formData, token)    
     const response = await fetchCourseCategories()
+    setValue("name", "")
+    setValue("description", "")
     setLoading(false)
      localStorage.setItem("sublinks", JSON.stringify(response))
     // console.log("PRINTING FORMDATA : ", formData)

@@ -80,8 +80,8 @@ const CategoryTable = ({ category, setCategories }) => {
                                         disabled={loading}
                                         onClick={() => {
                                             setConfirmationModal({
-                                                text1: "Do You Want to Delete This Course?",
-                                                text2: "All the Data Related to this course will be deleted.",
+                                                text1: "Do You Want to Delete This Category?",
+                                                text2: "All the Data Related to this category will be deleted.",
                                                 btn1Text: !loading ? "Delete" : "Loading...",
                                                 btn2Text: "Cancel",
                                                 btn1Handler: !loading
