@@ -3,14 +3,27 @@ import { RiDeleteBin6Line } from 'react-icons/ri'
 import { Table, Tbody, Td, Th, Thead, Tr } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import ConfirmationModal from '../../../common/ConfirmationModal'
+import { useSelector } from 'react-redux'
+import { deleteCategory } from '../../../../services/operations/courseDetailsAPI'
+import { fetchCourseCategories } from '../../../../services/operations/courseDetailsAPI'
 
 const CategoryTable = ({ category, setCategories }) => {
+    const { token } = useSelector((state) => state.auth)
     const [loading, setLoading] = useState(null)
     const [confirmationModal, setConfirmationModal] = useState(false)
-    
+
     const handleCategoryDelete = async (categoryId) => {
-        alert("Delete Category is not created for now updated soon!!!");
-    }
+        setLoading(true)
+        await deleteCategory({ categoryId: categoryId }, token)
+        const result = await fetchCourseCategories()
+        if (result) {
+            setCategories(result)
+        }
+        // localStorage.setItem("sublinks", JSON.stringify(result.data.data))
+        setConfirmationModal(null)
+        setLoading(false)
+
+    }    
 
     if (loading) {
         return (
@@ -27,7 +40,7 @@ const CategoryTable = ({ category, setCategories }) => {
                     <Tr className="rounded-t-md border-b dark:border-b-dark-richblack-800 border-b-light-richblack-800 px-6 py-2 dark:text-dark-richblack-100 text-light-richblack-100">
                         <Th className="w-4/5 text-left text-sm font-medium uppercase dark:text-dark-richblack-100 text-light-richblack-100">
                             Category
-                        </Th>                       
+                        </Th>
                         <Th className="w-1/5 text-left text-sm font-semibold uppercase dark:text-dark-richblack-100 text-light-richblack-100">
                             Enrolled Courses
                         </Th>
@@ -90,7 +103,7 @@ const CategoryTable = ({ category, setCategories }) => {
                     )}
                 </Tbody>
             </Table>
-            {confirmationModal && <ConfirmationModal modalData={confirmationModal}/>}
+            {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
         </>
     )
 }

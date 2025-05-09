@@ -12,7 +12,7 @@ const UserDataTable = ({ userData, setUserData }) => {
   const navigate = useNavigate()
 
   const handleUserDelete = async (userId) => {
-    alert("Delete Category is not created for now updated soon!!!");
+    alert("Delete user is not created for now. Updated soon!!!");
   }
 
   if (loading) {

@@ -4,7 +4,7 @@ import { setProgress } from '../../slices/loadingBarSlice'
 // import { updateCompletedLectures } from '../../Slices/viewCourseSlice'
 // import {setLoading}  from '../../Slices/profileSlice'
 import { apiConnector } from '../apiconnector'
-import { courseEndpoints } from '../apis'
+import { courseEndpoints, categories } from '../apis'
 
 const {
     COURSE_DETAILS_API,
@@ -27,6 +27,10 @@ const {
     ADD_COURSE_TO_CATEGORY_API,
     SEARCH_COURSES_API,
 } = courseEndpoints
+
+const {
+    CATEGORY_DELETE
+} = categories
 
 export const getAllCourses = async () => {
     const toastId = toast.loading("Loading...")
@@ -404,6 +408,35 @@ export const fetchInstructorCourses = async (token) => {
     toast.dismiss(toastId);
     return result;
 };
+
+//delete a category
+export const deleteCategory = async (data, token) => {
+    const toastId = toast.loading("Deleting category...");
+
+    try {
+        const response = await apiConnector(
+            "DELETE",
+            CATEGORY_DELETE,
+            data,
+            {
+                Authorization: `Bearer ${token}`,
+            }
+        );
+
+        if (!response?.data?.success) {
+            throw new Error(response?.data?.message || "Could not delete category");
+        }
+
+        toast.success("Category deleted successfully");
+        return response.data;
+    } catch (error) {  // Required catch block
+        console.error("DELETE CATEGORY ERROR:", error);
+        toast.error(error.message || "Deletion failed");
+    } finally {  // Optional finally block (but recommended)
+        toast.dismiss(toastId); // Ensure loader is always dismissed
+    }
+};
+
 
 // delete a course
 export const deleteCourse = async (data, token) => {

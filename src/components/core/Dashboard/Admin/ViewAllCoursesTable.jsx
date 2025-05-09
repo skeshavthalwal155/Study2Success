@@ -14,13 +14,7 @@ const ViewAllCoursesTable = ({ courses, loading }) => {
 
 
   const TRUNCATE_LENGTH = 30
-  if (loading) {
-    return (
-      <div className='flex h-[calc(100vh-3.5rem)] w-full justify-center items-center'>
-        <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 dark:text-dark-richblack-500 text-light-richblack-500'></div>
-      </div>
-    )
-  }
+ 
   return (
     <>
       <Table className="rounded-xl border dark:border-dark-richblack-800 border-light-richblack-800">

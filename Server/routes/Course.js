@@ -22,7 +22,8 @@ const {
 const { createCategory,
     showAllCategory,
     categoryPageDetails,
-    addCourseToCategory
+    addCourseToCategory,
+    deleteCategory
 } = require("../controllers/Category")
 
 // Section Controller Import
@@ -105,6 +106,7 @@ router.post('/updateCourseProgress', auth, isStudent, markLectureAsComplete)
 // TODO: Put isAdmin Middleware here
 
 router.post('/createCategory', auth, isAdmin, createCategory)
+router.delete('/deleteCategory', auth, isAdmin, deleteCategory)
 router.get('/showAllCategories', showAllCategory)
 router.post('/getCategoryPageDetails', categoryPageDetails)
 router.post('/addCourseToCategory',auth, isInstructor, addCourseToCategory)

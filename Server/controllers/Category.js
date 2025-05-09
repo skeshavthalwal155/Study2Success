@@ -189,3 +189,49 @@ exports.addCourseToCategory = async (req, res) => {
         });
     }
 }
+
+exports.deleteCategory = async(req,res)=>{
+    try{
+        const {categoryId} = req.body;
+        // Find the category by ID
+        const category = await Category.findById(categoryId).populate("courses");
+
+        // Check if the category exists
+        if (!category) {
+            return res.status(404).json({
+            success: false,
+            message: "Category not found",
+            });
+        }
+
+        // Check if the category contains any courses
+        if (category.courses.length > 0) {
+            for (const course of category.courses) {
+            // Check if the course has enrolled students
+            if (course.enrolledStudents && course.enrolledStudents.length > 0) {
+                return res.status(400).json({
+                success: false,
+                message: "Cannot delete category. Some courses have enrolled students.",
+                });
+            }
+
+            // Delete the course
+            await Course.findByIdAndDelete(course._id);
+            }
+        }
+
+        // Delete the category
+        await Category.findByIdAndDelete(categoryId);
+
+        // Send success response
+        return res.status(200).json({
+            success: true,
+            message: "Category and its courses deleted successfully",
+        });
+    }catch(err){
+        return res.status(400).json({
+            success:false,
+            message : err.message || "Error while deleting category"
+        })
+    }
+}

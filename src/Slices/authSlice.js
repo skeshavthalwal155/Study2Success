@@ -11,22 +11,9 @@ const checkTokenValidity = (token) => {
     }
 }
 
-const getInitialAuthState = () => {
-    try {
-        const token = localStorage.getItem("token");
-        if (!token) return null;
-
-        const parsedToken = JSON.parse(token);
-        return checkTokenValidity(parsedToken) ? parsedToken : null;
-    } catch (error) {
-        console.error("Error parsing token:", error);
-        localStorage.removeItem("token");
-        return null;
-    }
-}
 
 const initialState = {
-    token: localStorage.getItem('token') || null,
+    token: localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")):null,
     user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
     isAuthenticated: checkTokenValidity(localStorage.getItem('token')),
     loading: false,

@@ -15,6 +15,7 @@ const AllCategory = () => {
             if (response)
                 setCategories(response)
             setLoading(false)
+           
         } catch (err) {
             console.error("Error fetching categories:", err)
         }
