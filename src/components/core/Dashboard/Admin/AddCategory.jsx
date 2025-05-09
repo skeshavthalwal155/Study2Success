@@ -43,10 +43,10 @@ const AddCategory = () => {
 
           {/* Category Name */}
           <div className='flex flex-col space-y-2'>
-            <label className='text-sm dark:text-dark-richblack-5 text-light-richblack-5' htmlFor='name'>Course Title <sup className='dark:text-dark-pink-200 text-red-500'>*</sup></label>
+            <label className='text-sm dark:text-dark-richblack-5 text-light-richblack-5' htmlFor='name'>Category Name <sup className='dark:text-dark-pink-200 text-red-500'>*</sup></label>
             <input
               id='name'
-              placeholder='Enter Course Title'
+              placeholder='Enter Category Name'
               {...register('name', { required: true })}
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
@@ -62,10 +62,10 @@ const AddCategory = () => {
 
           {/* Category Description */}
           <div className='flex flex-col space-y-2'>
-            <label className='text-sm dark:text-dark-richblack-5 text-light-richblack-5' htmlFor="description">Course Short Description<sup className='dark:text-dark-pink-200 text-red-500'>*</sup></label>
+            <label className='text-sm dark:text-dark-richblack-5 text-light-richblack-5' htmlFor="description">Category Short Description<sup className='dark:text-dark-pink-200 text-red-500'>*</sup></label>
             <textarea
               id="description"
-              placeholder="Enter Description"
+              placeholder="Enter Category Description"
               {...register("description", { required: true })}
               className='form-style w-full resize-x-none min-h-[130px] rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-800 p-[12px] dark:text-dark-richblack-5 text-light-richblack-5'
             />

@@ -48,20 +48,21 @@ export const sidebarLinks = [
     type: ACCOUNT_TYPE.ADMIN,
     icon: "VscDashboard",
   },
-  {
+   {
     id: 8,
-    name: "All Category",
-    path: "/dashboard/all-categories",
-    type: ACCOUNT_TYPE.ADMIN,
-    icon: "VscListSelection",
-  },
-  {
-    id: 9,
     name: "Add Category",
     path: "/dashboard/add-Category",
     type: ACCOUNT_TYPE.ADMIN,
     icon: "VscNewFolder",
   },
+  {
+    id: 9,
+    name: "All Category",
+    path: "/dashboard/all-categories",
+    type: ACCOUNT_TYPE.ADMIN,
+    icon: "VscListSelection",
+  },
+ 
   {
     id: 10,
     name: "All Users",
