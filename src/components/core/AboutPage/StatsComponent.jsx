@@ -2,19 +2,19 @@ import React from 'react'
 
 const statsData = [
     {
-        count: '5K',
+        count: '500+',
         title: "Active Students"
     },
     {
-        count: '10+',
+        count: '5+',
         title: "Mentors"
     },
     {
-        count: '200+',
+        count: '20+',
         title: "Courses"
     },
     {
-        count: '50+',
+        count: '5+',
         title: "Awards"
     },
 ]

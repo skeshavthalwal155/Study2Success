@@ -260,8 +260,8 @@ const About = () => {
 
 
                             <div className='my-24 flex flex-col gap-10'>
-                                <h1 className='bg-gradient-to-b from-[#FF512F] to-[#F09819] bg-clip-text text-transparent text-4xl font-semibold lg:w-[70%]'>Our Vision</h1>
-                                <p className='text-base text-light-richblack-500 dark:text-dark-richblack-300 lg:w-[95%] text-justify'>With this vision in mind, we set out on a journey to create an e-learning platform that would revolutionize the way people learn. Our team of dedicated experts worked tirelessly to develop a robust and intuitive platform that combines cutting-edge technology with engaging content, fostering a dynamic and interactive learning experience.</p>
+                                <h1 className='bg-gradient-to-b from-[#FF512F] to-[#F09819] bg-clip-text text-transparent text-4xl font-semibold lg:w-[70%]'>Our Purpose</h1>
+                                <p className='text-base text-light-richblack-500 dark:text-dark-richblack-300 lg:w-[95%] text-justify'>We started with a simple belief: everyone deserves access to quality education, regardless of their background, location, or income. Our purpose is to remove barriers and level the playing field for learners worldwide.</p>
                             </div>
                         </motion.div>
 
@@ -288,8 +288,8 @@ const About = () => {
 
 
                             <div className='my-24 flex  flex-col gap-10'>
-                                <h1 className='bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] bg-clip-text text-transparent text-4xl font-semibold lg:w-[70%]'>Our Mission</h1>
-                                <p className='text-justify text-base text-light-richblack-500 dark:text-dark-richblack-300  lg:w-[95%]'>Our mission goes beyond just delivering courses online. We wanted to create a vibrant community of learners, where individuals can connect, collaborate, and learn from one another. We believe that knowledge thrives in an environment of sharing and dialogue, and we foster this spirit of collaboration through forums, live sessions, and networking opportunities.</p>
+                                <h1 className='bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] bg-clip-text text-transparent text-4xl font-semibold lg:w-[70%]'>What We Offer</h1>
+                                <p className='text-justify text-base text-light-richblack-500 dark:text-dark-richblack-300  lg:w-[95%]'>From industry-certified courses and real-time mentoring to hands-on projects and community support, our platform is designed to meet the diverse needs of today’s learners.</p>
                             </div>
                         </motion.div>
 
