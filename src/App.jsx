@@ -31,8 +31,6 @@ import { useEffect } from "react";
 import { RiWifiOffLine } from "react-icons/ri";
 import ScrollToTop from './components/common/ScrollToTop'
 import SearchCourse from "./Pages/SearchCourse";
-import { jwtDecode } from "jwt-decode";
-import { logout } from "./services/operations/authAPI";
 import { checkAuth } from "./slices/authSlice";
 import AllCategory from "./components/core/Dashboard/Admin/AllCategory";
 import AddCategory from "./components/core/Dashboard/Admin/AddCategory";
