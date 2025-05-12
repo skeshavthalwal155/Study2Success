@@ -1,4 +1,3 @@
-// src/backend/utils/secToDuration.js
 function convertSecondsToDuration(totalSeconds) {
     const hours = Math.floor(totalSeconds / 3600)
     const minutes = Math.floor((totalSeconds % 3600) / 60)
