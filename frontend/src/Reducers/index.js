@@ -4,8 +4,8 @@ import profileReducer from "../slices/profileSlice";
 import cartReducer from "../slices/cartSlice";
 import courseReducer from "../slices/courseSlice";
 import loadingBarReducer from "../slices/loadingBarSlice";
-import viewCourseReducer from "../Slices/viewCourseSlice";
-import themeSlice from "../Slices/themeSlice";
+import viewCourseReducer from "../slices/viewCourseSlice";
+import themeSlice from "../slices/themeSlice";
 
 
 const rootReducer = combineReducers({

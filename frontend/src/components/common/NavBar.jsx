@@ -14,7 +14,7 @@ import { BsChevronDown } from "react-icons/bs";
 import { FiSun, FiMoon } from 'react-icons/fi';
 import { useDispatch } from 'react-redux'
 import { IoIosClose } from "react-icons/io";
-import { toggle } from '../../Slices/themeSlice'
+import { toggle } from '../../slices/themeSlice'
 import { HiSearch } from 'react-icons/hi'
 const NavBar = () => {
   const dispatch = useDispatch()

@@ -10,7 +10,7 @@ import {
     setCourseSectionData,
     setEntireCourseData,
     setTotalNoOfLectures
-} from '../Slices/viewCourseSlice'
+} from '../slices/viewCourseSlice'
 const ViewCourse = () => {
     const { courseId } = useParams()
     const { token } = useSelector((state) => state.auth)
