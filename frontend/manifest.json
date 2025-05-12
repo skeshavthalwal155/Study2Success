@@ -1,0 +1,11 @@
+{
+    "name": "Study2Success",
+    "id": "/",
+    "short_name": "Study2Success",
+    "description": "An Ed Tech Web App for Students and Instructors",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#001B22",
+    "theme_color": "#001B22"   
+  }
+  
