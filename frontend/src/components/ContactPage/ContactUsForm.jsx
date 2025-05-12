@@ -29,7 +29,7 @@ const ContactUsForm = () => {
     }, [isSubmitSuccessful, reset])
 
     const submitContactForm = async (data) => {
-        console.log(data)
+        // console.log(data)
         try {
             setLoading(true)
             const phoneNo = data.countryCode + " " + data.phoneNo
@@ -40,7 +40,7 @@ const ContactUsForm = () => {
             } else {
                 toast.error("Something Went Wrong");
             }
-            console.log("Logging Response", response)
+            // console.log("Logging Response", response)
             setLoading(false)
 
         } catch (error) {

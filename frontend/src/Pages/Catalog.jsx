@@ -34,7 +34,7 @@ const Catalog = () => {
             try {
                 setLoading(true)
                 const res = await getCatalogPageData(categoryId);
-                console.log("Printing Res", res)
+                // console.log("Printing Res", res)
                 setCatalogPageData(res)
                 setLoading(false)
             } catch (err) {

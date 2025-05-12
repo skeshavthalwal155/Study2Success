@@ -12,14 +12,14 @@ export async function getUserEnrolledCourses(token) {
     const toastId = toast.loading("Loading...")
     let result = []
     try {
-        console.log("BEFORE CALLING BACKEND API FOR ENROLLED COURSE")
+        // console.log("BEFORE CALLING BACKEND API FOR ENROLLED COURSE")
         const response = await apiConnector(
             "GET", 
             profileEndpoints.GET_USER_ENROLLED_COURSES_API, 
             null, 
             { Authorization: `Bearer ${token}` })
-        console.log("Response : ",response)
-        console.log("After Calling BACKEND API for ENROLLED COURSES");
+        // console.log("Response : ",response)
+        // console.log("After Calling BACKEND API for ENROLLED COURSES");
         if (!response?.data?.success) {
             throw new Error(response?.data?.message)
         }
@@ -54,19 +54,19 @@ export async function updatePfp(token, pfp) {
 
     try {
         const formData = new FormData()
-        console.log('pfp', pfp)
+        // console.log('pfp', pfp)
         formData.append('pfp', pfp)
         const response = await apiConnector("PUT", settingEndpoints.UPDATE_DISPLAY_PICTURE_API, formData, {
             Authorization: `Bearer ${token}`,
         });
-        console.log("UPDATE DISPLAY API RESPONSE", response)
+        // console.log("UPDATE DISPLAY API RESPONSE", response)
         if (!response?.data?.success) {
             throw new Error(response?.data?.message)
         }
         toast.success("Profile Picture Updated Successfully!");
         const imageUrl = response?.data?.data?.image;
         localStorage.setItem('user', JSON.stringify({ ...JSON.parse(localStorage.getItem('user')), image: imageUrl }))
-        console.log(JSON.parse(localStorage.getItem('user')).image);
+        // console.log(JSON.parse(localStorage.getItem('user')).image);
     } catch (error) {
         console.log("Update Profile Picture ERROR............", error);
 
@@ -90,9 +90,9 @@ export async function updatePfp(token, pfp) {
 
 // UpdateAdditionalDetails
 export async function updateAdditionalDetails(token, additionalDetails) {
-    console.log("Additional Details : ", additionalDetails);
+    // console.log("Additional Details : ", additionalDetails);
     const { firstName, lastName, dateOfBirth, gender, contactNumber, about } = additionalDetails
-    console.log("additional detials", additionalDetails)
+    // console.log("additional detials", additionalDetails)
     const toastId = toast.loading("Updating....")
     try {
         const response = await apiConnector(
@@ -102,7 +102,7 @@ export async function updateAdditionalDetails(token, additionalDetails) {
              {
             Authorization: `Bearer ${token}`
         })
-        console.log("Updated AddtionalDetails Response.....", response)
+        // console.log("Updated AddtionalDetails Response.....", response)
         if (!response?.data?.success) {
             throw new Error(response?.data?.message)
         }
@@ -139,7 +139,7 @@ export async function updateAdditionalDetails(token, additionalDetails) {
 // Update Password
 export async function updatePassword(token, password) {
     const { oldPassword, newPassword, confirmNewPassword } = password;
-    console.log("Password : ", password);
+    // console.log("Password : ", password);
     const toastId = toast.loading("Updating Password...")
     try {
 
@@ -152,7 +152,7 @@ export async function updatePassword(token, password) {
             }
         );
 
-        console.log("Update Password Api Resoponse....", response)
+        // console.log("Update Password Api Resoponse....", response)
         if (!response?.data?.success) {
             throw new Error(response?.data?.message)
         }
@@ -184,9 +184,9 @@ export async function deleteAccount(token, dispatch, navigate) {
     const toastId = toast.loading("Profile Deleting....");
     try {
         const response = await apiConnector('DELETE', settingEndpoints.DELETE_PROFILE_API, null, { Authorization: `Bearer ${token}` });
-        console.log("DELETE ACCOUNT API RESPONSE....", response)
+        // console.log("DELETE ACCOUNT API RESPONSE....", response)
 
-        console.log("Delete Account Api Resoponse....", response)
+        // console.log("Delete Account Api Resoponse....", response)
         if (!response?.data?.success) {
             throw new Error(response?.data?.message)
         }
@@ -221,11 +221,11 @@ export async function getInstructorDashboard(token) {
     // dispatch(setProgress)
     let result = []
     try {
-        console.log("Before Calling Backend Api for instructor dashboard")
+        // console.log("Before Calling Backend Api for instructor dashboard")
         const response = await apiConnector('GET', profileEndpoints.GET_ALL_INSTRUCTOR_DASHBOARD_DETAILS_API, null, { Authorization: `Bearer ${token}` });
-        console.log("After Calling ACCOUNT API RESPONSE....", response)
+        // console.log("After Calling ACCOUNT API RESPONSE....", response)
 
-        console.log("getInstructorDashboard Api Resoponse....", response)
+        // console.log("getInstructorDashboard Api Resoponse....", response)
         if (!response?.data?.success) {
             throw new Error(response?.data?.message)
         }

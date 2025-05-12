@@ -24,7 +24,7 @@ const ExploreMore = () => {
         const result = HomePageExplore.filter((course) => course.tag === value);
         setCourses(result[0].courses);
         setCurrentCard(result[0].courses[0].heading);
-        console.log(result[0].courses);
+        // console.log(result[0].courses);
     }
 
 

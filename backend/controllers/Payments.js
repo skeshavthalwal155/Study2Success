@@ -34,7 +34,7 @@ exports.capturePayment = async(req,res)=>{
             }
             // console.log("course: ",course)
             const uid = new mongoose.Types.ObjectId(userId)
-            console.log(uid)
+            // console.log(uid)
             if(course.studentsEnrolled.includes(uid)){
                 return res.status(400).json({
                     success:false,
@@ -55,7 +55,7 @@ exports.capturePayment = async(req,res)=>{
         currency:"INR",
         receipt:Math.random(Date.now()).toString()
     }
-    console.log(options)
+    // console.log(options)
     try{
         const paymentResponse = await instance.orders.create(options);
         res.status(200).json({
@@ -124,7 +124,7 @@ const enrolledStudents= async(courses, userId ,res)=>{
                 {$push:{studentsEnrolled:userId}},
                 {new:true}
             )   
-            console.log("enrolledCourse : ",enrolledCourse)
+            // console.log("enrolledCourse : ",enrolledCourse)
             
             if(!enrolledCourse){
                 return res.status(404).json({success:false, message:"Course Not Found"})

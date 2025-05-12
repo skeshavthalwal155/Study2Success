@@ -25,7 +25,7 @@ const ReviewSlider = () => {
     }
     fetchAllReviews()
   }, [])
-  console.log(Reviews)
+  // console.log(Reviews)
   // if (loading) return <div>Loading reviews...</div>
   if (!Reviews.length) return <div className='text-center'>No reviews found</div>
   return (

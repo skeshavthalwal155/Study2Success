@@ -18,7 +18,7 @@ export default function ProfileDropDown() {
   useOnClickOutSide(ref, () => setOpen(false))
 
   if (!user) {
-    console.log("no user")
+    // console.log("no user")
     return localStorage.setItem("token", null)
   }
 

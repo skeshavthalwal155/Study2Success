@@ -26,7 +26,7 @@ const RenderCartCourses = () => {
               <Link to={`/catalog/${course?.category?.name}`}>
                 <p className='text-sm dark:text-dark-richblack-300 text-light-richblack-300'>{course?.category?.name}</p>
               </Link>
-              {console.log("first:", course)}
+              {/* {console.log("first:", course)} */}
 
               <div className='flex items-center gap-2'>
                 <span className='dark:text-dark-yellow-5 text-light-yellow-5'>{course?.ratingAndReviews[0]?.rating}</span>

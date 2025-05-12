@@ -229,7 +229,7 @@ exports.updateDisplayPicture = async (req, res) => {
             image,
             process.env.FOLDER_NAME
         )
-        console.log("Upload Details : ", uploadDetails);
+        // console.log("Upload Details : ", uploadDetails);
         const updateImage = await User.findByIdAndUpdate({ _id: id }, { image: uploadDetails.secure_url }, { new: true })
         res.status(200).json({
             success: true,

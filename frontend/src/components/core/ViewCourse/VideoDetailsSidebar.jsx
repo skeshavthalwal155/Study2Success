@@ -58,7 +58,7 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
                         <p>{courseEntireData?.courseName}</p>
                         <p className='text-sm font-semibold text-light-richblack-500 dark:text-dark-richblack-500'>
                             {completedLecture?.length} / {totalNoOfLectures}
-                            {console.log(completedLecture?.length, totalNoOfLectures)}
+                            {/* {console.log(completedLecture?.length, totalNoOfLectures)} */}
                         </p>
                     </div>
                 </div>

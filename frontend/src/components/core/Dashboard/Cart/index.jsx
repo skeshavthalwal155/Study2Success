@@ -6,7 +6,7 @@ import RenderCartCourses from './RenderCartCourses'
 const Cart = () => {
 
     const { total, totalItems } = useSelector((state) => state.cart)
-    console.log("total : ",total)
+    // console.log("total : ",total)
     return (
         <div className='mx-auto w-11/12 max-w-[1000px] py-10'>
             <h1 className='mb-14 text-3xl font-medium dark:text-dark-richblack-5 text-light-richblack-5'>Your Cart</h1>

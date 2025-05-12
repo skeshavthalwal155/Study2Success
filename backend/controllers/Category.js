@@ -29,7 +29,7 @@ exports.createCategory = async (req, res) => {
             name: name,
             description: description
         });
-        console.log(categoryDetails)
+        // console.log(categoryDetails)
 
         // send response
         res.status(200).json({
@@ -71,7 +71,7 @@ exports.categoryPageDetails = async (req, res) => {
     try {
         const { categoryId } = req.body
         // get Courses for the specified category
-        console.log("category: ", categoryId)
+        // console.log("category: ", categoryId)
 
         const selectedCategory = await Category.findById(categoryId)
             .populate({
@@ -80,11 +80,11 @@ exports.categoryPageDetails = async (req, res) => {
                 populate: "ratingAndReviews",
             })
             .exec()
-        console.log(selectedCategory)
+        // console.log(selectedCategory)
 
         // Handle the case when category is not found
         if (!selectedCategory) {
-            console.log("Category not found.")
+            // console.log("Category not found.")
             return res.status(404).json({
                 success: false,
                 message: "Category not found"
@@ -93,7 +93,7 @@ exports.categoryPageDetails = async (req, res) => {
 
         // Handle the case when there are no coures
         if (selectedCategory.courses.length === 0) {
-            console.log("No Courses found for the selected category")
+            // console.log("No Courses found for the selected category")
             return res.status(404).json({
                 success: false,
                 message: "No Courses found for the selected Category"

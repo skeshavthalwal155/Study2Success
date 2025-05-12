@@ -21,7 +21,7 @@ const Home = () => {
   const textColor = theme === 'dark' ? "#ffd60a" : "#2B74F6";
 
 
-  console.log(textColor)
+  // console.log(textColor)
   return (
     <div>
       {/* Section 1 */}

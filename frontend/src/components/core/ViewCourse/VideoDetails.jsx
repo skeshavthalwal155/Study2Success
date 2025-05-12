@@ -129,9 +129,9 @@ const VideoDetails = () => {
   }
   const handleVideoEnded = () => {
    
-      console.log("Video ended triggered");
+      // console.log("Video ended triggered");
       setVideoEnded(prev => !prev);     
-      console.log("videoEnded: ",videoEnded)
+      // console.log("videoEnded: ",videoEnded)
   }
 
   return (

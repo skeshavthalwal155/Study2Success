@@ -27,7 +27,7 @@ const ViewCourse = () => {
             courseData?.courseDetails?.courseContent?.forEach((sec) => {
                 lecture += sec.SubSection.length
             })
-            console.log("Total Lectures : ", courseData)
+            // console.log("Total Lectures : ", courseData)
             dispatch(setTotalNoOfLectures(lecture))
         }
         setCourseSpecificDetails()

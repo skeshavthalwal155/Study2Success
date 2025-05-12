@@ -6,7 +6,7 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 import { formatDate } from '../../../../services/formatDate';
 
 const ViewSingleCourse = ({ viewCourse }) => {
-    console.log("coursesss", viewCourse)
+    // console.log("coursesss", viewCourse)
 
     const [avgReviewCount, setAvgReviewCount] = useState(0)
 

@@ -38,7 +38,7 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
                 Authorization: `Bearer ${token}`
             }
         )
-        console.log("Object Response : ",orderResponse)
+        // console.log("Object Response : ",orderResponse)
         if (!orderResponse.data.success) {
             throw new Error(orderResponse.data.message)
         }
@@ -66,10 +66,9 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
         }
 
         const paymentObject = new window.Razorpay(options)
-        console.log("paymentObject : ", paymentObject)
+        // console.log("paymentObject : ", paymentObject)
         paymentObject.open()
         paymentObject.on("payment.failed", function (response) {
-
             toast.error("Oops, Payment Failed")
             console.log(response.error)
         })

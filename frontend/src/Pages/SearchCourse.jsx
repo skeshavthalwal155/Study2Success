@@ -18,7 +18,7 @@ const SearchCourse = () => {
         const res = await searchCourses(searchQuery, dispatch)
         setSearchResults(res)
         setLoading(false)
-        console.log(res)
+        // console.log(res)
     }
 
     useEffect(() => {

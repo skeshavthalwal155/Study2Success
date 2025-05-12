@@ -51,7 +51,7 @@ exports.signUp = async (req, res) => {
 
 		// find most recent otp for the email
 		const recentOtp = await Otp.find({ email }).sort({ createdAt: -1 }).limit(1);
-		console.log(recentOtp)
+		// console.log(recentOtp)
 
 		// validate otp
 		if (recentOtp.length === 0) {
@@ -197,9 +197,9 @@ exports.sendOtp = async (req, res) => {
 			specialChars: false,
 		});
 		const result = await Otp.findOne({ otp: otp });
-		console.log("Result is Generate OTP Func");
-		console.log("OTP", otp);
-		console.log("Result", result);
+		// console.log("Result is Generate OTP Func");
+		// console.log("OTP", otp);
+		// console.log("Result", result);
 		while (result) {
 			otp = otpGenerator.generate(6, {
 				upperCaseAlphabets: false,
@@ -207,7 +207,7 @@ exports.sendOtp = async (req, res) => {
 		}
 		const otpPayload = { email, otp };
 		const otpBody = await Otp.create(otpPayload);
-		console.log("OTP Body", otpBody);
+		// console.log("OTP Body", otpBody);
 
 		res.status(200).json({
 			success: true,
@@ -215,7 +215,7 @@ exports.sendOtp = async (req, res) => {
 			otp,
 		});
 	} catch (error) {
-		console.log(error.message);
+		// console.log(error.message);
 		return res.status(500).json({ success: false, error: error.message });
 	}
 };
@@ -275,7 +275,7 @@ exports.changePassword = async (req, res) => {
 					`Password updated successfully for ${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`
 				)
 			);
-			console.log("Email sent successfully:", emailResponse.response);
+			// console.log("Email sent successfully:", emailResponse.response);
 		} catch (error) {
 			// If there's an error sending the email, log the error and return a 500 (Internal Server Error) error
 			console.error("Error occurred while sending email:", error);

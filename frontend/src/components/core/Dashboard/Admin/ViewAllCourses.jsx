@@ -21,7 +21,7 @@ const ViewAllCourses = () => {
   useEffect(() => {
     viewAllCourses()
   }, [])
-  console.log(courses)
+  // console.log(courses)
 
   if (loading) {
     return (

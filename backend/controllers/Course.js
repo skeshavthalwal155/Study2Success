@@ -142,7 +142,7 @@ exports.editCourse = async (req, res) => {
         }
         //  If thumnail is not found, update it
         if (req.files) {
-            console.log("Thumbnail updated")
+            // console.log("Thumbnail updated")
             const thumbnail = req.files.courseThumbnail;
             const thumbnailImages = await uploadFileToCloudinary(
                 thumbnail,
@@ -284,7 +284,7 @@ exports.getCourseDetails = async (req, res) => {
             data: CourseDetails
         })
     } catch (err) {
-        console.log(err)
+        // console.log(err)
         return res.status(500).json({
             success: false,
             message: err.message
@@ -333,7 +333,7 @@ exports.getFullCourseDetails = async (req, res) => {
             userId: userId       // Note: changed from userID to userId
         });
 
-        console.log("Course Progress:", courseProgress);
+        // console.log("Course Progress:", courseProgress);
 
         // If no progress exists, create one
         if (!courseProgress) {
@@ -342,7 +342,7 @@ exports.getFullCourseDetails = async (req, res) => {
                 userId: userId,
                 completeVideo: []
             });
-            console.log("Created new course progress:", courseProgress);
+            // console.log("Created new course progress:", courseProgress);
         }
 
         // Calculate total duration

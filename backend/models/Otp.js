@@ -22,7 +22,7 @@ const otpSchema = new mongoose.Schema({
 async function sendVerficationEmail(email, otp){
     try{
         const mailResponse = await mailSender(email, "Verification Email From study2success", emailTemplate(otp));
-        console.log("Email Sent Successfully : ",mailResponse)
+        // console.log("Email Sent Successfully : ",mailResponse)
 
     }catch(err){
         console.log(`Error Occured while sending mail ${err}`)
@@ -31,7 +31,7 @@ async function sendVerficationEmail(email, otp){
 }
 
 otpSchema.pre("save", async function(next){
-    console.log("New Doucment saved to database")
+    // console.log("New Doucment saved to database")
     
     // only send a email when a new doucment is created
     if(this.isNew){

@@ -36,7 +36,7 @@ const AllUsers = () => {
       </div>
     )
   }
-  console.log("Users", userData)
+  // console.log("Users", userData)
 
   return (
     <div className='mx-auto w-11/12 max-w-[1000px] py-10'>
