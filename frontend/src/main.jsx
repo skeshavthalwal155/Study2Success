@@ -12,7 +12,6 @@ import ThemeProvider from './Providers/ThemeProvider.jsx'
 const store = configureStore({
   reducer: rootReducer,
 })
-
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Provider store={store}>
