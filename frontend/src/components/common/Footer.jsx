@@ -3,8 +3,7 @@ import { FooterLink2 } from '../../data/footer-links'
 import { Link } from 'react-router-dom'
 
 // Image
-import logo from '../../assets/Logo/Logo-full-Light.png'
-import logo1 from '../../assets/Logo/Logo-full-dark.png'
+import logo from '../../assets/Logo/Logo-Full-Light.png'
 
 // Icons
 import { FaFacebook, FaGoogle, FaTwitter, FaYoutube } from 'react-icons/fa'
