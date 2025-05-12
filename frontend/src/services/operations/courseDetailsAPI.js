@@ -1,8 +1,8 @@
 import { toast } from 'react-hot-toast'
-import { setProgress } from '../../slices/loadingBarSlice'
+import { setProgress } from '../../slice/loadingBarSlice'
 
-// import { updateCompletedLectures } from '../../slices/viewCourseSlice'
-// import {setLoading}  from '../../slices/profileSlice'
+// import { updateCompletedLectures } from '../../slice/viewCourseSlice'
+// import {setLoading}  from '../../slice/profileSlice'
 import { apiConnector } from '../apiconnector'
 import { courseEndpoints, categories } from '../apis'
 

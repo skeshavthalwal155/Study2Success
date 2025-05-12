@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { login } from '../../../services/operations/authAPI'
-import { setProgress } from '../../../slices/loadingBarSlice'
+import { setProgress } from '../../../slice/loadingBarSlice'
 
 const AdminLoginForm = () => {
   const navigate = useNavigate()

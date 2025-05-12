@@ -30,7 +30,7 @@ import EditCourse from "./components/core/Dashboard/EditCourse/EditCourse";
 import { useEffect } from "react";
 import { RiWifiOffLine } from "react-icons/ri";
 import SearchCourse from "./Pages/SearchCourse";
-import { checkAuth } from "./slices/authSlice";
+import { checkAuth } from "./slice/authSlice";
 import AllCategory from "./components/core/Dashboard/Admin/AllCategory";
 import AddCategory from "./components/core/Dashboard/Admin/AddCategory";
 import AllUsers from "./components/core/Dashboard/Admin/AllUsers";

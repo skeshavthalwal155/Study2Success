@@ -14,7 +14,7 @@ import { formatDuration } from '../services/formattedTime'
 import Footer from '../components/common/Footer'
 import toast from 'react-hot-toast'
 import { ACCOUNT_TYPE } from '../utils/constants'
-import { addToCart } from '../slices/cartSlice'
+import { addToCart } from '../slice/cartSlice'
 import ReactMarkdown from 'react-markdown'
 import CourseAccordionBar from '../components/core/Course/CourseAccordionBar'
 

@@ -1,4 +1,4 @@
-import { setProgress } from '../../slices/loadingBarSlice'
+import { setProgress } from '../../slice/loadingBarSlice'
 import { apiConnector } from '../apiconnector'
 import { profileEndpoints } from '../apis'
 import { toast } from 'react-hot-toast'

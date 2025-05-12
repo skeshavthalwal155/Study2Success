@@ -13,7 +13,7 @@ import {
   setCourse,
   setEditCourse,
   setStep,
-} from "../../../../../slices/courseSlice"
+} from "../../../../../slice/courseSlice"
 import IconBtn from "../../../../common/IconBtn"
 import NestedView from "./NestedView"
 

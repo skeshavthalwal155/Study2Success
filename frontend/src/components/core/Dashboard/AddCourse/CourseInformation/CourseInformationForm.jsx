@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addCourseDetails, editCourseDetails, fetchCourseCategories } from '../../../../../services/operations/courseDetailsAPI';
 import { HiOutlineCurrencyRupee } from 'react-icons/hi'
 import RequirementField from './RequirementField';
-import { setCourse, setEditCourse, setStep } from '../../../../../slices/courseSlice';
+import { setCourse, setEditCourse, setStep } from '../../../../../slice/courseSlice';
 import IconBtn from '../../../../common/IconBtn'
 import toast from 'react-hot-toast';
 import { COURSE_STATUS } from '../../../../../utils/constants';

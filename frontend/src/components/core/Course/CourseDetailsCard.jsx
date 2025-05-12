@@ -5,7 +5,7 @@ import { FaCaretRight } from "react-icons/fa";
 import { toast } from 'react-hot-toast'
 import copy from 'copy-to-clipboard'
 import { ACCOUNT_TYPE } from '../../../utils/constants'
-import { addToCart } from '../../../slices/cartSlice';
+import { addToCart } from '../../../slice/cartSlice';
 import {FaShareSquare} from 'react-icons/fa'
 
 export default function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {

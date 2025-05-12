@@ -2,8 +2,8 @@ import { toast } from 'react-hot-toast'
 import { studentEndpoints } from "../apis";
 import { apiConnector } from "../apiconnector";
 import rzplogo from '../../assets/Images/rzp.png'
-import { setPaymentLoading } from "../../slices/courseSlice";
-import { resetCart } from "../../slices/cartSlice";
+import { setPaymentLoading } from "../../slice/courseSlice";
+import { resetCart } from "../../slice/cartSlice";
 
 
 const { COURSE_PAYMENT_API, COURSE_VERIFY_API, SEND_PAYMENT_SUCCESS_EMAIL_API } = studentEndpoints;
