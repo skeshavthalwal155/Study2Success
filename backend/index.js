@@ -20,7 +20,6 @@ database.dbConnect();
 const PORT = process.env.PORT || 8080;
 const app = express()
 
-const _dirname = path.resolve()
 
 // middlewares
 app.use(express.json())
