@@ -1,11 +1,11 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import profileReducer from "../slices/profileSlice";
-import cartReducer from "../slices/cartSlice";
-import courseReducer from "../slices/courseSlice";
-import loadingBarReducer from "../slices/loadingBarSlice";
-import viewCourseReducer from "../slices/viewCourseSlice";
-import themeSlice from "../slices/themeSlice";
-import authReducer from '../slices/authSlice'
+import profileReducer from "../slices/profileSlice.js";
+import cartReducer from "../slices/cartSlice.js";
+import courseReducer from "../slices/courseSlice.js";
+import loadingBarReducer from "../slices/loadingBarSlice.js";
+import viewCourseReducer from "../slices/viewCourseSlice.js";
+import themeSlice from "../slices/themeSlice.js";
+import authReducer from '../slices/authSlice.js'
 
 
 const rootReducer = combineReducers({
