@@ -1,5 +1,5 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import profileReducer from "../slices/profileSlice.js";
+import profileReducer from "../slices/profileSlice";
 import cartReducer from "../slices/cartSlice.js";
 import courseReducer from "../slices/courseSlice.js";
 import loadingBarReducer from "../slices/loadingBarSlice.js";
