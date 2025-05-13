@@ -91,7 +91,7 @@ const NavBar = () => {
     }
   }, [searchActive]);
 
- 
+
 
   return (
     <div className={` flex sm:relative  w-screen relative z-50 h-14 items-center justify-center border-b-[1px] dark:border-b-dark-richblack-700 border-b-light-richblack-700 transition-all duration-500 ${location.pathname === '/' ? "bg-white dark:bg-dark-richblack-900" : "dark:bg-dark-richblack-800 bg-light-richblack-800"}`}>
@@ -164,7 +164,7 @@ const NavBar = () => {
           <div ref={show} className='mobNav z-50'>
             <nav className='items-center flex flex-col absolute w-[150px] -left-[80px] -top-7 glass2' ref={show}>
               {
-                <IoIosClose onClick={shownav} className='fill-light-richblack-5 dark:fill-dark-richblack-5 cursor-pointer mt-4 absolute left-2' size={30} />
+                <IoIosClose onClick={shownav} className='fill-light-richblack-5 dark:fill-dark-richblack-5 cursor-pointer mt-4 absolute left-[1px]' size={30} />
               }
               {
                 token === null && (
@@ -195,7 +195,7 @@ const NavBar = () => {
 
               <div className='mt-4 mb-4 bg-light-richblack-600 dark:bg-dark-richblack-600 w-[200px] h-[1px]'></div>
               <p className='text-xl text-light-yellow-50 dark:text-dark-yellow-50 font-semibold'>Courses</p>
-              <div className='flex flex-col items-end pr-4'>
+              <div className='flex flex-col  pr-4'>
                 {
                   !subLinks.length ? (<p className='text-dark-richblack-900 dark:text-dark-richblack-5'>Loading...</p>) : (
                     subLinks.map((ele, i) => (
@@ -263,15 +263,15 @@ const NavBar = () => {
               </li>
             ))}
             <form
-          
+
               onSubmit={handleSearch}
               className="flex items-center relative h-10"
             >
               {/* Circular background for icon */}
               <div
                 className={`absolute left-0 flex items-center cursor-pointer justify-center rounded-full transition-all duration-300 ${searchActive === 'icon'
-                    ? 'w-10 h-10 bg-light-richblack-700 dark:bg-dark-richblack-700'
-                    : 'w-10 h-10'
+                  ? 'w-10 h-10 bg-light-richblack-700 dark:bg-dark-richblack-700'
+                  : 'w-10 h-10'
                   }`}
               >
                 <HiSearch
@@ -305,8 +305,8 @@ const NavBar = () => {
                   <button
                     type="submit"
                     className={`absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-full transition-colors ${searchValue
-                        ? 'bg-light-blue-600 dark:bg-dark-blue-600 text-white'
-                        : 'bg-light-richblack-700 dark:bg-dark-richblack-700 text-light-richblack-400 dark:text-dark-richblack-400 cursor-default'
+                      ? 'bg-light-blue-600 dark:bg-dark-blue-600 text-white'
+                      : 'bg-light-richblack-700 dark:bg-dark-richblack-700 text-light-richblack-400 dark:text-dark-richblack-400 cursor-default'
                       }`}
                     disabled={!searchValue}
                   >

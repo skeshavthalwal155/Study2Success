@@ -27,7 +27,8 @@ app.use(cookieParser())
 app.use(
     cors({
         origin: ["http://localhost:5173",
-            "https://study2success.vercel.app"
+            "https://study2success.vercel.app",
+            "http://192.168.108.178:5173"
         ],
         credentials: true
     })
