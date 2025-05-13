@@ -193,7 +193,7 @@ const NavBar = () => {
                 )
               }
 
-              <div className='mt-4 mb-4 bg-light-richblack-600 dark:bg-dark-richblack-600 w-[200px] h-[1px]'></div>
+              <div className='mt-4 mb-4 bg-light-richblack-600 dark:bg-dark-richblack-600 w-[150px] h-[1px]'></div>
               <p className='text-xl text-light-yellow-50 dark:text-dark-yellow-50 font-semibold'>Courses</p>
               <div className='flex flex-col  pr-4'>
                 {
@@ -207,7 +207,7 @@ const NavBar = () => {
                     )))
                 }
               </div>
-              <div className='mt-4 mb-4 dark:bg-dark-richblack-600 bg-light-richblack-600 w-[200px] h-[1px]'></div>
+              <div className='mt-4 mb-4 dark:bg-dark-richblack-600 bg-light-richblack-600 w-[150px] h-[1px]'></div>
               <Link to='/about' onClick={() => { dispatch(setProgress(100)); shownav() }} className="p-2">
                 <p className=' dark:text-dark-richblack-5 text-light-richblack-5 '>
                   About

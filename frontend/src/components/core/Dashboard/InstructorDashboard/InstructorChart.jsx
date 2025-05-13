@@ -1,89 +1,88 @@
-import { useState } from "react"
-import { Chart, registerables } from "chart.js"
-import { Pie } from "react-chartjs-2"
+import { Pie } from 'react-chartjs-2'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 
-Chart.register(...registerables)
+const InstructorChart = ({ details, currentChart }) => {
+  ChartJS.register(ArcElement, Tooltip, Legend)
 
-export default function InstructorChart({ courses }) {
-  // State to keep track of the currently selected chart
-  const [currChart, setCurrChart] = useState("students")
-
-  // Function to generate random colors for the chart
-  const generateRandomColors = (numColors) => {
+  const randomColor = (num) => {
     const colors = []
-    for (let i = 0; i < numColors; i++) {
-      const color = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(
-        Math.random() * 256
-      )}, ${Math.floor(Math.random() * 256)})`
-      colors.push(color)
+    for (let i = 0; i < num; i++) {
+      colors.push(`rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`)
     }
     return colors
   }
 
-  // Data for the chart displaying student information
-  const chartDataStudents = {
-    labels: courses.map((course) => course.courseName),
+  const StudentsData = {
+    labels: details?.map((course => course?.courseName)),
     datasets: [
       {
-        data: courses.map((course) => course.totalStudent),
-        backgroundColor: generateRandomColors(courses.length),
-      },
-    ],
+        label: '# of Students',
+        data: details?.map((course => course?.totalStudent)),
+        backgroundColor: randomColor(details?.length),
+        borderColor: randomColor(),
+        borderWidth: 1,
+      }
+    ]
   }
 
-  // Data for the chart displaying income information
-  const chartIncomeData = {
-    labels: courses.map((course) => course.courseName),
+  const RevenueData = {
+    labels: details?.map((course => course?.courseName)),
     datasets: [
       {
-        data: courses.map((course) => course.totalRevenue),
-        backgroundColor: generateRandomColors(courses.length),
-      },
-    ],
+        label: '# of ₹',
+        data: details?.map(course => course?.totalRevenue),
+        backgroundColor: randomColor(details?.length),
+        borderColor: randomColor(),
+        borderWidth: 1,
+      }
+    ]
   }
-
-  // Options for the chart
-  const options = {
-    maintainAspectRatio: false,
-  }
-
   return (
-    <div className="flex flex-1 flex-col gap-y-4 rounded-md dark:bg-dark-richblack-800 bg-light-richblack-800 p-6 ">
-      <p className="text-lg font-bold dark:text-dark-richblack-5 text-light-richblack-5">Visualize</p>
-      <div className="space-x-4 font-semibold">
-        {/* Button to switch to the "students" chart */}
-        <button
-          onClick={() => setCurrChart("students")}
-          className={`rounded-sm p-1 px-3 transition-all duration-200 ${
-            currChart === "students"
-              ? "dark:bg-dark-richblack-700 bg-light-richblack-700 dark:text-dark-yellow-50 text-light-yellow-50"
-              : "dark:text-dark-yellow-400 text-light-yellow-400"
-          }`}
-        >
-          Students
-        </button>
-        {/* Button to switch to the "income" chart */}
-        <button
-          onClick={() => setCurrChart("income")}
-          className={`rounded-sm p-1 px-3 transition-all duration-200 ${
-            currChart === "income"
-              ? "dark:bg-dark-richblack-700 bg-light-richblack-700 dark:text-dark-yellow-50 text-light-yellow-50"
-              : "dark:text-dark-yellow-400 text-light-yellow-400"
-          }`}
-        >
-          Income
-        </button>
-      </div>
-      <div className="relative mx-auto h-[300px] w-full">
-        {/* Render the Pie chart based on the selected chart */}
-        <Pie
-          data={currChart === "students" ? chartDataStudents : chartIncomeData}
+    <div>
+      <div className='mt-8 '>
+        {/* change label position extreme right and increase gap and change chart size */}
+        {currentChart === 'revenue' ? <Pie data={RevenueData}
           options={{
-            ...options,
-            responsive:true,           
-          }}
-        />
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: {
+                  boxWidth: 10,
+                  boxHeight: 10,
+                  padding: 20,
+                  font: {
+                    size: 12,
+                  },
+                },
+              },
+            },
+            aspectRatio: 2,
+          }
+          }
+
+        /> : <Pie data={StudentsData}
+          options={{
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: {
+                  boxWidth: 10,
+                  boxHeight: 10,
+                  padding: 20,
+                  font: {
+                    size: 12,
+                  },
+                },
+              },
+            },
+            aspectRatio: 2,
+          }
+          }
+        />}
       </div>
+
     </div>
   )
 }
+
+export default InstructorChart
