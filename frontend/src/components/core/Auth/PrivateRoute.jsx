@@ -6,10 +6,10 @@ import { selectIsAuthenticated } from '../../../slice/authSlice'
 
 
 const PrivateRoute = ({ children }) => {
-    // const  token  = useSelector((state) => state.auth)
+    const  token  = useSelector((state) => state.auth)
     const isAuthenticated = useSelector(selectIsAuthenticated)
 
-   if(!isAuthenticated){
+   if(!isAuthenticated || !token){
     return <Navigate to={'/login'}/>
    }  
     return children  
