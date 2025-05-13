@@ -76,7 +76,7 @@ const Footer = () => {
                                 })}
                             </div>
                             <h1 className='dark:text-dark-richblack-50 text-white font-semibold text-[16px] mt-7'>Support</h1>
-                            <div className='text-[14px] cursor-pointer hover:dark:text-dark-richblack-50 hover:text-light-richblack-50 transition-all duration-200 mt-2'>
+                            <div className='text-[14px] cursor-pointer hover:dark:text-dark-richblack-50 hover:text-light-richblack-900 transition-all duration-200 mt-2'>
                                 <Link to={'/help-center'}>Help Center</Link>
                             </div>
                         </div>
