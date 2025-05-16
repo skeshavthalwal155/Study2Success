@@ -113,7 +113,7 @@ export default function CourseBuilderForm() {
             disabled={loading}
             placeholder="Add a section to build your course"
             {...register("sectionName", { required: true })}
-            className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-800 p-[12px] text-richblack-5' 
+            className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-700 p-[12px] text-richblack-5' 
             />
           {errors.sectionName && (
             <span className="ml-2 text-xs tracking-wide dark:text-dark-pink-200 text-red-500">
