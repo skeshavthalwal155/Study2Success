@@ -24,6 +24,7 @@ const Instructor = () => {
             console.log("courses", instructorCourses);
             setCourses(instructorCourses)
             setDetails(instructorDetails)
+            setLoading(false)
         })();
     }, [])
 
