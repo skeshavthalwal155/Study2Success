@@ -1,7 +1,7 @@
 import { FcGoogle } from "react-icons/fc"
 import { useSelector } from "react-redux"
 
-import frameImg from '../../../assets/Images/frame.png'
+// import frameImg from '../../../assets/Images/frame.png'
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 import AdminLoginForm from "./AdminLoginForm"
@@ -28,21 +28,13 @@ const Template = ({ title, description1, description2, image, formType }) => {
               {formType === "signup" ? <SignupForm/> : formType==="admin" ? <AdminLoginForm /> : <LoginForm />}
             </div>
             <div className={`relative mx-auto w-11/12 max-w-[450px] md:mx-0`}>
-              <img
-                src={frameImg}
-                alt="frame"
-                width={558}
-                height={504}
-                loading="lazy"
- 
-              />
-              <img
+             <img
                 src={image}
                 alt=""
                 width={558}
                 height={504}
-                loading="lazy"
-                className="absolute -top-4 right-4 z-10"
+                loading="lazy" 
+                className="transition-all duration-200"
               />
             </div>
           </div>
