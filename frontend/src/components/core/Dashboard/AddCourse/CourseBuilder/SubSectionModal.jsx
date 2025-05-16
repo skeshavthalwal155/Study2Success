@@ -135,7 +135,7 @@ const SubSectionModal = ({ modalData, setModalData, add = false, view = false, e
                   id='lectureTitle'
                   placeholder='Enter Lecture Title'
                   {...register("lectureTitle", { required: true })}
-                  className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-800 p-[12px] text-richblack-5'
+                  className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-700 p-[12px] text-richblack-5'
                 />
                 {
                   errors.lectureTitle && (
@@ -150,7 +150,7 @@ const SubSectionModal = ({ modalData, setModalData, add = false, view = false, e
                   id="lectureDesc"
                   placeholder="Enter Lecture Description"
                   {...register("lectureDesc", { required: true })}
-                  className='form-style w-full resize-x-none min-h-[130px] rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-800 p-[12px] dark:text-dark-richblack-5 text-light-richblack-5'
+                  className='form-style w-full resize-x-none min-h-[130px] rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-700 p-[12px] dark:text-dark-richblack-5 text-light-richblack-5'
        
                 />
                 {
