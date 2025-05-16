@@ -239,7 +239,7 @@ const VideoDetails = () => {
          
         </div>
       )}
-      <h1>{videoData?.title}</h1>
+      <h1 className='text-2xl font-bold'>{videoData?.title}</h1>
       <p>{videoData?.description}</p>
     </div>
   );
