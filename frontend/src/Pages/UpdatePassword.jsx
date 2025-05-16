@@ -2,12 +2,11 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import { resetPassword } from '../services/operations/authAPI'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 const UpdatePassword = () => {
-    const location = useLocation()
     const dispatch = useDispatch()
-    const token = location.pathname.split('/').at(-1);
+    const {id:token} = useParams()
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
