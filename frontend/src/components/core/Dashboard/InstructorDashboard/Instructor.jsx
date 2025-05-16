@@ -10,14 +10,15 @@ const Instructor = () => {
     const [courses, setCourses] = useState([])
     const [currentChart, setCurrentChart] = useState('revenue')
     const { token } = useSelector((state) => state.auth)
-    const { user } = useSelector(state => state.auth)
-    const dispatch = useDispatch()
+    const { user } = useSelector((state) => state.auth)
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
         ; (async () => {
             // get instructor details
-            const instructorDetails = await getInstructorDashboard(token);
+            setLoading(true)
+            const instructorDetails = await getInstructorDashboard(token)
             const instructorCourses = await fetchInstructorCourses(token)
             console.log("details", instructorDetails);
             console.log("courses", instructorCourses);
@@ -32,6 +33,14 @@ const Instructor = () => {
     const totalStudents = details?.reduce((acc, course) => {
         return acc + course?.totalStudent;
     }, 0);
+
+    if (loading) {
+        return (
+          <div className='flex h-[calc(100vh-3.5rem)] w-full justify-center items-center'>
+                <div className=' loader'></div>
+            </div>
+        )
+    }
     return (
         <div>
             <div className='mx-auto w-11/12 max-w-[1000px] py-10'>
@@ -75,7 +84,7 @@ const Instructor = () => {
                 <div className='rounded-md bg-light-richblack-800 dark:bg-dark-richblack-800 p-6'>
                     <div className='flex items-center justify-between'>
                         <p className='text-lg font-bold text-light-richblack-5 dark:text-dark-richblack-5'>Your Courses</p>
-                        <button onClick={()=>{navigate('/dashboard/my-courses')}} className='text-xs font-semibold cursor-pointer dark:text-dark-yellow-50 hover:underline transition-all duration-300'>
+                        <button onClick={() => { navigate('/dashboard/my-courses') }} className='text-xs font-semibold cursor-pointer dark:text-dark-yellow-50 hover:underline transition-all duration-300'>
                             View All
                         </button>
                     </div>
