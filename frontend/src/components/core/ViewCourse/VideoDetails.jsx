@@ -24,6 +24,7 @@ const VideoDetails = () => {
 
   useEffect(() => {
     ;(async () => {
+      setLoading(true)
       if (!courseSectionData.length) return
       if (!courseId && !sectionId && !subSectionId) {
         navigate(`/dashboard/enrolled-courses`)
@@ -40,6 +41,7 @@ const VideoDetails = () => {
         setVideoData(filteredVideoData[0])
         setPreviewSource(courseEntireData.courseThumbnail)
         setVideoEnded(false)
+        setLoading(false)
       }
     })()
   }, [courseSectionData, courseEntireData, location.pathname])
@@ -120,10 +122,10 @@ const VideoDetails = () => {
     }
   }
 
-  if (loading || !videoData || !isVideoReady) {
+  if (loading || !videoData) {
     return (
       <div className='flex h-[calc(100vh-3.5rem)] w-full justify-center items-center'>
-        <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 text-richblack-500'></div>
+        <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 text-dark-richblack-500'></div>
       </div>
     )
   }
@@ -135,7 +137,7 @@ const VideoDetails = () => {
   }
 
   return (
-    <div className='flex flex-col gap-5 text-white'>
+    <div className='flex flex-col gap-5 text-light-richblack-5 dark:text-dark-richblack-5'>
       {!videoData ? (
         <img
           src={previewSource}

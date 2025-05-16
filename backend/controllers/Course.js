@@ -5,7 +5,7 @@ const { uploadFileToCloudinary } = require("../utils/FileUploader")
 const CourseProgress = require("../models/CourseProgress")
 const Section = require("../models/Section")
 const SubSection = require("../models/SubSection")
-const { convertSecondsToDuration } = require("../utils/SecToDuration")
+const {convertSecondsToDuration} = require('../utils/SecToDuration')
 require("dotenv").config()
 
 // create course Handler
