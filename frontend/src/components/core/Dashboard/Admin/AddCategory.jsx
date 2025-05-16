@@ -23,7 +23,7 @@ const AddCategory = () => {
     setLoading(false)
     localStorage.setItem("sublinks", JSON.stringify(response))
     // console.log("PRINTING FORMDATA : ", formData)
-    console.log("PRINTING RESULT : ", response)
+    // console.log("PRINTING RESULT : ", response)
 
   }
   return (

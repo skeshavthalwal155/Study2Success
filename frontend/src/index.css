@@ -1,14 +1,10 @@
 @import "tailwindcss";
 
-
 html,
 body {
   overflow-x: hidden;
-  overscroll-behavior: auto;
-  /* background-color: #000814
-  ; */
+  overscroll-behavior: auto; 
 }
-
 
 .loader {
   animation: spin 1s linear infinite;
@@ -17,8 +13,7 @@ body {
   width: 8rem;
   border-top: 2px solid;
   border-bottom: 2px solid;
-  border-color: #585D69;
-  /* This is the approximate color for text-richblack-500 */
+
 }
 
 @keyframes spin {
