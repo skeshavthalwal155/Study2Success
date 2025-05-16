@@ -1,19 +1,22 @@
 {
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build"
+    }
+  ],
   "routes": [
     {
       "src": "/update-password/(.*)",
-      "dest": "/index.html"
+      "dest": "/index.html",
+      "headers": {
+        "Cache-Control": "no-store"
+      }
     },
     {
       "src": "/(.*)", 
-      "dest": "/index.html",
-      "status": 200
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "dest": "/index.html"
     }
   ]
 }

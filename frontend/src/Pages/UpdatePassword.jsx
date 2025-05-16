@@ -6,9 +6,8 @@ import { Link, useParams } from 'react-router-dom'
 
 const UpdatePassword = () => {
     const dispatch = useDispatch()
-    const { id: token } = useParams()
-    console.log("Extracted Token:", token); // Debug
-
+    const { id } = useParams()
+    const token = id;
     const handleOnSubmit = (e) => {
         e.preventDefault()
         if (formData.password === formData.confirmPassword) {
