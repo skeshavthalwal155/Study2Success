@@ -179,7 +179,7 @@ const Settings = () => {
                                 <div className='flex flex-col gap-2 lg:w-[48%]'>
                                     <label htmlFor="firstName" className='dark:text-dark-richblack-50 text-light-richblack-50'>First Name</label>
                                     <input
-                                        className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-800 p-[12px] text-richblack-5'
+                                        className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-700 p-[12px] text-richblack-5'
                                         defaultValue={user?.firstName || null}
                                         type='text' name='firstName' id='firstName'
                                         placeholder='Enter First Name'
@@ -187,17 +187,17 @@ const Settings = () => {
                                 </div>
                                 <div className='flex flex-col gap-2 lg:w-[48%]'>
                                     <label className='dark:text-dark-richblack-50 text-light-richblack-50' htmlFor="lastName">Last Name</label>
-                                    <input  className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-800 p-[12px] text-richblack-5' defaultValue={user?.lastName || null} type='text' name='lastName' id='lastName' placeholder='Enter Last Name' onChange={handleOnChange} />
+                                    <input  className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-700 p-[12px] text-richblack-5' defaultValue={user?.lastName || null} type='text' name='lastName' id='lastName' placeholder='Enter Last Name' onChange={handleOnChange} />
                                 </div>
                             </div>
                             <div className='flex flex-col gap-5 lg:flex-row'>
                                 <div className='flex flex-col gap-2 lg:w-[48%]'>
                                     <label className='dark:text-dark-richblack-50 text-light-richblack-50' htmlFor="dateOfBirth">Date of Birth</label>
-                                    <input  className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-800 p-[12px] text-richblack-5' defaultValue={user?.additionalDetails?.dateOfBirth || null} type='date' name='dateOfBirth' id='dateOfBirth' onChange={handleOnChange} />
+                                    <input  className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-700 p-[12px] text-richblack-5' defaultValue={user?.additionalDetails?.dateOfBirth || null} type='date' name='dateOfBirth' id='dateOfBirth' onChange={handleOnChange} />
                                 </div>
                                 <div className='flex flex-col gap-2 lg:w-[48%]'>
                                     <label className='dark:text-dark-richblack-50 text-light-richblack-50' htmlFor="gender">Gender</label>
-                                    <select  className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-800 p-[12px] text-richblack-5' type='text' name='gender' value={formData.gender || ''} onChange={handleOnChange} id='gender'>
+                                    <select  className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-700 p-[12px] text-richblack-5' type='text' name='gender' value={formData.gender || ''} onChange={handleOnChange} id='gender'>
 
                                         <option value="" disabled hidden>
                                             {user?.additionalDetails?.gender ?? "Please Select Your Gender"}
@@ -213,11 +213,11 @@ const Settings = () => {
                             <div className='flex flex-col gap-5 lg:flex-row'>
                                 <div className='flex flex-col gap-2 lg:w-[48%]'>
                                     <label className='dark:text-dark-richblack-50 text-light-richblack-50' htmlFor="contactNumber">Contact Number</label>
-                                    <input  className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-800 p-[12px] text-richblack-5' defaultValue={user?.additionalDetails?.contactNumber || null} type='text' name='contactNumber' id='contactNumber' placeholder='Enter Contact Number' onChange={handleOnChange} />
+                                    <input  className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-700 p-[12px] text-richblack-5' defaultValue={user?.additionalDetails?.contactNumber || null} type='text' name='contactNumber' id='contactNumber' placeholder='Enter Contact Number' onChange={handleOnChange} />
                                 </div>
                                 <div className='flex flex-col gap-2 lg:w-[48%]'>
                                     <label className='dark:text-dark-richblack-50 text-light-richblack-50' htmlFor="about">About</label>
-                                    <input  className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-800 p-[12px] text-richblack-5' defaultValue={user?.additionalDetails?.about || null} type='text' name='about' id='about' placeholder='Enter Bio Details' onChange={handleOnChange} />
+                                    <input  className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-700 p-[12px] text-richblack-5' defaultValue={user?.additionalDetails?.about || null} type='text' name='about' id='about' placeholder='Enter Bio Details' onChange={handleOnChange} />
                                 </div>
                             </div>
                         </div>
@@ -249,7 +249,7 @@ const Settings = () => {
                                             style={{
                                                 boxShadow: "inset 0px -1px 0px rgba(255, 255,255,0.18) "
                                             }}
-                                            className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-800 p-[12px] text-richblack-5'
+                                            className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-700 p-[12px] text-richblack-5'
                                         />
                                     </label>
                                     <span
@@ -278,7 +278,7 @@ const Settings = () => {
                                             style={{
                                                 boxShadow: "inset 0px -1px 0px rgba(255, 255,255,0.18) "
                                             }}
-                                           className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-800 p-[12px] text-richblack-5'
+                                           className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-700 p-[12px] text-richblack-5'
                                         />
                                     </label>
                                     <span
@@ -309,7 +309,7 @@ const Settings = () => {
                                             style={{
                                                 boxShadow: "inset 0px -1px 0px rgba(255, 255,255,0.18) "
                                             }}
-                                            className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-800 p-[12px] text-richblack-5'
+                                            className='form-style w-full rounded-[0.5rem] bg-light-richblack-800 dark:bg-dark-richblack-700 p-[12px] text-richblack-5'
                                         />
                                     </label>
                                     <span
