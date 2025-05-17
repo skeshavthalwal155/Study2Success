@@ -12,9 +12,6 @@ exports.createSubSection = async (req, res) => {
         // extract video
         const video = req.files.videoUrl
 
-
-
-
         // upload video to cloudinary
         console.log("Before Upload")
         const uploadDetails = await uploadFileToCloudinary(video, process.env.FOLDER_NAME);
@@ -87,8 +84,11 @@ exports.updateSubSection = async (req, res) => {
                 process.env.FOLDER_NAME
             )
             // console.log("Video Upload:  ", uploadDetails)
+            const videoDuration = uploadDetails.duration ||
+            uploadDetails.video?.duration ||
+            0; // Default fallback
             subSection.videoUrl = uploadDetails.secure_url
-            subSection.timeDuration = `${uploadDetails.duration}`
+            subSection.timeDuration = videoDuration
         }
         await subSection.save()
 
