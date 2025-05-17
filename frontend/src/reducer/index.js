@@ -1,5 +1,5 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import cartReducer from '../slice/authSlice.js'
+import cartReducer from '../slice/cartSlice.js'
 import loadingBarReducer from '../slice/loadingBarSlice.js'
 import courseReducer from '../slice/courseSlice.js'
 import viewCourseReducer from '../slice/viewCourseSlice.js'
