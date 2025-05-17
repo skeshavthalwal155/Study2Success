@@ -77,7 +77,7 @@ exports.updateSubSection = async (req, res) => {
             subSection.description = description
         }
 
-        if (req.file && req.files.videoUrl !== undefined) {
+        if (req.files.videoUrl !== undefined) {
             const video = req.files.videoUrl
             const uploadDetails = await uploadFileToCloudinary(
                 video,
