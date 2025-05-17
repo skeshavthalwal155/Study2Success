@@ -8,6 +8,7 @@ import RenderSteps from '../AddCourse/RenderSteps'
 const EditCourse = () => {
     const dispatch = useDispatch()
     const { id:courseId } = useParams()
+
     const { course } = useSelector((state) => state.course)
     const [loading, setLoading] = useState(false)
     const { token } = useSelector((state) => state.auth)

@@ -42,7 +42,7 @@ const SubSectionModal = ({ modalData, setModalData, add = false, view = false, e
     const formData = new FormData()
 
     formData.append("sectionId", modalData.sectionId)
-    formData.append("s ubSectionId", modalData._id)
+    formData.append("subSectionId", modalData._id)
 
     if (currentValues.lectureTitle !== modalData.title) {
       formData.append('title', currentValues.lectureTitle)
