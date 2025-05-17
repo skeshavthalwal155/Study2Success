@@ -12,24 +12,23 @@ exports.createSubSection = async (req, res) => {
         // extract video
         const video = req.files.videoUrl
 
-        // validation
-        if (!sectionId || !title || !video || !timeDuration || !description) {
-            return res.status(400).json({
-                success: false,
-                message: "All Fields are mandatory"
-            })
-        }
+
+
 
         // upload video to cloudinary
-        const uploadDetails = await uploadFileToCloudinary(video, process.env.FOLDER_NAME)
+        console.log("Before Upload")
+        const uploadDetails = await uploadFileToCloudinary(video, process.env.FOLDER_NAME);
         // console.log(uploadDetails)
-
+        // Get duration - with fallback
+        const videoDuration = uploadDetails.duration ||
+            uploadDetails.video?.duration ||
+            0; // Default fallback
         // console.log("uploadDetails duration : ", uploadDetails.duration)
 
         // create subSection
         const newSubSection = await SubSection.create({
             title: title,
-            timeDuration: `${uploadDetails.duration}`,
+            timeDuration: videoDuration,
             description: description,
             videoUrl: uploadDetails.secure_url
         })
@@ -48,7 +47,7 @@ exports.createSubSection = async (req, res) => {
         res.status(200).json({
             success: true,
             message: "SubSection Created Successfully",
-            data: updatedSection
+            data:updatedSection
         })
     } catch (err) {
         res.status(500).json({
@@ -114,7 +113,7 @@ exports.updateSubSection = async (req, res) => {
 // delete section
 exports.deleteSubSection = async (req, res) => {
     try {
-        
+
         // date fetch from req params
         const { subSectionId, sectionId } = req.body
         await Section.findByIdAndUpdate(

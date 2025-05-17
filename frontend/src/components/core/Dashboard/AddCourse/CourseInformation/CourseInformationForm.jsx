@@ -269,7 +269,7 @@ const CourseInformationForm = () => {
                             <div className='flex justify-end gap-x-2'>
                                 {
                                     editCourse && (
-                                        <button onClick={() => dispatch(setStep(2))} className='text-[10px] md:text-sm p-2 px-1 font-semibold rounded-md flex items-center gap-x-2 dark:bg-dark-richblack-300 bg-light-richblack-300'>
+                                        <button onClick={() => dispatch(setStep(2))} className='text-[10px] md:text-sm p-2 px-1 font-semibold rounded-md flex items-center gap-x-2 dark:bg-dark-richblack-800 cursor-pointer bg-light-richblack-300'>
                                             Continue Without Saving
                                         </button>
                                     )
