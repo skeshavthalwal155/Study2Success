@@ -19,14 +19,14 @@ const Games = () => {
             id: 2,
             name: 'Tic Tac Toe',
             description: 'X and O game against the computer',
-            image: snakeGameImg,
+            image: ticGameImg,
             component: <TicTacToe onBackToMenu={() => setActiveGame(null)} />
         },
         {
             id: 3,
             name: 'Snake',
             description: 'Guide the snake to eat food and grow',
-            image: ticGameImg,
+            image: snakeGameImg,
             component: <Snake onBackToMenu={() => setActiveGame(null)} />
         },
     ];
@@ -66,7 +66,7 @@ const Games = () => {
                                 <img
                                     src={game.image}
                                     alt={game.name}
-                                    className='w-full h-full object-cover'
+                                    className='w-full h-full'
                                 />
                             </div>
                             <div className='p-5'>
