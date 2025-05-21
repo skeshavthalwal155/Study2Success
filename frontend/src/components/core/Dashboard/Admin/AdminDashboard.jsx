@@ -68,7 +68,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className='mx-auto w-11/12 max-w-[1200px] py-10 overflow-y-auto'>
+    <div className='mx-auto w-11/12 max-w-[1200px] py-10'>
       <div className='mb-14 flex items-center justify-between'>
         <h1 className='text-4xl font-bold dark:text-dark-richblack-5 text-light-richblack-5 
         tracking-wider border-b-2 border-[#227BF3] pb-2'>Welcome Admin</h1>
