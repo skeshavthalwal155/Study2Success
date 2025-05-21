@@ -53,6 +53,7 @@ const TimeLineSection = () => {
                                         amount: 0.3,       // Requires 30% of element to be visible
                                         reset: true
                                     }}
+                                    key={i}
                                   
                                 >
 

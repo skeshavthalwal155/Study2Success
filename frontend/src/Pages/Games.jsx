@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import TicTacToe from '../components/core/Dashboard/Games/TicTacToe';
 import MemoryGame from '../components/core/Dashboard/Games/MemoryGame';
 import Snake from '../components/core/Dashboard/Games/Snake';
-
+import memoryGameImg from '../assets/Games/Memory.jpg'
+import snakeGameImg from '../assets/Games/Snake.jpg'
+import ticGameImg from '../assets/Games/Tic.jpg'
 const Games = () => {   
     const [activeGame, setActiveGame] = useState(null);
     const games = [
@@ -10,21 +12,21 @@ const Games = () => {
             id: 1,
             name: 'Memory Match',
             description: 'Make pairs of cards and test your memory',
-            image: 'https://placehold.co/300x200?text=Memory+Game',
+            image: memoryGameImg,
             component: <MemoryGame onBackToMenu={() => setActiveGame(null)} />
         },
         {
             id: 2,
             name: 'Tic Tac Toe',
             description: 'X and O game against the computer',
-            image: 'https://placehold.co/300x200?text=Tic+Tac+Toe',
+            image: snakeGameImg,
             component: <TicTacToe onBackToMenu={() => setActiveGame(null)} />
         },
         {
             id: 3,
             name: 'Snake',
             description: 'Guide the snake to eat food and grow',
-            image: 'https://placehold.co/300x200?text=Snake+Game',
+            image: ticGameImg,
             component: <Snake onBackToMenu={() => setActiveGame(null)} />
         },
     ];

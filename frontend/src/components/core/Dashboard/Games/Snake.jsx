@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 const Snake = ({ onBackToMenu }) => {
   const [snake, setSnake] = useState([{ x: 10, y: 10 }]);
@@ -9,25 +9,33 @@ const Snake = ({ onBackToMenu }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showCongrats, setShowCongrats] = useState(false);
   const [highScore, setHighScore] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const gameBoardRef = useRef(null);
 
   const gridSize = 20;
   const cellSize = 20;
 
+  // Handle keyboard controls
   useEffect(() => {
     if (!isPlaying) return;
     
     const handleKeyPress = (e) => {
       switch (e.key.toLowerCase()) {
         case 'w':
+        case 'arrowup':
           if (direction !== 'DOWN') setDirection('UP');
           break;
         case 's':
+        case 'arrowdown':
           if (direction !== 'UP') setDirection('DOWN');
           break;
         case 'a':
+        case 'arrowleft':
           if (direction !== 'RIGHT') setDirection('LEFT');
           break;
         case 'd':
+        case 'arrowright':
           if (direction !== 'LEFT') setDirection('RIGHT');
           break;
       }
@@ -36,6 +44,66 @@ const Snake = ({ onBackToMenu }) => {
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [direction, isPlaying]);
+
+  // Handle touch controls
+  useEffect(() => {
+    if (!isPlaying) return;
+
+    const handleTouchStart = (e) => {
+      setTouchStart({
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+      });
+    };
+
+    const handleTouchMove = (e) => {
+      setTouchEnd({
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+      });
+    };
+
+    const handleTouchEnd = () => {
+      if (!touchStart || !touchEnd) return;
+      
+      const xDiff = touchEnd.x - touchStart.x;
+      const yDiff = touchEnd.y - touchStart.y;
+      
+      if (Math.abs(xDiff) > Math.abs(yDiff)) {
+        // Horizontal swipe
+        if (xDiff > 0 && direction !== 'LEFT') {
+          setDirection('RIGHT');
+        } else if (xDiff < 0 && direction !== 'RIGHT') {
+          setDirection('LEFT');
+        }
+      } else {
+        // Vertical swipe
+        if (yDiff > 0 && direction !== 'UP') {
+          setDirection('DOWN');
+        } else if (yDiff < 0 && direction !== 'DOWN') {
+          setDirection('UP');
+        }
+      }
+      
+      setTouchStart(null);
+      setTouchEnd(null);
+    };
+
+    const board = gameBoardRef.current;
+    if (board) {
+      board.addEventListener('touchstart', handleTouchStart);
+      board.addEventListener('touchmove', handleTouchMove);
+      board.addEventListener('touchend', handleTouchEnd);
+    }
+
+    return () => {
+      if (board) {
+        board.removeEventListener('touchstart', handleTouchStart);
+        board.removeEventListener('touchmove', handleTouchMove);
+        board.removeEventListener('touchend', handleTouchEnd);
+      }
+    };
+  }, [touchStart, touchEnd, direction, isPlaying]);
 
   useEffect(() => {
     if (gameOver) {
@@ -161,11 +229,13 @@ const Snake = ({ onBackToMenu }) => {
       </div>
       
       <div 
-        className="mx-auto mb-6 border-2 border-dark-richblack-700 bg-dark-richblack-900 dark:bg-dark-richblack-900 relative"
+        ref={gameBoardRef}
+        className="mx-auto mb-6 border-2 border-dark-richblack-700 bg-dark-richblack-900 dark:bg-dark-richblack-900 relative touch-none"
         style={{ 
           width: gridSize * cellSize, 
           height: gridSize * cellSize,
-          boxShadow: '0 0 10px rgba(0,0,0,0.2)'
+          boxShadow: '0 0 10px rgba(0,0,0,0.2)',
+          touchAction: 'none' // Prevent default touch behaviors like scrolling
         }}
       >
         {snake.map((segment, index) => (
@@ -192,8 +262,56 @@ const Snake = ({ onBackToMenu }) => {
       </div>
       
       <div className="mb-4 text-sm dark:text-dark-richblack-300 text-light-richblack-600">
-        Controls: W (Up), A (Left), S (Down), D (Right)
+        Controls: {window.innerWidth > 768 ? (
+          <>W (Up), A (Left), S (Down), D (Right)</>
+        ) : (
+          <>Swipe on the game board to change direction</>
+        )}
       </div>
+
+      {/* Mobile control buttons (only shown on mobile) */}
+      {window.innerWidth <= 768 && (
+        <div className="grid grid-cols-3 gap-2 max-w-xs mx-auto mb-6">
+          <div></div>
+          <button
+            onClick={() => direction !== 'DOWN' && setDirection('UP')}
+            className="bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-md"
+            disabled={!isPlaying || gameOver}
+          >
+            ↑
+          </button>
+          <div></div>
+          <button
+            onClick={() => direction !== 'RIGHT' && setDirection('LEFT')}
+            className="bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-md"
+            disabled={!isPlaying || gameOver}
+          >
+            ←
+          </button>
+          <button
+            onClick={() => setIsPlaying(prev => !prev)}
+            className="bg-yellow-500 hover:bg-yellow-600 text-white p-4 rounded-md"
+          >
+            {isPlaying ? 'Pause' : 'Play'}
+          </button>
+          <button
+            onClick={() => direction !== 'LEFT' && setDirection('RIGHT')}
+            className="bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-md"
+            disabled={!isPlaying || gameOver}
+          >
+            →
+          </button>
+          <div></div>
+          <button
+            onClick={() => direction !== 'UP' && setDirection('DOWN')}
+            className="bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-md"
+            disabled={!isPlaying || gameOver}
+          >
+            ↓
+          </button>
+          <div></div>
+        </div>
+      )}
       
       <div className="flex justify-center space-x-4">
         {!isPlaying || gameOver ? (
