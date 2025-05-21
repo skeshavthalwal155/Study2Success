@@ -11,7 +11,7 @@ const Games = () => {
         {
             id: 1,
             name: 'Memory Match',
-            description: 'Make pairs of cards and test your memory',
+            description: 'Make pairs of cards to test your memory',
             image: memoryGameImg,
             component: <MemoryGame onBackToMenu={() => setActiveGame(null)} />
         },
@@ -56,11 +56,11 @@ const Games = () => {
                     {games.find(game => game.id === activeGame)?.component}
                 </div>
             ) : (
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 '>
                     {games.map((game) => (
                         <div
                             key={game.id}
-                            className='bg-white dark:bg-dark-richblack-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-dark-richblack-700'
+                            className='bg-light-richblack-900 hover:scale-105 dark:bg-dark-richblack-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-dark-richblack-700'
                         >
                             <div className='w-full h-48 bg-gray-100 dark:bg-dark-richblack-900 flex items-center justify-center'>
                                 <img
