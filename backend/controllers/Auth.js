@@ -111,71 +111,75 @@ exports.signUp = async (req, res) => {
 
 // Login controller  for authencating users
 exports.login = async (req, res) => {
-	try {
+    try {
+        // Get email and password from request body
+        const { email, password } = req.body;
 
-		// Get email and password from request body
-		const { email, password } = req.body;
+        // Check if email or password is missing
+        if (!email || !password) {
+            return res.status(400).json({
+                success: false,
+                message: "All Fields are required"
+            });
+        }
 
-		// // Check if email or password is missing
-		if (!email || !password) {
-		    return res.status(400).json({
-		        success: false,
-		        message: "All Fields are required"
-		    })
-		}
+        // Convert email to lowercase for case-insensitive comparison
+        const emailLower = email.toLowerCase();
 
-		// check user exist or not
-		const user = await User.findOne({ email }).populate('additionalDetails');
+        // check user exist or not with case-insensitive email
+        const user = await User.findOne({ 
+            email: { $regex: new RegExp(`^${emailLower}$`, 'i') }
+        }).populate('additionalDetails');
 
-		// If user not found with provided email
-		if (!user) {
-			return res.status(404).json({
-				success: false,
-				message: "User Not Found, please sign up to Continue"
-			})
-		}
+        // If user not found with provided email
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User Not Found, please sign up to Continue"
+            });
+        }
 
-		// Generate JWT token and Compare Password
-		if (await bcrypt.compare(password, user.password)) {
-			const expiresIn = 24 * 60 * 60
-			const token = jwt.sign(
-				{ email: user.email, id: user._id, accountType: user.accountType },
-				process.env.JWT_SECRET,
-				{
-					expiresIn
-				}
-			);
+        // Generate JWT token and Compare Password
+        if (await bcrypt.compare(password, user.password)) {
+            const expiresIn = 24 * 60 * 60;
+            const token = jwt.sign(
+                { email: user.email, id: user._id, accountType: user.accountType },
+                process.env.JWT_SECRET,
+                { expiresIn }
+            );
 
-			// Save token to user document in database
-			user.token = token;
-			user.password = undefined;
-			// Set cookie for token and return success response
-			const options = {
-				expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-				httpOnly: true,
-			};
-			res.cookie("token", token, options).status(200).json({
-				success: true,
-				token,
-				user,
-				expiresIn,
-				message: `User Login Success`,
-			});
-		} else {
-			return res.status(401).json({
-				success: false,
-				message: `Password is incorrect`,
-			});
-		}
-	} catch (error) {
-		console.error(error);
-		// Return 500 Internal Server Error status code with error message
-		return res.status(500).json({
-			success: false,
-			message: `Login Failure Please Try Again`,
-		});
-	}
-}
+            // Save token to user document in database
+            user.token = token;
+            user.password = undefined;
+            
+            // Set cookie for token and return success response
+            const options = {
+                expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+                httpOnly: true,
+            };
+            
+            res.cookie("token", token, options).status(200).json({
+                success: true,
+                token,
+                user,
+                expiresIn,
+                message: `User Login Success`,
+            });
+        } else {
+            return res.status(401).json({
+                success: false,
+                message: `Password is incorrect`,
+            });
+        }
+    } catch (error) {
+        console.error(error);
+        // Return 500 Internal Server Error status code with error message
+        return res.status(500).json({
+            success: false,
+            message: `Login Failure Please Try Again`,
+        });
+    }
+};
 
 // sendOTP
 exports.sendOtp = async (req, res) => {
