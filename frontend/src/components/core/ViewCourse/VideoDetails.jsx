@@ -140,7 +140,7 @@ const VideoDetails = () => {
   }
 
   return (
-    <div className='flex flex-col gap-5 text-light-richblack-5 dark:text-dark-richblack-5'>
+    <div className='flex flex-col gap-5 p-4 text-light-richblack-5 dark:text-dark-richblack-5'>
       {!videoData ? (
         <img
           src={previewSource}
