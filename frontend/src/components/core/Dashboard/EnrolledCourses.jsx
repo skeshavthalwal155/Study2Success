@@ -94,7 +94,7 @@ const EnrolledCourses = () => {
                                 key={course._id}
                             >
                                 <div
-                                    className='flex w-[45%] cursor-pointer items-center gap-4 px-5 py-3'
+                                    className='flex w-[45%] md:flex-row flex-col cursor-pointer md:items-center gap-4 px-5 py-3'
                                     onClick={() => {
                                         navigate(
                                             `/view-course/${course._id}/section/${
