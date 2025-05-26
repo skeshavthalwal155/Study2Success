@@ -50,6 +50,8 @@ const authSlice = createSlice({
             if (!state.isAuthenticated) {
                 state.token = null;
                 localStorage.removeItem('token')
+                localStorage.removeItem('user')
+                state.user = null;
             }
         }
     }
