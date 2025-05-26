@@ -94,7 +94,7 @@ const Catalog = () => {
 
                 {/* Section 2 */}
                 <div className='mx-auto box-content w-full max-w-maxContentTab  py-12 lg:max-w-maxContent'>
-                    <div className='section_heading md:text-4xl text-2xl'>Similar to {catalogPageData?.data?.selectedCategory?.name}</div>
+                    <div className='section_heading md:text-4xl text-2xl w-[90%]'>Similar to {catalogPageData?.data?.selectedCategory?.name}</div>
                     <div className='py-8'>
                     <CourseSlider Courses={catalogPageData?.data?.differentCategory} />
                     </div>

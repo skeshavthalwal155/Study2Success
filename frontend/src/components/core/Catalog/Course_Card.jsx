@@ -14,8 +14,8 @@ const Course_Card = ({ course }) => {
     }, [course])
 
 
-    console.log("course : ", course)
-    console.log("avgReviewCount : ", avgReviewCount)
+    // console.log("course : ", course)
+    // console.log("avgReviewCount : ", avgReviewCount)
     return (
         <div className='mb-4'>
             <Link to={`/courses/${course._id}`}>
@@ -24,7 +24,7 @@ const Course_Card = ({ course }) => {
                         <img
                             src={course?.courseThumbnail}
                             alt={course.courseName}
-                            className={`md:h-[350px] h-[200px] md:w-full w-[90%] rounded-xl object-cover`}
+                            className={`md:h-[350px] h-[200px] md:w-full w-[90%] rounded-xl`}
                         />
                     </div>
                     <div className='flex flex-col gap-2 px-1 py-3'>

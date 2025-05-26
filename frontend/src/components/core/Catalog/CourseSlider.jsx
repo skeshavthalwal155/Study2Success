@@ -22,7 +22,7 @@ const CourseSlider = ({ Courses }) => {
                         // slidesPerView={1}
                         spaceBetween={25}
                         loop={true}
-                        modules={[Autoplay, Pagination, Navigation]}
+                        modules={[Autoplay]}
                         centeredSlides={true}
                         breakpoints={{
                             1024: { slidesPerView: 3 },            
