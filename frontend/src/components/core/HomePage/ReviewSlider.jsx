@@ -9,6 +9,7 @@ import { apiConnector } from '../../../services/apiconnector';
 import { ratingsEndpoints } from '../../../services/apis';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import RatingStars from '../../common/RatingStars';
 
 const ReviewSlider = () => {
   const [Reviews, setReviews] = useState([])
@@ -79,13 +80,8 @@ const ReviewSlider = () => {
                     {review?.review.split(" ").length > truncateWords ? `${review?.review.split(" ").slice(0, truncateWords).join(" ")}...` : `${review?.review}`}
                   </p>
                   <div className='flex items-center gap-2'>
-                    <h3 className='font-semibold dark:text-dark-yellow-100 text-light-yellow-100 text-lg'>{review?.rating.toFixed(1)}</h3>
-                    <Rating
-                      initialRating={review?.rating}
-                      readonly
-                      emptySymbol={<FaRegStar size={24} className="text-light-yellow-600 dark:text-dark-yellow-100" />}
-                      fullSymbol={<FaStar size={24} className="text-light-yellow-600 dark:text-dark-yellow-100" />}
-                    />
+                    <h3 className='font-semibold dark:text-dark-yellow-100 text-red-500 text-lg'>{review?.rating.toFixed(1)}</h3>
+                    <RatingStars Review_Count={review?.rating} />                   
                   </div>
                 </div>
 

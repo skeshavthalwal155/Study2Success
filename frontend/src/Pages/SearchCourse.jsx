@@ -29,7 +29,7 @@ const SearchCourse = () => {
 
             <div className='box-content bg-light-richblack-800 dark:bg-dark-richblack-800 px-4'>
                 <div className='mx-auto flex  min-h-[260px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent'>
-                    <p className='text-sm dark:text-dark-richblack-300 text-light-richblack-300'>{`Home / Search / `} <span className='dark:text-dark-yellow-25 text-light-yellow-300'>{searchQuery}</span></p>
+                    <p className='text-sm dark:text-dark-richblack-300 text-light-richblack-300'>{`Home / Search / `} <span className='dark:text-dark-yellow-25 text-red-500'>{searchQuery}</span></p>
                     <p className='text-3xl dark:text-dark-richblack-5 text-light-richblack-5'>Search Result for {searchQuery}</p>
                     <p className='max-w-[870px] text-light-richblack-200 dark:text-dark-richblack-5'>{searchResult?.length} results found for {searchQuery}</p>
                 </div>

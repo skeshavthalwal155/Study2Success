@@ -33,12 +33,12 @@ const RenderSteps = () => {
                         >
                             <button
                                 className={`grid select-none aspect-square w-[34px] place-items-center rounded-full border-[1px] ${step === item.id
-                                    ? "dark:border-dark-yellow-50 border-light-yellow-50 dark:bg-dark-yellow-900 bg-light-yellow-900 dark:text-dark-yellow-50 text-light-yellow-50"
+                                    ? "dark:border-dark-yellow-50 border-black dark:bg-dark-yellow-900 bg-light-yellow-900 dark:text-dark-yellow-50 text-black"
                                     : "dark:border-dark-richblack-700 border-light-richblack-700 dark:bg-dark-richblack-800 bg-light-richblack-800 dark:text-dark-richblack-300 text-light-richblack-300"
-                                    } ${step > item.id && "dark:bg-dark-yellow-5 bg-light-yellow-5 dark:text-dark-yellow-50 text-light-yellow-50"}`}
+                                    } ${step > item.id && "dark:bg-dark-yellow-5 bg-light-yellow-800 dark:text-dark-yellow-50 text-black"}`}
                             >
                                 {step > item.id ? (
-                                    <FaCheck className='font-bold dark:text-dark-richblack-900 text-light-richblack-900' />
+                                    <FaCheck className='font-bold dark:text-dark-richblack-900 text-light-richblack-50' />
                                 ) : (
                                     item.id
                                 )}
@@ -46,7 +46,7 @@ const RenderSteps = () => {
                         </div>
                         {item.id !== steps.length && (
                             <>
-                                <div className={`h-[calc(34px/2)] w-[33%] border-dashed border-b-2 ${step > item.id ? "dark:border-dark-yellow-50 border-light-yellow-50" : 'dark:border-dark-richblack-500 border-light-richblack-500'
+                                <div className={`h-[calc(34px/2)] w-[33%] border-dashed border-b-2 ${step > item.id ? "dark:border-dark-yellow-50 border-light-yellow-500" : 'dark:border-dark-richblack-500 border-light-richblack-500'
                                     }`}>
 
                                 </div>

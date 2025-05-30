@@ -7,6 +7,7 @@ import { createRating } from '../../../services/operations/courseDetailsAPI'
 import { RxCross2 } from 'react-icons/rx'
 import { FaStar } from 'react-icons/fa'
 import { FaRegStar } from 'react-icons/fa'
+import RatingStars from '../../common/RatingStars'
 
 const CourseReviewModal = ({ setReviewModal }) => {
     const { user } = useSelector((state) => state.profile)
@@ -91,12 +92,7 @@ const CourseReviewModal = ({ setReviewModal }) => {
                         alreadyReview ? (
                             <div className='mt-6 flex flex-col items-center'>
                                 <div className='mb-4'>
-                                    <Rating
-                                        initialRating={userReview?.rating}
-                                        readonly
-                                        emptySymbol={<FaRegStar size={24} className="text-light-yellow-600 dark:text-dark-yellow-100" />}
-                                        fullSymbol={<FaStar size={24} className="text-light-yellow-600 dark:text-dark-yellow-100" />}
-                                    />
+                                    <RatingStars Review_Count={userReview?.rating} />                                 
                                 </div>
                                 <div className='flex w-11/12 flex-col space-y-2'>
                                     <p className='text-sm text-light-richblack-5 dark:text-dark-richblack-5'>Your Experience</p>
@@ -109,8 +105,8 @@ const CourseReviewModal = ({ setReviewModal }) => {
                             <div className='mb-4'>
                                 <Rating
                                     initialRating={rating}
-                                    emptySymbol={<FaRegStar size={24} className="text-light-yellow-600 dark:text-dark-yellow-100" />}
-                                    fullSymbol={<FaStar size={24} className="text-light-yellow-600 dark:text-dark-yellow-100" />}
+                                    emptySymbol={<FaRegStar size={24} className="text-red-500 dark:text-dark-yellow-100" />}
+                                    fullSymbol={<FaStar size={24} className="text-red-500 dark:text-dark-yellow-100" />}
                                     onChange={handleRatingChange}
                                 />
                             </div>

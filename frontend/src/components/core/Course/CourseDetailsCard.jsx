@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast'
 import copy from 'copy-to-clipboard'
 import { ACCOUNT_TYPE } from '../../../utils/constants'
 import { addToCart } from '../../../slice/cartSlice';
-import {FaShareSquare} from 'react-icons/fa'
+import { FaShareSquare } from 'react-icons/fa'
 
 export default function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
   const { user } = useSelector((state) => state.profile)
@@ -90,9 +90,9 @@ export default function CourseDetailsCard({ course, setConfirmationModal, handle
           </div>
           <div className='text-center'>
             <button
-            className='mx-auto flex cursor-pointer transition-all duration-200 hover:underline items-center gap-2 py-6 dark:text-dark-yellow-100 text-light-yellow-100'
-             onClick={handleShare}>
-              <FaShareSquare/> Share
+              className='mx-auto flex cursor-pointer transition-all duration-200 hover:underline items-center gap-2 py-6 dark:text-dark-yellow-100 text-red-500'
+              onClick={handleShare}>
+              <FaShareSquare /> Share
             </button>
           </div>
 

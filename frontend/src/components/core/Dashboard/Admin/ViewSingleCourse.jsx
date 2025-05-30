@@ -59,7 +59,7 @@ const ViewSingleCourse = ({ viewCourse }) => {
 
                         <div className='flex items-center gap-x-4 bg-opacity-20 p-3 rounded-lg
                             dark:bg-dark-richblack-700 bg-light-richblack-700'>
-                            <span className='text-xl dark:text-dark-yellow-5 text-light-yellow-5'>
+                            <span className='text-xl dark:text-dark-yellow-5 text-red-500'>
                                 {avgReviewCount || 0}
                             </span>
                             <RatingStars Review_Count={avgReviewCount} />

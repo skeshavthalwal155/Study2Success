@@ -6,6 +6,7 @@ import { removeFromCart } from '../../../../slice/cartSlice'
 import { Link } from 'react-router-dom'
 import Rating from 'react-rating'
 import { FaStar } from 'react-icons/fa'
+import RatingStars from '../../../common/RatingStars'
 
 const RenderCartCourses = () => {
   const { cart } = useSelector((state) => state.cart)
@@ -29,22 +30,15 @@ const RenderCartCourses = () => {
               {/* {console.log("first:", course)} */}
 
               <div className='flex items-center gap-2'>
-                <span className='dark:text-dark-yellow-5 text-light-yellow-5'>{course?.ratingAndReviews[0]?.rating}</span>
-                <Rating
-                  initialRating={course?.ratingAndReviews[0]?.rating}
-                  size={20}
-                  readonly
-                  activeColor="#ffd700"
-                  emptySymbol={<FaRegStar size={24} color="#ffd700" />}
-                  fullSymbol={<FaStar size={24} color="#ffd700" />}
-                />
+                <span className='dark:text-dark-yellow-5 text-red-500'>{course?.ratingAndReviews[0]?.rating}</span>
+                <RatingStars Review_Count={course?.ratingAndReviews[0]?.rating} />             
 
                 <span className='dark:text-dark-richblack-400 text-light-richblack-400'>{course?.ratingAndReviews?.length} Rating</span>
               </div>
             </div>
           </div>
           <div className='flex flex-col items-end space-y-2'>
-            <p className='mb-6 text-2xl md:text-3xl font-medium dark:text-dark-yellow-100 text-light-yellow-100'>₹ {course.price}</p>
+            <p className='mb-6 text-2xl md:text-3xl font-medium dark:text-dark-yellow-100 text-red-500'>₹ {course.price}</p>
             <button className='flex group cursor-pointer items-center gap-x-1 rounded-md border dark:border-r-dark-richblack-600 border-r-light-richblack-600 dark:bg-dark-richblack-700 bg-light-richblack-700
              py-2 px-[8px] dark:text-dark-pink-200 text-light-pink-200 text-lg font-medium'
               onClick={() => dispatch(removeFromCart(course._id))}>

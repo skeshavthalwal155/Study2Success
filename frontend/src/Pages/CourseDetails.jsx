@@ -143,7 +143,7 @@ const CourseDetails = () => {
                             <p className='text-4xl font-bold text-light-richblack-5 dark:text-dark-richblack-5 sm:text-[42px]'>{courseName}</p>
                             <p className='text-light-richblack-200 dark:text-dark-richblack-200'>{courseDescription}</p>
                             <div className='text-md flex flex-wrap items-center gap-2'>
-                                <span className='dark:text-dark-yellow-25 text-light-yellow-100'>{avgRatingCount || 0}</span>
+                                <span className='dark:text-dark-yellow-25 text-red-500'>{avgRatingCount || 0}</span>
                                 <RatingStars Review_Count={avgRatingCount} />
                                 <span>{`(${ratingAndReviews.length} Reviews)`}</span>
                                 <span> {`(${studentsEnrolled.length} Students Enrolled)`} </span>
@@ -206,7 +206,7 @@ const CourseDetails = () => {
                                 </div>
                                 <div>
                                     <button
-                                        className='dark:text-dark-yellow-25 duration-200 hover:underline text-light-yellow-500 cursor-pointer'
+                                        className='dark:text-dark-yellow-25 duration-200 hover:underline text-red-500 cursor-pointer'
                                         onClick={() => setIsActive([])}
                                     >
                                         Collapse All Sections

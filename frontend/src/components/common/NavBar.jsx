@@ -113,7 +113,7 @@ const NavBar = () => {
             <Link to={'/dashboard/cart'} className='relative' >
               <AiOutlineShoppingCart className='dark:fill-dark-richblack-25 fill-light-richblack-25 w-8 h-8' />
               {totalItems > 0 && (
-                <span className='font-medium text-[12px] shadow-[3px] shadow-black dark:bg-dark-yellow-100 bg-light-yellow-100 absolute dark:text-dark-richblack-900 text-light-richblack-900 rounded-full px-[4px] -top-[2px] -right-[1px] animate-bounce  '>
+                <span className='font-medium text-[12px] shadow-[3px] shadow-black dark:bg-dark-yellow-100 bg-red-500 absolute dark:text-dark-richblack-900 text-light-richblack-900 rounded-full px-[4px] -top-[2px] -right-[1px] animate-bounce  '>
                   {totalItems}
                 </span>
               )}
@@ -161,7 +161,7 @@ const NavBar = () => {
             {NavbarLinks.map((ele, i) => (
               <li key={i}>
                 {ele.title === "Catalog" ? (
-                  <div className={`flex items-center gap-2 group relative cursor-pointer transition-all duration-200 ${MatchRoute('/catalog/:catalogName') ? "dark:text-dark-yellow-25 text-light-yellow-25" : ""}`}>
+                  <div className={`flex items-center gap-2 group relative cursor-pointer transition-all duration-200 ${MatchRoute('/catalog/:catalogName') ? "dark:text-dark-yellow-25 text-red-500" : "text-light-richblack-25 dark:text-dark-richblack-25"}`}>
                     <p>{ele.title}</p>
                     <BsChevronDown />
                     <div className="invisible absolute left-[50%] top-[50%] z-[1000] flex w-[200px] translate-x-[-50%] translate-y-[3em] flex-col rounded-lg dark:bg-dark-richblack-5 bg-light-richblack-5 p-4 dark:text-dark-richblack-900 text-light-richblack-900 opacity-0 transition-all duration-150 group-hover:visible group-hover:translate-y-[1.65em] group-hover:opacity-100 lg:w-[300px] overflow-y-auto">
@@ -184,7 +184,7 @@ const NavBar = () => {
                   </div>
                 ) : (
                   <Link to={ele.path}>
-                    <p className={`${MatchRoute(ele.path) ? " dark:text-dark-yellow-25 text-light-yellow-25" : "text-light-richblack-25 dark:text-dark-richblack-25"
+                    <p className={`${MatchRoute(ele.path) ? "dark:text-dark-yellow-25 text-red-500" : "text-light-richblack-25 dark:text-dark-richblack-25"
                       }`}>
                       {ele.title}
                     </p>
@@ -291,7 +291,7 @@ const NavBar = () => {
               <AiOutlineShoppingCart className={`text-2xl  text-light-richblack-100 dark:text-white`} />
               {
                 totalItems > 0 && (
-                  <span className=" -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full text-center text-xs font-bold dark:bg-dark-yellow-100 bg-light-yellow-100 absolute dark:text-dark-richblack-900 text-light-richblack-900 animate-bounce">
+                  <span className=" -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full text-center text-xs font-bold dark:bg-dark-yellow-100 bg-red-500 absolute dark:text-dark-richblack-900 text-light-richblack-900 animate-bounce">
                     {totalItems}
                   </span>
                 )
@@ -352,7 +352,7 @@ const NavBar = () => {
             {/* Courses Section */}
             <div className='mt-4 mb-4 bg-light-richblack-600 dark:bg-dark-richblack-600 w-62 mx-auto h-[1px]'></div>
             <div className='my-6 mx-4'>
-              <p className='text-xl text-light-yellow-50 dark:text-dark-yellow-50 font-semibold'>Courses</p>
+              <p className='text-xl text-red-500 dark:text-dark-yellow-50 font-semibold'>Courses</p>
               <div>
                 {!subLinks.length ? (
                   <p className='text-dark-richblack-900 dark:text-dark-richblack-5'>Loading...</p>

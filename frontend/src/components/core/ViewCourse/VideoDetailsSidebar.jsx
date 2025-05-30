@@ -182,7 +182,7 @@ const SidebarContent = ({
                                 {course?.SubSection.map((topic, i) => (
                                     <div
                                         className={`flex gap-3 px-5 py-2 ${videoBarActive === topic._id 
-                                            ? "dark:bg-dark-yellow-200 bg-light-yellow-700 font-semibold dark:text-dark-richblack-800 text-light-richblack-50" 
+                                            ? "dark:bg-dark-yellow-200 bg-light-yellow-800 font-semibold dark:text-dark-richblack-800 text-light-richblack-5" 
                                             : "hover:dark:bg-dark-richblack-900 hover:bg-light-richblack-900"}`}
                                         key={i}
                                         onClick={() => {

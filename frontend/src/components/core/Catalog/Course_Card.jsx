@@ -31,7 +31,7 @@ const Course_Card = ({ course }) => {
                         <p className='text-xl dark:text-dark-richblack-5 text-light-richblack-5'>{course?.courseName}</p>
                         <p className='text-sm dark:text-dark-richblack-50 text-light-richblack-50'>{course?.instructor?.firstName} {course?.instructor?.lastName}</p>
                         <div className='flex items-center gap-2'>
-                            <span className='dark:text-dark-yellow-5 text-light-yellow-5'>{avgReviewCount || 0}</span>
+                            <span className='dark:text-dark-yellow-5 text-red-500'>{avgReviewCount || 0}</span>
                             <RatingStars Review_Count={avgReviewCount} />
                             <span className='dark:text-dark-richblack-400 text-light-richblack-400'>{course?.ratingAndReviews?.length} Ratings</span>
                         </div>

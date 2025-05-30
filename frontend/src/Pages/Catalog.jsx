@@ -66,7 +66,7 @@ const Catalog = () => {
             <div className='box-content bg-light-richblack-800 dark:bg-dark-richblack-800 px-4 py-2'>
                 <div className='md:mx-auto flex  min-h-[260px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent'>
                     <p className='text-sm dark:text-dark-richblack-300 text-light-richblack-300'>{`Home / Catalog / `}
-                        <span className='dark:text-dark-yellow-25 text-light-yellow-300'>
+                        <span className='dark:text-dark-yellow-25 text-red-500'>
                             {catalogPageData?.data?.selectedCategory?.name}
                         </span>
                     </p>
@@ -80,12 +80,12 @@ const Catalog = () => {
                 <div className='section_heading md:text-4xl text-2xl'>Courses to get you started</div>
                 <div className='my-4 flex border-b border-b-light-richblack-600 dark:border-b-dark-richblack-600 text-sm'>
                     <p
-                        className={`px-4 py-2 ${active === 1 ? "dark:text-dark-yellow-25 text-light-yellow-400 border-b-light-yellow-400 border-b dark:border-b-dark-yellow-25" : "dark:text-dark-richblack-5 text-light-richblack-5"} cursor-pointer`}
+                        className={`px-4 py-2 ${active === 1 ? "dark:text-dark-yellow-25 text-red-500 border-b-red-500 border-b dark:border-b-dark-yellow-25" : "dark:text-dark-richblack-5 text-light-richblack-5"} cursor-pointer`}
                         onClick={() => setActive(1)}
                     >Most Popular</p>
 
                     <p
-                        className={`px-4 py-2 ${active === 2  ? "dark:text-dark-yellow-25 text-light-yellow-400 border-b-light-yellow-400 border-b dark:border-b-dark-yellow-25" : "dark:text-dark-richblack-5 text-light-richblack-5"} cursor-pointer`}
+                        className={`px-4 py-2 ${active === 2  ? "dark:text-dark-yellow-25 text-red-500 border-b-red-500 border-b dark:border-b-dark-yellow-25" : "dark:text-dark-richblack-5 text-light-richblack-5"} cursor-pointer`}
                         onClick={() => setActive(2)}>New</p>
                 </div>
                 <div>

@@ -13,7 +13,7 @@ export default function CourseAccordionBar({course, isActive, handleActive}) {
   const [sectionHeight, setSectionHegiht] = useState(0)
 
   useEffect(()=>{
-    console.log(contentEl.current)
+    // console.log(contentEl.current)
     if(contentEl.current){
       setSectionHegiht(active ? contentEl.current.scrollHeight : 0)
     }
@@ -37,7 +37,7 @@ export default function CourseAccordionBar({course, isActive, handleActive}) {
             <p>{course?.sectionName}</p>
           </div>
           <div className="space-x-4">
-            <span className="dark:text-dark-yellow-25 text-light-yellow-25">
+            <span className="dark:text-dark-yellow-25 text-red-600">
               {`${course.SubSection.length || 0 } lecture(s)`}
             </span>
           </div>

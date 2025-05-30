@@ -19,7 +19,6 @@ const ConfirmationModal = ({ modalData }) => {
                     />
                     <button
                         className='flex items-center dark:bg-dark-richblack-200 bg-light-richblack-200 cursor-pointer gap-x-2 rounded-md py-2 text-sm md:text-lg px-3 md:px-5 font-semibold dark:text-dark-richblack-900 text-light-richblack-900'
-
                         onClick={modalData?.btn2Handler}>
                         {modalData?.btn2Text}
                     </button>

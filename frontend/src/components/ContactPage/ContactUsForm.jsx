@@ -68,7 +68,7 @@ const ContactUsForm = () => {
                             />
                             {
                                 errors.firstName && (
-                                    <span className='text-light-yellow-25 dark:text-dark-yellow-25'>Please Enter Your Name</span>
+                                    <span className='text-red-500 dark:text-dark-yellow-25'>Please Enter Your Name</span>
                                 )
                             }
                         </div>
@@ -100,7 +100,7 @@ const ContactUsForm = () => {
                         />
                         {
                             errors.email && (
-                                <span className='dark:text-dark-yellow-25 text-light-yellow-25'>Please Enter Your Email Address</span>
+                                <span className='dark:text-dark-yellow-25 text-red-500'>Please Enter Your Email Address</span>
                             )
                         }
                     </div>
@@ -142,7 +142,7 @@ const ContactUsForm = () => {
                                 />
                                 {
                                     errors.phoneNo && (
-                                        <span className='dark:text-dark-yellow-25 text-light-yellow-25'>Please Enter Your Phone Number</span>
+                                        <span className='dark:text-dark-yellow-25 text-red-500'>Please Enter Your Phone Number</span>
                                     )
                                 }
                             </div>
@@ -163,7 +163,7 @@ const ContactUsForm = () => {
                         />
                         {
                             errors.message && (
-                                <span className='dark:text-dark-yellow-25 text-light-yellow-25'>Enter Your Message</span>
+                                <span className='dark:text-dark-yellow-25 text-red-500'>Enter Your Message</span>
                             )
                         }
                     </div>
