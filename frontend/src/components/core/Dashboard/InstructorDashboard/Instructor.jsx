@@ -10,7 +10,7 @@ const Instructor = () => {
     const [courses, setCourses] = useState([])
     const [currentChart, setCurrentChart] = useState('revenue')
     const { token } = useSelector((state) => state.auth)
-    const { user } = useSelector((state) => state.auth)
+    const { user } = useSelector((state) => state.profile)
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
