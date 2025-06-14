@@ -4,6 +4,8 @@ require("dotenv").config()
 exports.contactUs = async (req, res)=>{
     // get data from req body
     const { firstName, lastName, email, phoneNo, message } = req.body
+
+    // Validation
    
     await mailSender(email, "Query For Contact", "YOUR MESSAGE IS SEND TO study2success")
     try {
