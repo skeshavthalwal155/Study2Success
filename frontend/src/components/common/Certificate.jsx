@@ -186,7 +186,7 @@ const CertificateModal = ({ setShowCertificate }) => {
 
                             <div className="relative z-10 h-full flex flex-col justify-center items-center">
                                 <div className="mb-2">
-                                    <img src={logo} alt="Study2Success" className="h-16 mx-auto" />
+                                    <img loading="lazy" src={logo} alt="Study2Success" className="h-16 mx-auto"/>
                                 </div>
                                 <h2 className="text-3xl font-bold text-blue-800 mb-2" style={{ fontSize: '32px' }}>Certificate of Completion</h2>
                                 <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-8 border-b-2 border-blue-200 pb-4 px-12" style={{ fontSize: '48px' }}>

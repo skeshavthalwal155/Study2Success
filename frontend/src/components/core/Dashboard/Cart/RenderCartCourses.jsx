@@ -18,7 +18,7 @@ const RenderCartCourses = () => {
         <div key={index} className={`flex w-full flex-wrap items-start justify-between gap-6 mt-4 ${index !== cart.length - 1 && "border-b dark:border-b-dark-richblack-400 border-b-light-richblack-400 pb-6"} ${index !== 0 && "mt-6"}`}>
           <div className='flex flex-1 flex-col gap-4 xl:flex-row'>
             <Link to={`/courses/${course._id}`}>
-              <img src={course?.courseThumbnail} alt={course?.courseName} className='h-[148px] w-[220px] rounded-lg object-fit' />
+              <img loading="lazy" src={course?.courseThumbnail} alt={course?.courseName} className='h-[148px] w-[220px] rounded-lg object-fit' />
             </Link>
             <div className='flex flex-col space-y-1'>
               <Link to={`/courses/${course._id}`}>

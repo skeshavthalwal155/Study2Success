@@ -75,9 +75,9 @@ const LearningLanguageSection = () => {
         >
 
         <div className='flex flex-col lg:flex-row items-center justify-center mt-5'>
-          <img src={KnowYourProgress} alt="Know Your Progress" className='object-contain md:-mr-32' />
-          <img src={CompareWithOthers} alt="Compare With Others" className='object-contain' />
-          <img src={PlanYourLesson} alt="Plan Your Lesson" className='md:w-[500px] md:-ml-36' />
+          <img loading="lazy" src={KnowYourProgress} alt="Know Your Progress" className='object-contain md:-mr-32' />
+          <img loading="lazy" src={CompareWithOthers} alt="Compare With Others" className='object-contain' />
+          <img loading="lazy" src={PlanYourLesson} alt="Plan Your Lesson" className='md:w-[500px] md:-ml-36' />
         </div>
         </motion.div>
 

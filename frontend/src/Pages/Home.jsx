@@ -172,8 +172,8 @@ const Home = () => {
               </>
             ) : (
               <div className='relative'>
-                <img src={BannerLight} className='relative md:left-[40%] md:scale-100 scale-150 z-10 ' />
-                <img src={BannerBg} className='absolute z-9 scale-200 md:scale-100 md:max-w-max md:top-[-30px] md:left-[-250px] shadow ' />
+                <img loading="lazy" src={BannerLight} className='relative md:left-[40%] md:scale-100 scale-150 z-10 ' />
+                <img loading="lazy" src={BannerBg} className='absolute z-9 scale-200 md:scale-100 md:max-w-max md:top-[-30px] md:left-[-250px] shadow ' />
               </div>
             )
           }

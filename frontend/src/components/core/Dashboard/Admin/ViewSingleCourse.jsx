@@ -40,7 +40,7 @@ const ViewSingleCourse = ({ viewCourse }) => {
 
                     <div className='flex flex-col gap-y-4 mt-6'>
                         <div className='relative group'>
-                            <img 
+                            <img loading="lazy" 
                                 src={viewCourse.course.courseThumbnail} 
                                 alt={viewCourse.courseName} 
                                 className='rounded-xl w-full h-[400px] object-cover shadow-lg 

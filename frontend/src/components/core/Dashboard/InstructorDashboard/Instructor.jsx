@@ -95,7 +95,7 @@ const Instructor = () => {
                             courses?.slice(0, 3)?.map((course, i) => {
                                 return (
                                     <div key={i} className='w-1/3'>
-                                        <img className='aspect-video md:h-[201px] w-full rounded-md object-cover' src={course.courseThumbnail} alt={course.courseName} />
+                                        <img loading="lazy" className='aspect-video md:h-[201px] w-full rounded-md object-cover' src={course.courseThumbnail} alt={course.courseName} />
                                         <div className='mt-3 w-full'>
                                             <p className='text-sm font-medium dark:text-dark-richblack-300 text-light-richblack-300 '>{course.courseName}</p>
                                             <div className='mt-1 md:space-x-2 md:flex'>

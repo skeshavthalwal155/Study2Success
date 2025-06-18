@@ -48,7 +48,7 @@ export default function CourseDetailsCard({ course, setConfirmationModal, handle
   return (
     <>
       <div className={`flex flex-col gap-4 rounded-md dark:bg-dark-richblack-700 bg-light-richblack-700 p-4 dark:text-dark-richblack-5 text-light-richblack-5`}>
-        <img src={Thumbnail}
+        <img loading="lazy" src={Thumbnail}
           alt={course.courseName}
           className='max-h-[300px] min-h-[180px] w-[400px] rounded-2xl object-cover md:max-w-full'
         />

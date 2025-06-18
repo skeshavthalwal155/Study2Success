@@ -28,7 +28,7 @@ const InstructorSection = () => {
                     }}
                     className="md:w-[50%]"
                 >
-                    <img src={Instructor} alt="Instructor" className='shadow-[-20px_-20px_0px_0px_#FFFFFF]' loading="lazy" />
+                    <img loading="lazy" src={Instructor} alt="Instructor" className='shadow-[-20px_-20px_0px_0px_#FFFFFF]' loading="lazy" />
                 </motion.div>
 
 

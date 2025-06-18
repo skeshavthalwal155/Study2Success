@@ -65,7 +65,7 @@ const ReviewSlider = () => {
 
                 <div className='flex flex-col gap-3 dark:bg-dark-richblack-800 bg-light-richblack-800 p-3 text-[14px] pt-10 pl-10 text-light-richblack-25 dark:text-dark-richblack-25  rounded-lg min-h-[200px]'>
                   <div className='flex items-center gap-4'>
-                    <img src={review?.user?.image ?? `https://api.dicebear.com/6.x/initials/svg?seed=${review?.user?.firstName} ${review?.user?.lastName}&backgroundColor=00897b,00acc1,039be5,1e88e5,3949ab,43a047,5e35b1,7cb342,8e24aa,c0ca33,d81b60,e53935,f4511e,fb8c00,fdd835,ffb300,ffd5dc,ffdfbf,c0aede,d1d4f9,b6e3f4&backgroundType=solid,gradientLinear&backgroundRotation=0,360,-350,-340,-330,-320&fontFamily=Arial&fontWeight=600`}
+                    <img loading="lazy" src={review?.user?.image ?? `https://api.dicebear.com/6.x/initials/svg?seed=${review?.user?.firstName} ${review?.user?.lastName}&backgroundColor=00897b,00acc1,039be5,1e88e5,3949ab,43a047,5e35b1,7cb342,8e24aa,c0ca33,d81b60,e53935,f4511e,fb8c00,fdd835,ffb300,ffd5dc,ffdfbf,c0aede,d1d4f9,b6e3f4&backgroundType=solid,gradientLinear&backgroundRotation=0,360,-350,-340,-330,-320&fontFamily=Arial&fontWeight=600`}
                       alt={`${review?.user?.firstName} ${review?.user?.lastName}`}
                       className="h-9 w-9 object-cover rounded-full"
                     />

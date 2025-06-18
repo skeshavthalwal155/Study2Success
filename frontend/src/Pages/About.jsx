@@ -111,7 +111,7 @@ const About = () => {
                                     reset: true
                                 }}
                             >
-                                <img src={aboutus1} alt="about-us" loading='lazy' />
+                                <img loading="lazy" src={aboutus1} alt="about-us" />
                             </motion.div>
 
                             <motion.div
@@ -131,7 +131,7 @@ const About = () => {
                                     reset: true
                                 }}
                             >
-                                <img src={aboutus2} alt="about-us" loading='lazy' />
+                                <img loading="lazy" src={aboutus2} alt="about-us"  />
                             </motion.div>
 
                             <motion.div
@@ -151,7 +151,7 @@ const About = () => {
                                     reset: true
                                 }}
                             >
-                                <img src={aboutus3} alt="about-us" loading='lazy' />
+                                <img loading="lazy" src={aboutus3} alt="about-us"  />
                             </motion.div>
 
                         </div>
@@ -236,7 +236,7 @@ const About = () => {
                             >
 
                                 <div className='relative'>
-                                    <img className='relative z-10' src={FoundingStory} alt="Founding-Story" />
+                                    <img loading="lazy" className='relative z-10' src={FoundingStory} alt="Founding-Story" />
                                     <span className='bg-[linear-gradient(118.47deg,#EC008C_-0.91%,#FC6767_104.91%)] border absolute top-0 w-[100%] h-[100%] blur-[68px]  opacity-50' />
                                 </div>
                             </motion.div>
@@ -338,9 +338,9 @@ const About = () => {
                         </header>
                         <div className='sm:h-[70px] lg:h-[150px]'></div>
                         <div className='absolute bottom-0 left-[50%] grid w-[100%] translate-x-[-50%] translate-y-[30%] grid-cols-3 gap-3 lg:gap-5'>
-                            <img src={aboutus1} loading='lazy' />
-                            <img src={aboutus2} loading='lazy' />
-                            <img src={aboutus3} loading='lazy' />
+                            <img loading="lazy" src={aboutus1} />
+                            <img loading="lazy" src={aboutus2} />
+                            <img loading="lazy" src={aboutus3} />
                         </div>
                     </div>
                 </section>
@@ -369,7 +369,7 @@ const About = () => {
                             </div>
                             {/* foudning story right box */}
                             <div>
-                                <img className='shadow-[0_0_20px_0] shadow-[#FC6767]' src={FoundingStory} />
+                                <img loading="lazy" className='shadow-[0_0_20px_0] shadow-[#FC6767]' src={FoundingStory} />
                             </div>
                         </div>
 

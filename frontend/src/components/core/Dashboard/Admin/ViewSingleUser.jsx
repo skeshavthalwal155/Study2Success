@@ -23,7 +23,7 @@ const ViewSingleUser = (viewUser) => {
 
         <div className='flex flex-col gap-y-6 mt-6'>
           <div className='relative'>
-            <img 
+            <img loading="lazy" 
               src={user.image} 
               alt={user.firstName} 
               className='rounded-xl shadow-lg w-full h-[300px] object-cover' 
