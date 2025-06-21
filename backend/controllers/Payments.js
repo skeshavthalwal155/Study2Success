@@ -193,18 +193,19 @@ exports.sendPaymentSuccessEmail=async(req,res)=>{
 }
 
 exports.getPaymentHistory = async (req, res) => {
-    const userId = req.user.id;
+    // const userId = req.user.id;
+    res.send("Payment history endpoint is not implemented yet.");
 
-    try {
-        const payments = await PaymentHistory.find({ userId }).sort({ createdAt: -1 });
-        res.status(200).json({
-            success: true,
-            data: payments
-        });
-    } catch (err) {
-        return res.status(500).json({
-            success: false,
-            message: err.message || "Internal Server Error"
-        });
-    }
+    // try {
+    //     const payments = await PaymentHistory.find({ userId }).sort({ createdAt: -1 });
+    //     res.status(200).json({
+    //         success: true,
+    //         data: payments
+    //     });
+    // } catch (err) {
+    //     return res.status(500).json({
+    //         success: false,
+    //         message: err.message || "Internal Server Error"
+    //     });
+    // }
 };
