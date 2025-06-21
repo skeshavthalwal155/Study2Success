@@ -16,7 +16,7 @@ import LearningLanguageSection from '../components/core/HomePage/LearningLanguag
 import TimeLineSection from '../components/core/HomePage/TimeLineSection';
 import InstructorSection from '../components/core/HomePage/InstructorSection';
 import ReviewSlider from '../components/core/HomePage/ReviewSlider';
-import ExploreMore from '../components/core/HomePage/ExploreMore';
+// import ExploreMore from '../components/core/HomePage/ExploreMore';
 
 // Assets
 import BannerDark from '../assets/Images/banner.mp4';
@@ -122,7 +122,7 @@ const Home = () => {
             </h1>
 
             <div className="text-xl md:text-2xl font-medium text-gray-600 dark:text-gray-300 mb-8">
-              Master <TypeAnimation
+              Master in <TypeAnimation
                 sequence={[
                   "Web Development",
                   2000,
