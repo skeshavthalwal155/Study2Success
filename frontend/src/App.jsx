@@ -38,6 +38,7 @@ import AdminDashboard from "./components/core/Dashboard/Admin/AdminDashboard";
 import ViewAllCourses from "./components/core/Dashboard/Admin/ViewAllCourses";
 import Games from "./Pages/Games";
 import NoInternet from "./Pages/NoInternet";
+import Courses from "./Pages/Courses";
 
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/catalog/:catalogName" element={<Catalog />}></Route>
+        <Route path="/courses" element={<Courses />}></Route>
         <Route path="/courses/:id" element={<CourseDetails />}></Route>
         <Route
           path="/signup"

@@ -1,380 +1,408 @@
-import React, { useEffect, useRef } from 'react'
-import { FaArrowRight } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
-import HighlightText from '../components/core/HomePage/HighlightText'
-import CTAButton from "../components/core/HomePage/Button"
-import BannerDark from '../assets/Images/banner.mp4'
-import BannerLight from '../assets/Images/Bg-Header.png'
+import React, { useEffect, useRef } from 'react';
+import { FaArrowRight, FaCode, FaChalkboardTeacher, FaLaptopCode, FaUserGraduate } from 'react-icons/fa';
+import { IoIosRocket, IoMdTrendingUp } from 'react-icons/io';
+import { Link } from 'react-router-dom';
+import { TypeAnimation } from 'react-type-animation';
+import { useSelector } from 'react-redux';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Components
+import HighlightText from '../components/core/HomePage/HighlightText';
+import CTAButton from "../components/core/HomePage/Button";
+import CodeBlocks from '../components/core/HomePage/CodeBlocks';
+import Footer from '../components/common/Footer';
+import LearningLanguageSection from '../components/core/HomePage/LearningLanguageSection';
+import TimeLineSection from '../components/core/HomePage/TimeLineSection';
+import InstructorSection from '../components/core/HomePage/InstructorSection';
+import ReviewSlider from '../components/core/HomePage/ReviewSlider';
+import ExploreMore from '../components/core/HomePage/ExploreMore';
+
+// Assets
+import BannerDark from '../assets/Images/banner.mp4';
+import BannerLight from '../assets/Images/Bg-Header.png';
 import BannerBg from '../assets/Images/Bg-Header-bg.png'
-import CodeBlocks from '../components/core/HomePage/CodeBlocks'
-import Footer from '../components/common/Footer'
-import LearningLanguageSection from '../components/core/HomePage/LearningLanguageSection'
-import TimeLineSection from '../components/core/HomePage/TimeLineSection'
-import InstructorSection from '../components/core/HomePage/InstructorSection'
-import ReviewSlider from '../components/core/HomePage/ReviewSlider'
-import ExploreMore from '../components/core/HomePage/ExploreMore'
-import { TypeAnimation } from 'react-type-animation'
-import { useSelector } from 'react-redux'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 // Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
   const theme = useSelector((state) => state.theme);
-  const textColor = theme === 'dark' ? "#ffd60a" : "#2B74F6";
-  
+  const primaryColor = theme === 'dark' ? "#6366f1" : "#4f46e5"; // Indigo
+  const secondaryColor = theme === 'dark' ? "#f59e0b" : "#f97316"; // Amber/Orange
+
   // Refs for GSAP animations
-  const headingRef = useRef(null)
-  const subheadingRef = useRef(null)
-  const bannerRef = useRef(null)
-  const skillsRef = useRef(null)
-  const leftContentRef = useRef(null)
-  const rightContentRef = useRef(null)
-  
+  const heroRef = useRef(null);
+  const featureRefs = useRef([]);
+  // const bannerRef = useRef(null)
+
+
   // Initialize animations
   useEffect(() => {
-    // Heading animation
-    gsap.from(headingRef.current, {
-      y: -50,
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out"
-    })
-    
-    // Subheading animation
-    gsap.from(subheadingRef.current, {
+    // Hero section animations
+    gsap.from(heroRef.current.children, {
       y: 50,
       opacity: 0,
       duration: 1,
-      delay: 0.3,
-      ease: "power2.out"
-    })
-    
-    // Banner animation
-    gsap.from(bannerRef.current, {
-      scale: 0.8,
-      opacity: 0,
-      duration: 1,
-      delay: 0.6,
-      ease: "back.out(1.7)"
-    })
-    
-    // Skills section animation
-    gsap.from(skillsRef.current, {
+      stagger: 0.2,
+      ease: "power3.out"
+    });
+
+    // Feature cards animation
+    gsap.from(featureRefs.current, {
       scrollTrigger: {
-        trigger: skillsRef.current,
-        start: "top 80%",
+        trigger: featureRefs.current[0],
+        start: "top 75%",
         toggleActions: "play none none none"
       },
       y: 100,
       opacity: 0,
-      duration: 1,
-      stagger: 0.2,
-      ease: "power2.out"
-    })
-    
-    // Left content animation
-    gsap.from(leftContentRef.current, {
-      scrollTrigger: {
-        trigger: leftContentRef.current,
-        start: "top 75%",
-        toggleActions: "play none none none"
-      },
-      x: -100,
-      opacity: 0,
       duration: 0.8,
-      ease: "power2.out"
-    })
-    
-    // Right content animation
-    gsap.from(rightContentRef.current, {
-      scrollTrigger: {
-        trigger: rightContentRef.current,
-        start: "top 75%",
-        toggleActions: "play none none none"
-      },
-      x: 100,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power2.out"
-    })
-    
-    // Image hover animations
-    gsap.utils.toArray(".hover-animate").forEach(element => {
-      element.addEventListener("mouseenter", () => {
-        gsap.to(element, {
-          scale: 1.05,
-          duration: 0.3,
-          ease: "power2.out"
-        })
-      })
-      element.addEventListener("mouseleave", () => {
-        gsap.to(element, {
-          scale: 1,
-          duration: 0.3,
-          ease: "power2.out"
-        })
-      })
-    })
-    
+      stagger: 0.15,
+      ease: "back.out(1.2)"
+    });
+
     // Clean up
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
+  // Features data
+  const features = [
+    {
+      icon: <FaCode className="text-3xl" />,
+      title: "Interactive Learning",
+      description: "Learn by doing with our hands-on coding exercises and projects."
+    },
+    {
+      icon: <FaChalkboardTeacher className="text-3xl" />,
+      title: "Expert Instructors",
+      description: "Learn from industry professionals with real-world experience."
+    },
+    {
+      icon: <FaLaptopCode className="text-3xl" />,
+      title: "Real Projects",
+      description: "Build portfolio-worthy projects that demonstrate your skills."
+    },
+    {
+      icon: <IoMdTrendingUp className="text-3xl" />,
+      title: "Career Growth",
+      description: "Structured paths to take you from beginner to job-ready."
     }
-  }, [])
+  ];
 
   return (
-    <div>
-      {/* Section 1 */}
-      <div className='mx-auto relative flex w-11/12 flex-col items-center justify-between text-light-richblack-5 dark:text-dark-richblack-5'>
-        <div className='text-4xl text-light-richblack-5 dark:text-dark-richblack-5 text-center mt-12 font-mono transition-all duration-150 min-w-[285px] min-h-[84px]'>
-          {/* Typing Line 1 */}
-          <span>
-            Welcome To {" "}
-            <TypeAnimation
-              sequence={[
-                "Study2Success", // Types full line                 
-              ]}
-              style={{
-                display: "inline-block",
-                fontSize: "36px",
-                color: textColor,
-              }}
-              omitDeletionAnimation={false}
-              key={textColor}
-            />
-          </span>
-          {/* Typing Line -2  */}
-          <div className='text-2xl mt-2'>
-            Learn {" "}
-            <TypeAnimation
-              sequence={[
-                "C",        
-                2000,
-                "",
-                500,
-                "C++",   
-                2000,
-                "",
-                500,
-                "PYTHON", 
-                2000,
-                "",
-                500,
-                "JAVA",  
-                2000,
-                "",
-                500,
-                "JAVASCRIPT", 
-                2000,
-                "",
-                500,
-                "FULL STACK WEB DEVELOPMENT",      
-                2000,
-              ]}
-              repeat={Infinity}
-              cursor={false}
-              style={{
-                display: "inline-block",
-                fontSize: "26px",
-                color: textColor,
-              }}
-              omitDeletionAnimation={false}
-              key={textColor}
-            />
-          </div>
-        </div>
-        
-        {/* Signup Button */}
-        <Link to={'/signup'} className='group mt-8 p-1 mx-auto rounded-full dark:text-dark-richblack-200 text-light-richblack-200 bg-light-richblack-800 dark:bg-dark-richblack-800 font-bold transition-all duration-200 hover:scale-95 w-fit max-w-maxContent shadow-[0_-1px_0_#FFFFFF2E_inset]'>
-          <div>
-            <div className='flex flex-row items-center gap-2 rounded-full px-10 py-[5px] transition-all duration-200 group-hover:bg-light-richblack-900 hover:dark:bg-dark-richblack-900'>
-              <p>Become an Instructor</p>
-              <FaArrowRight />
+    <div className="bg-white dark:bg-gray-900 transition-colors duration-300">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden">
+        {/* <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/20 to-purple-50/20 dark:from-gray-800/50 dark:to-gray-900/50 z-0"></div> */}
+        <div className="container mx-auto px-6 py-24 md:py-32 relative z-10" ref={heroRef}>
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="inline-flex items-center bg-indigo-100 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <span>🚀 Transform your career today</span>
             </div>
-          </div>
-        </Link>
 
-        <div ref={headingRef} className='md:w-[80%] w-full'>
-          <div className='text-center text-3xl md:text-4xl text-[#00143f] dark:text-dark-richblack-5 font-semibold mt-7 mx-auto'>
-            Empower Your Future with <br />
-            <HighlightText text={"Coding Skills"} />
-          </div>
-        </div>
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+              Welcome to <span className="text-indigo-600 dark:text-indigo-400">Study2Success</span>
+            </h1>
 
-        <div ref={subheadingRef} className='w-[90%]'>
-          <div className='mt-4 text-center text-sm md:text-lg text-[#000207] dark:text-dark-richblack-300'>
-            With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors.
-          </div>
-        </div>
+            <div className="text-xl md:text-2xl font-medium text-gray-600 dark:text-gray-300 mb-8">
+              Master <TypeAnimation
+                sequence={[
+                  "Web Development",
+                  2000,
+                  "Data Science",
+                  2000,
+                  "Mobile Apps",
+                  2000,
+                  "Cloud Computing",
+                  2000,
+                  "Machine Learning",
+                  2000
+                ]}
+                wrapper="span"
+                cursor={true}
+                repeat={Infinity}
+                style={{ display: 'inline-block', color: secondaryColor }}
+              />
+            </div>
 
-        <div className='flex flex-row gap-7 mt-8'>
-          <CTAButton active={true} linkto={'/signup'}>
-            Get Started
-          </CTAButton>
-          <CTAButton active={false} linkto={'/login'}>
-            Learn More
-          </CTAButton>
-        </div>
+            <p className="text-lg text-gray-500 dark:text-gray-400 mb-10 max-w-2xl mx-auto">
+              The most effective platform to learn coding and land your dream tech job.
+            </p>
 
-        <div ref={bannerRef} className='mx-3 my-12 shadow-blue-200 w-[70%] relative'>
-          {theme === 'dark' ? (
-            <>
-              <div className='-top-10 w-[800px] videograd'></div>
-              <video className='video hover-animate'
-                muted
-                loop
-                autoPlay
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+              <CTAButton
+                active={true}
+                linkto="/signup"
+                className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-lg shadow-lg hover:shadow-indigo-500/20 transition-all"
               >
-                <source src={BannerDark} type="video/mp4" />
-              </video>
-            </>
-          ) : (
-            <div className='relative'>
-              <img 
-                ref={bannerRef} 
-                loading="lazy" 
-                src={BannerLight} 
-                className='relative md:left-[40%] md:scale-100 scale-150 z-10 hover-animate' 
-                alt="Banner" 
-              />
-              <img 
-                loading="lazy" 
-                src={BannerBg} 
-                className='absolute z-9 scale-200 md:scale-100 md:max-w-max md:top-[-30px] md:left-[-250px] shadow hover-animate' 
-                alt="Background" 
-              />
-            </div>
-          )}
-        </div>
-
-        {/* Code Section 1 */}
-        <div>
-          <CodeBlocks
-            position={"lg:flex-row"}
-            heading={
-              <div className='text-2xl lg:text-4xl sm:w-full font-semibold'>
-                Unlock your <HighlightText text={"coding potential"} /> with our online courses
-              </div>
-            }
-            subheading={"Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you."}
-            ctabtn1={
-              {
-                btnText: "Try it Yourself",
-                linkto: "/signup",
-                active: true
-              }
-            }
-            ctabtn2={
-              {
-                btnText: "Learn Now",
-                linkto: "/login",
-                active: false
-              }
-            }
-            codeblock={`<!DOCTYPE html>\n<html>\n<head><title>Example</title>\n</head>\n<body>\n<h1><ahref="/">Header</a>\n</h1>\n<nav><ahref="one/">One</a><ahref="two/">Two</a><ahref="three/">Three</a>\n</nav>`}
-            codecolor={"white"}
-            backgroundGradient={"grad"}
-          />
-        </div>
-
-        {/* Code Section 2 */}
-        <div>
-          <CodeBlocks
-            position={"lg:flex-row-reverse"}
-            heading={
-              <div className='text-2xl lg:text-4xl sm:w-full font-semibold '>
-                Start <HighlightText text={"coding in seconds"} />
-              </div>
-            }
-            subheading={"Go ahead, give it a try. Our hands-on learning environment means you'll be writing real code from your very first lesson."}
-            ctabtn1={
-              {
-                btnText: "Continue Lesson",
-                linkto: "/signup",
-                active: true
-              }
-            }
-            ctabtn2={
-              {
-                btnText: "Learn Now",
-                linkto: "/login",
-                active: false
-              }
-            }
-            codeblock={`import React from 'react';\nexport default () => {\nconst [count, setCount] = React.useState(0);\nreturn <div>\n<h1>{count}</h1>\n<button onClick={() => setCount(c => c + 1)}>+</button>\n</div>;\n}`} codeColor={"text-yellow-25"}
-            backgroundGradient={"grad2"}
-          />
-        </div>
-        <ExploreMore />
-      </div>
-
-      {/* Section 2 */}
-      <div className='bg-dark-pure-greys-5 text-dark-richblack-700'>
-        <div className='homepage_bg h-[310px]'>
-          <div className='w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-5 mx-auto'>
-            <div className='h-[180px]'></div>
-            <div className='flex flex-row gap-7 text-white'>
-              <CTAButton active={true} linkto={'/signup'}>
-                <div className='flex items-center gap-3'>
-                  Explore Full Catalog
-                  <FaArrowRight />
-                </div>
+                Start Learning Free
               </CTAButton>
-              <CTAButton active={false} linkto={'/signup'}>
-                <div>
-                  Learn More
-                </div>
+              <CTAButton
+                active={false}
+                linkto="/courses"
+                className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 px-8 py-3 rounded-lg transition-all"
+              >
+                Browse Courses
               </CTAButton>
             </div>
           </div>
-        </div>
 
-        <div ref={skillsRef} className='mx-auto w-11/12 md:max-w-maxContent max-w-maxContentTab flex flex-col items-center justify-between gap-7'>
-          <div className='flex flex-col md:flex-row gap-5 mb-10 md:mt-[95px]'>
-            {/* Left Content */}
-            <div ref={leftContentRef} className='w-[50%]'>
-              <div className='text-4xl font-semibold'>
-                <span>
-                  Get the skills you need for a
-                  <HighlightText text={"job that is in demand"} />
+          <div className='mx-auto my-12 shadow-blue-200 w-[70%] relative'>
+            {theme === 'dark' ? (
+              <>
+                <div className='-top-10 w-[800px] videograd'></div>
+                <video className='video hover-animate'
+                  muted
+                  loop
+                  autoPlay
+                >
+                  <source src={BannerDark} type="video/mp4" />
+                </video>
+              </>
+            ) : (
+              <div className='relative'>
+                <img
+
+                  loading="lazy"
+                  src={BannerLight}
+                  className='relative md:left-[40%] md:scale-100 scale-150 z-10 hover-animate'
+                  alt="Banner"
+                />
+                <img
+                  loading="lazy"
+                  src={BannerBg}
+                  className='absolute z-9 scale-200 md:scale-100 md:max-w-max md:top-[-30px] md:left-[-250px] shadow hover-animate'
+                  alt="Background"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="bg-gray-50 dark:bg-gray-800 py-12">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {[
+              { number: "10,000+", label: "Active Learners" },
+              { number: "500+", label: "Hours of Content" },
+              { number: "50+", label: "Expert Instructors" },
+              { number: "95%", label: "Satisfaction Rate" }
+            ].map((stat, index) => (
+              <div key={index} className="p-6 bg-white dark:bg-gray-700 rounded-xl shadow-sm">
+                <div className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">{stat.number}</div>
+                <div className="text-gray-600 dark:text-gray-300">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Why Choose <span className="text-indigo-600 dark:text-indigo-400">Study2Success</span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Our platform combines the best of theory and practice to help you master new skills faster.
+            </p>
+          </div>
+
+          {/* <section className="py-20 bg-gray-50 dark:bg-gray-800/30"> */}
+          <div className="container mx-auto px-6">
+            {/* <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                  Why <span className="text-indigo-600 dark:text-indigo-400">Thousands of Learners</span> Choose Us
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                  We don’t just teach code—we engineer career transformations.
+                </p>
+              </div> */}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                {
+                  icon: <FaLaptopCode className="text-3xl text-indigo-600 dark:text-indigo-400" />,
+                  title: "Industry-Driven Curriculum",
+                  description: "Courses updated quarterly with insights from tech leaders at Google, Amazon, and startups."
+                },
+                {
+                  icon: <FaUserGraduate className="text-3xl text-orange-500 dark:text-orange-400" />,
+                  title: "Job-Focused Projects",
+                  description: "Build 10+ portfolio-ready apps (not just tutorials) that hiring managers actually want to see."
+                },
+                {
+                  icon: <IoIosRocket className="text-3xl text-purple-600 dark:text-purple-400" />,
+                  title: "1:1 Career Coaching",
+                  description: "Resume reviews, mock interviews, and LinkedIn optimization with tech recruiters."
+                },
+                {
+                  icon: <FaChalkboardTeacher className="text-3xl text-amber-500 dark:text-amber-400" />,
+                  title: "Live Mentor Sessions",
+                  description: "Weekly Q&A with senior developers—get unstuck in real time."
+                }
+              ].map((feature, index) => (
+                <div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700"
+                >
+                  <div className="w-14 h-14 flex items-center justify-center bg-indigo-50 dark:bg-indigo-900/20 rounded-full mb-4">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{feature.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="mt-16 text-center">
+              <div className="inline-flex items-center gap-4 flex-wrap justify-center">
+                <span className="px-4 py-2 bg-white dark:bg-gray-700 rounded-full shadow-sm text-sm font-medium">
+                  🏆 92% Job Placement Rate
+                </span>
+                <span className="px-4 py-2 bg-white dark:bg-gray-700 rounded-full shadow-sm text-sm font-medium">
+                  ⏱️ 30-Day Money-Back Guarantee
+                </span>
+                <span className="px-4 py-2 bg-white dark:bg-gray-700 rounded-full shadow-sm text-sm font-medium">
+                  🤝 1,500+ Hiring Partners
                 </span>
               </div>
             </div>
-            
-            {/* Right Content */}
-            <div ref={rightContentRef} className='flex flex-col gap-10 w-[40%] items-start'>
-              <div className='text-[16px]'>
-                The Study2Success is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.
-              </div>
-              <CTAButton active={true} linkto={'/signup'}>
-                <div>Learn More</div>
-              </CTAButton>
-            </div>
+          </div>
+          {/* </section> */}
+        </div>
+      </section>
+
+      {/* Code Blocks Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800/30">
+        <div className="container mx-auto px-6">
+          <CodeBlocks
+            position="lg:flex-row"
+            heading={
+              <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                Learn by <span className="text-indigo-600 dark:text-indigo-400">Building</span>
+              </h3>
+            }
+            subheading="Our interactive coding environment lets you practice what you learn immediately with real-time feedback."
+            ctabtn1={{
+              btnText: "Try Interactive Lesson",
+              linkto: "/signup",
+              active: true,
+              className: "bg-indigo-600 hover:bg-indigo-700 text-white"
+            }}
+            ctabtn2={{
+              btnText: "View Curriculum",
+              linkto: "/courses",
+              active: false,
+              className: "border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300"
+            }}
+            codeblock={`<!DOCTYPE html>\n<html>\n<head><title>Example</title>\n</head>\n<body>\n<h1><ahref="/">Header</a>\n</h1>\n<nav><ahref="one/">One</a><ahref="two/">Two</a><ahref="three/">Three</a>\n</nav>`} backgroundGradient="from-indigo-500 to-purple-600"
+          />
+
+          <CodeBlocks
+            position="lg:flex-row-reverse"
+            heading={
+              <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                Build <span className="text-orange-500 dark:text-orange-400">Real Projects</span>
+              </h3>
+            }
+            subheading="Apply your skills to practical projects that simulate real-world scenarios."
+            ctabtn1={{
+              btnText: "Start Building",
+              linkto: "/signup",
+              active: true,
+              className: "bg-orange-500 hover:bg-orange-600 text-white"
+            }}
+            ctabtn2={{
+              btnText: "See Examples",
+              linkto: "/projects",
+              active: false,
+              className: "border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300"
+            }}
+            codeblock={`import React from 'react';\nexport default () => {\nconst [count, setCount] = React.useState(0);\nreturn <div>\n<h1>{count}</h1>\n<button onClick={() => setCount(c => c + 1)}>+</button>\n</div>;\n}`} codeColor={"text-yellow-25"} 
+            backgroundGradient="from-orange-500 to-amber-600"
+          />
+        </div>
+      </section>
+
+      {/* Learning Paths Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Structured <span className="text-indigo-600 dark:text-indigo-400">Learning Paths</span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Follow our curated paths to go from beginner to job-ready developer.
+            </p>
           </div>
 
           <TimeLineSection />
-
           <LearningLanguageSection />
         </div>
-      </div>
+      </section>
 
-      {/* Section 3 */}
-      <div className='w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 dark:bg-dark-richblack-900 bg-white text-[#00143f] dark:text-white'>
-        <InstructorSection />
+      {/* Instructor Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800/30">
+        <div className="container mx-auto px-6">
+          <InstructorSection />
+        </div>
+      </section>
 
-        <h2 className='text-center text-2xl md:text-4xl font-semibold mt-8 dark:text-dark-richblack-5 text-light-richblack-5 mb-5'>
-          Reviews from Other Learners
-        </h2>
-        <ReviewSlider />
-      </div>
+      {/* Testimonials Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Success <span className="text-indigo-600 dark:text-indigo-400">Stories</span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Join thousands of learners who transformed their careers with Study2Success.
+            </p>
+          </div>
 
-      {/* Footer */}
+          <ReviewSlider />
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 dark:bg-dark-richblack-900 bg-gray-50 dark:text-white">
+        <div className="container mx-auto px-6 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Launch Your Tech Career?</h2>
+            <p className="text-xl opacity-90 mb-8">
+              Join our community of learners and start building in-demand tech skills today.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <CTAButton
+                active={true}
+                linkto="/signup"
+                className="bg-white text-indigo-600 hover:bg-gray-100 px-8 py-4 text-lg font-medium rounded-lg shadow-lg hover:shadow-xl transition-all"
+              >
+                Get Started for Free
+              </CTAButton>
+              <CTAButton
+                active={false}
+                linkto="/courses"
+                className="border-2 border-white text-white hover:bg-indigo-700/20 px-8 py-4 text-lg font-medium rounded-lg transition-all"
+              >
+                Browse All Courses
+              </CTAButton>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
