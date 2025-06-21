@@ -66,7 +66,7 @@ exports.capturePayment = async(req,res)=>{
     }catch(err){
         return res.status(500).json({
             success:false,
-            message: err.message || "Internal Server Errro"
+            message: err.message
         })
     }
 }
