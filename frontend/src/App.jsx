@@ -38,7 +38,7 @@ import AdminDashboard from "./components/core/Dashboard/Admin/AdminDashboard";
 import ViewAllCourses from "./components/core/Dashboard/Admin/ViewAllCourses";
 import Games from "./Pages/Games";
 import NoInternet from "./Pages/NoInternet";
-import PaymentHistory from "./Pages/PaymentHistory";
+
 
 function App() {
   const dispatch = useDispatch()
@@ -152,8 +152,7 @@ function App() {
             <>
               <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />
               <Route path="dashboard/cart" element={<Cart />} />
-              <Route path="dashboard/games" element={<Games />} />
-              <Route path="dashboard/payment-history" element={<PaymentHistory />} />
+              <Route path="dashboard/games" element={<Games />} />      
             </>
           )}
           {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
