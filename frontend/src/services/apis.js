@@ -22,7 +22,7 @@ export const studentEndpoints = {
     COURSE_PAYMENT_API: BASE_URL + '/payments/capturePayment',
     COURSE_VERIFY_API: BASE_URL + '/payments/verifySignature',
     SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL + '/payments/sendPaymentSuccessEmail',
-    PAYMENT_HISTORY_API: BASE_URL + '/payments/getPaymentHistory',
+    PAYMENT_HISTORY_API: BASE_URL + '/payments/paymentHistory',
 };
 
 // COURSE ENDPOINTS
