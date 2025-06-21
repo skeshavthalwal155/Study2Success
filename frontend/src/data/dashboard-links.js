@@ -41,12 +41,19 @@ export const sidebarLinks = [
     type: ACCOUNT_TYPE.STUDENT,
     icon: "VscArchive",
   },
+  // {
+  //   id: 12,
+  //   name: "Games",
+  //   path: "/dashboard/games",
+  //   type: ACCOUNT_TYPE.STUDENT,
+  //   icon: "VscGame",
+  // },
   {
-    id: 12,
-    name: "Games",
-    path: "/dashboard/games",
+    id: 13,
+    name: "Payment History",
+    path: "/dashboard/payment-history",
     type: ACCOUNT_TYPE.STUDENT,
-    icon: "VscGame",
+    icon: "VscHistory",
   },
   {
     id: 7,
