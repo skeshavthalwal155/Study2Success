@@ -7,7 +7,7 @@ const {courseEnrollmentEmail} = require("../mail/templates/courseEnrollmentEmail
 const { default: mongoose } = require("mongoose")
 const {paymentSuccess} = require("../mail/templates/paymentSuccess")
 const CourseProgress = require("../models/CourseProgress")
-const { default: PaymentHistory } = require("../../frontend/src/Pages/PaymentHistory")
+
 
 // capture the payment and initate the razorpay order
 exports.capturePayment = async(req,res)=>{
@@ -147,13 +147,7 @@ const enrolledStudents= async(courses, userId ,res)=>{
                     new:true
                 }
             )
-            const paymentHistory = await PaymentHistory.create({
-                userId: userId,
-                amount: enrolledCourse.price,
-                paymentMethod: 'razorpay',
-                status: 'completed',
-                transactionId: enrolledCourse._id.toString() // using course ID as transaction ID for simplicity
-            });
+          
             // send a success mail to student
              await mailSender(
                 enrolledStudent.email,
@@ -192,20 +186,3 @@ exports.sendPaymentSuccessEmail=async(req,res)=>{
 
 }
 
-exports.getPaymentHistory = async (req, res) => {
-    // const userId = req.user.id;
-    res.send("Payment history endpoint is not implemented yet.");
-
-    // try {
-    //     const payments = await PaymentHistory.find({ userId }).sort({ createdAt: -1 });
-    //     res.status(200).json({
-    //         success: true,
-    //         data: payments
-    //     });
-    // } catch (err) {
-    //     return res.status(500).json({
-    //         success: false,
-    //         message: err.message || "Internal Server Error"
-    //     });
-    // }
-};

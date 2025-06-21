@@ -9,6 +9,5 @@ const { capturePayment, verifySignature, sendPaymentSuccessEmail, getPaymentHist
 router.post('/capturePayment',auth, isStudent, capturePayment)
 router.post('/verifySignature',auth, isStudent, verifySignature)
 router.post('/sendPaymentSuccessEmail',auth, isStudent, sendPaymentSuccessEmail)
-router.get('/paymentHistory', auth, isStudent, getPaymentHistory )
 
 module.exports = router
