@@ -34,8 +34,7 @@ const Footer = () => {
                     <div className='lg:w-[50%] flex flex-wrap flex-row justify-between lg:border-r lg:dark:border-dark-richblack-700 lg:border-light-richblack-700 pl-3 lg:pr-3 gap-3'>
                         <div className='w-[30%] flex flex-col gap-3 lg:w-[30%] mb-7 lg:pl-0'>
                             <img loading="lazy" src={logo}
-                                alt="study2success"
-                                loading='lazy'
+                                alt="study2success"                              
                             // className={`${theme === 'light' ? 'filter brightness-0' : ''}`}
                             />
 

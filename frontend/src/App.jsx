@@ -40,7 +40,6 @@ import Games from "./Pages/Games";
 import NoInternet from "./Pages/NoInternet";
 
 function App() {
-
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.profile)
   const theme = useSelector((state) => state.theme)
@@ -65,135 +64,134 @@ function App() {
     }
   }, [theme])
 
-  if (!navigator.onLine){
-    return(
+  if (!navigator.onLine) {
+    return (
       <NoInternet />
     )
   }
-  
 
-    return (
-      <div className={`flex min-h-screen w-screen flex-col font-inter dark:bg-dark-richblack-900 bg-white dark:text-dark-richblack-50 text-black'
+  return (
+    <div className={`flex min-h-screen w-screen flex-col font-inter dark:bg-dark-richblack-900 bg-white dark:text-dark-richblack-50 text-black'
       }`}>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/catalog/:catalogName" element={<Catalog />}></Route>
-          <Route path="/courses/:id" element={<CourseDetails />}></Route>
-          <Route
-            path="/signup"
-            element={
-              <OpenRoute>
-                <Signup />
-              </OpenRoute>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <OpenRoute>
-                <Login />
-              </OpenRoute>
-            }
-          />
-          <Route path="/search/:searchQuery" element={<SearchCourse />} />
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/catalog/:catalogName" element={<Catalog />}></Route>
+        <Route path="/courses/:id" element={<CourseDetails />}></Route>
+        <Route
+          path="/signup"
+          element={
+            <OpenRoute>
+              <Signup />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <OpenRoute>
+              <Login />
+            </OpenRoute>
+          }
+        />
+        <Route path="/search/:searchQuery" element={<SearchCourse />} />
 
-          <Route
-            path="/admin"
-            element={
-              <OpenRoute>
-                <AdminLogin />
-              </OpenRoute>
-            }
-          />
-          <Route
-            path="/forgot-password"
-            element={
-              <OpenRoute>
-                <ForgotPassword />
-              </OpenRoute>
-            }
-          />
-          <Route
-            path="/update-password/:id"
-            element={
-              <OpenRoute>
-                <UpdatePassword />
-              </OpenRoute>
-            }
-          />
-          <Route
-            path="/verify-email"
-            element={
-              <OpenRoute>
-                <VerifyOtp />
-              </OpenRoute>
-            }
-          />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<ContactUs />} />
+        <Route
+          path="/admin"
+          element={
+            <OpenRoute>
+              <AdminLogin />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="/forgot-password"
+          element={
+            <OpenRoute>
+              <ForgotPassword />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="/update-password/:id"
+          element={
+            <OpenRoute>
+              <UpdatePassword />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="/verify-email"
+          element={
+            <OpenRoute>
+              <VerifyOtp />
+            </OpenRoute>
+          }
+        />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<ContactUs />} />
 
+        <Route
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
           <Route
+            path="dashboard/my-profile"
             element={
               <PrivateRoute>
-                <Dashboard />
+                <MyProfile />
               </PrivateRoute>
             }
-          >
+          />
+          <Route path="dashboard/settings" element={<Settings />} />
+          {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+            <>
+              <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />
+              <Route path="dashboard/cart" element={<Cart />} />
+              <Route path="dashboard/games" element={<Games />} />
+            </>
+          )}
+          {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+            <>
+              <Route path="dashboard/my-courses" element={<MyCourses />} />
+              <Route path="dashboard/instructor" element={<Instructor />} />
+              <Route path="dashboard/add-course" element={<AddCourse />} />
+              <Route path="dashboard/edit-course/:id" element={<EditCourse />} />
+            </>
+          )}
+          {user?.accountType === ACCOUNT_TYPE.ADMIN && (
+            <>
+              <Route path="dashboard/all-users" element={<AllUsers />} />
+              <Route path="dashboard/add-Category" element={<AddCategory />} />
+              <Route path="dashboard/all-categories" element={<AllCategory />} />
+              <Route path="dashboard/admin" element={<AdminDashboard />} />
+              <Route path="dashboard/all-courses" element={<ViewAllCourses />} />
+            </>
+          )}
+        </Route>
+
+        <Route
+          element={
+            <PrivateRoute>
+              <ViewCourse />
+            </PrivateRoute>
+          }
+        >
+          {user?.accountType === ACCOUNT_TYPE.STUDENT && (
             <Route
-              path="dashboard/my-profile"
-              element={
-                <PrivateRoute>
-                  <MyProfile />
-                </PrivateRoute>
-              }
+              path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId"
+              element={<VideoDetails />}
             />
-            <Route path="dashboard/settings" element={<Settings />} />
-            {user?.accountType === ACCOUNT_TYPE.STUDENT && (
-              <>
-                <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />
-                <Route path="dashboard/cart" element={<Cart />} />
-                <Route path="dashboard/games" element={<Games />} />
-              </>
-            )}
-            {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
-              <>
-                <Route path="dashboard/my-courses" element={<MyCourses />} />
-                <Route path="dashboard/instructor" element={<Instructor />} />
-                <Route path="dashboard/add-course" element={<AddCourse />} />
-                <Route path="dashboard/edit-course/:id" element={<EditCourse />} />
-              </>
-            )}
-            {user?.accountType === ACCOUNT_TYPE.ADMIN && (
-              <>
-                <Route path="dashboard/all-users" element={<AllUsers />} />
-                <Route path="dashboard/add-Category" element={<AddCategory />} />
-                <Route path="dashboard/all-categories" element={<AllCategory />} />
-                <Route path="dashboard/admin" element={<AdminDashboard />} />
-                <Route path="dashboard/all-courses" element={<ViewAllCourses />} />
-              </>
-            )}
-          </Route>
+          )}
+        </Route>
 
-          <Route
-            element={
-              <PrivateRoute>
-                <ViewCourse />
-              </PrivateRoute>
-            }
-          >
-            {user?.accountType === ACCOUNT_TYPE.STUDENT && (
-              <Route
-                path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId"
-                element={<VideoDetails />}
-              />
-            )}
-          </Route>
-
-          <Route path="*" element={<Error />}></Route>
-        </Routes>
-      </div>
-    );
+        <Route path="*" element={<Error />}></Route>
+      </Routes>
+    </div>
+  );
 }
 
 export default App;

@@ -3,11 +3,9 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
-import Rating from 'react-rating'
 import { Navigation, Pagination, Autoplay } from "swiper/modules"
 import { apiConnector } from '../../../services/apiconnector';
 import { ratingsEndpoints } from '../../../services/apis';
-import { FaRegStar, FaStar } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import RatingStars from '../../common/RatingStars';
 
