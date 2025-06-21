@@ -28,7 +28,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
   const theme = useSelector((state) => state.theme);
-  const primaryColor = theme === 'dark' ? "#6366f1" : "#4f46e5"; // Indigo
+  const textColor = theme === 'dark' ? "#ffd60a" : "#2B74F6";
   const secondaryColor = theme === 'dark' ? "#f59e0b" : "#f97316"; // Amber/Orange
 
   // Refs for GSAP animations
@@ -96,7 +96,6 @@ const Home = () => {
     <div className="bg-white dark:bg-gray-900 transition-colors duration-300">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        {/* <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/20 to-purple-50/20 dark:from-gray-800/50 dark:to-gray-900/50 z-0"></div> */}
         <div className="container mx-auto px-6 py-24 md:py-32 relative z-10" ref={heroRef}>
           <div className="text-center max-w-4xl mx-auto">
             <div className="inline-flex items-center bg-indigo-100 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
@@ -104,7 +103,22 @@ const Home = () => {
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              Welcome to <span className="text-indigo-600 dark:text-indigo-400">Study2Success</span>
+              <span>
+                Welcome to {" "}
+                <TypeAnimation
+                  sequence={[
+                    "Study2Success", // Types full line                 
+                  ]}
+                  style={{
+                    display: "inline-block",
+                    // fontSize: "36px",
+                    color: textColor,
+                  }}
+                  omitDeletionAnimation={false}
+                  cursor={false}
+                  key={textColor}
+                />
+              </span>
             </h1>
 
             <div className="text-xl md:text-2xl font-medium text-gray-600 dark:text-gray-300 mb-8">
@@ -326,7 +340,7 @@ const Home = () => {
               active: false,
               className: "border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300"
             }}
-            codeblock={`import React from 'react';\nexport default () => {\nconst [count, setCount] = React.useState(0);\nreturn <div>\n<h1>{count}</h1>\n<button onClick={() => setCount(c => c + 1)}>+</button>\n</div>;\n}`} codeColor={"text-yellow-25"} 
+            codeblock={`import React from 'react';\nexport default () => {\nconst [count, setCount] = React.useState(0);\nreturn <div>\n<h1>{count}</h1>\n<button onClick={() => setCount(c => c + 1)}>+</button>\n</div>;\n}`} codeColor={"text-yellow-25"}
             backgroundGradient="from-orange-500 to-amber-600"
           />
         </div>
