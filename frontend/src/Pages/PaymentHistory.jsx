@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react'
+import { apiConnector } from '../services/apiconnector'
+import { studentEndpoints } from '../services/apis'
+import { useSelector } from 'react-redux'
+
+const { PAYMENT_HISTORY_API } = studentEndpoints
+
 
 const PaymentHistory = () => {
     const [payments, setPayments] = useState([])
     const [loading, setLoading] = useState(true)
-
+    const {token}= useSelector((state) => state.auth)
     useEffect(() => {
         const fetchPaymentHistory = async () => {
             try {
-                const response = await fetch('/api/payments/paymentHistory', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`
-                    }
-
-                });
+                const response = await apiConnector("GET", PAYMENT_HISTORY_API, null, {
+                    Authorization: `Bearer ${token}`
+                }
+                );
                 console.log(response)
                 const data = await response.json();
                 if (data.success) {
