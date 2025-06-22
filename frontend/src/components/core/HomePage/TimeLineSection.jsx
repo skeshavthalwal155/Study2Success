@@ -142,14 +142,14 @@ const TimeLineSection = () => {
                     {/* Stats Box */}
                     <div 
                         ref={statsRef}
-                        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-white dark:bg-richblack-800 flex flex-row text-richblack-800 dark:text-black uppercase py-5 px-6 rounded-xl shadow-xl"
+                        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-white dark:bg-richblack-800 flex flex-row text-richblack-800 dark:text-black uppercase py-4 px-2 md:py-5 md:px-6 rounded-xl shadow-xl"
                     >
                         <div className="flex items-center border-r border-richblack-200 dark:border-richblack-600 pr-6 mr-6">
-                            <p className="text-3xl font-bold">10</p>
+                            <p className="md:text-3xl text-xl font-bold">10</p>
                             <p className="text-sm ml-3 text-richblack-600 dark:text-richblack-300">Years Experience</p>
                         </div>
                         <div className="flex items-center">
-                            <p className="text-3xl font-bold">250+</p>
+                            <p className="md:text-3xl text-xl font-bold">250+</p>
                             <p className="text-sm ml-3 text-richblack-600 dark:text-richblack-300">Courses</p>
                         </div>
                     </div>
