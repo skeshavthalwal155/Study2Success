@@ -51,7 +51,7 @@ exports.createCategory = async (req, res) => {
 exports.showAllCategory = async (req, res) => {
     try {
         // collect all category
-        const allCategories = await Category.find({}).populate("courses")  
+        const allCategories = await Category.find({}).populate("courses")
         res.status(200).json({
             success: true,
             message: "All Category fetched Successfully",
@@ -105,10 +105,10 @@ exports.categoryPageDetails = async (req, res) => {
         // Get Courses for other categories
         const categoriesExceptSelected = await Category.find({
             _id: { $ne: categoryId },
-        }).populate({path:"courses",match:{status:"Published"},populate:([{path:"instructor"},{path:"ratingAndReviews"}])});
+        }).populate({ path: "courses", match: { status: "Published" }, populate: ([{ path: "instructor" }, { path: "ratingAndReviews" }]) });
 
         let differentCategory = []
-        for (const category of categoriesExceptSelected){
+        for (const category of categoriesExceptSelected) {
             differentCategory.push(...category.courses)
         }
 
@@ -185,33 +185,33 @@ exports.addCourseToCategory = async (req, res) => {
     }
 }
 
-exports.deleteCategory = async(req,res)=>{
-    try{
-        const {categoryId} = req.body;
+exports.deleteCategory = async (req, res) => {
+    try {
+        const { categoryId } = req.body;
         // Find the category by ID
         const category = await Category.findById(categoryId).populate("courses");
 
         // Check if the category exists
         if (!category) {
             return res.status(404).json({
-            success: false,
-            message: "Category not found",
+                success: false,
+                message: "Category not found",
             });
         }
 
         // Check if the category contains any courses
         if (category.courses.length > 0) {
             for (const course of category.courses) {
-            // Check if the course has enrolled students
-            if (course.enrolledStudents && course.enrolledStudents.length > 0) {
-                return res.status(400).json({
-                success: false,
-                message: "Cannot delete category. Some courses have enrolled students.",
-                });
-            }
+                // Check if the course has enrolled students
+                if (course.enrolledStudents && course.enrolledStudents.length > 0) {
+                    return res.status(400).json({
+                        success: false,
+                        message: "Cannot delete category. Some courses have enrolled students.",
+                    });
+                }
 
-            // Delete the course
-            await Course.findByIdAndDelete(course._id);
+                // Delete the course
+                await Course.findByIdAndDelete(course._id);
             }
         }
 
@@ -223,10 +223,10 @@ exports.deleteCategory = async(req,res)=>{
             success: true,
             message: "Category and its courses deleted successfully",
         });
-    }catch(err){
+    } catch (err) {
         return res.status(400).json({
-            success:false,
-            message : err.message || "Error while deleting category"
+            success: false,
+            message: err.message || "Error while deleting category"
         })
     }
 }

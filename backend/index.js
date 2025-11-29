@@ -9,7 +9,7 @@ const contactUs = require("./routes/ContactUs")
 const database = require('./config/Database')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
-const {cloudinaryConnect} = require("./config/Cloudinary")
+const { cloudinaryConnect } = require("./config/Cloudinary")
 const fileUpload = require("express-fileupload")
 const dotenv = require('dotenv')
 
@@ -36,8 +36,8 @@ app.use(
 )
 app.use(
     fileUpload({
-        useTempFiles:true,
-        tempFileDir:'/tmp/'
+        useTempFiles: true,
+        tempFileDir: '/tmp/'
     })
 )
 
@@ -45,20 +45,20 @@ app.use(
 cloudinaryConnect()
 
 // routes
-app.use('/api/v1/auth',userRoutes)
-app.use('/api/v1/profile',profileRoutes)
-app.use('/api/v1/course',courseRoutes)
-app.use('/api/v1/payments',paymentRoutes)
-app.use('/api/v1/contact',contactUs)
+app.use('/api/v1/auth', userRoutes)
+app.use('/api/v1/profile', profileRoutes)
+app.use('/api/v1/course', courseRoutes)
+app.use('/api/v1/payments', paymentRoutes)
+app.use('/api/v1/contact', contactUs)
 
 // default route
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     return res.json({
-        success:true,
-        message:"Welcome To Study2Succes Server..."
+        success: true,
+        message: "Welcome To Study2Succes Server..."
     })
 })
 
-app.listen(PORT,()=>{
-    console.log("APP RUNNING AT ",PORT)
+app.listen(PORT, () => {
+    console.log("APP RUNNING AT ", PORT)
 })
