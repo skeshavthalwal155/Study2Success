@@ -9,7 +9,7 @@ const AddCategory = () => {
   const { token } = useSelector((state) => state.auth)
   const {
     register,
-    handleSubmit,
+    handleSubmit, reset,
     formState: { errors },
   } = useForm()
 
@@ -20,6 +20,7 @@ const AddCategory = () => {
     setLoading(true)
     const result = await createCategory(formData, token)
     const response = await fetchCourseCategories()
+    reset()
     setLoading(false)
     localStorage.setItem("sublinks", JSON.stringify(response))
     // console.log("PRINTING FORMDATA : ", formData)

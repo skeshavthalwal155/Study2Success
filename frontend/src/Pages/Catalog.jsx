@@ -8,6 +8,7 @@ import CourseSlider from '../components/core/Catalog/CourseSlider';
 import Course_Card from '../components/core/Catalog/Course_Card';
 import { useSelector } from 'react-redux';
 import Error from "./Error"
+import { MdError } from 'react-icons/md';
 
 const Catalog = () => {
 
@@ -21,10 +22,16 @@ const Catalog = () => {
     // Fetch all Categories
     useEffect(() => {
         const getCategories = async () => {
-            const res = await apiConnector("GET", categories.CATEGORIES_API)
-            const category_id =
-                res?.data?.data?.filter((ct) => ct.name === catalogName)[0]._id
-            setCategoryId(category_id);
+            try {
+                const res = await apiConnector("GET", categories.CATEGORIES_API)
+                const category_id =
+                    res?.data?.data?.filter((ct) => ct.name === catalogName)[0]._id
+                setCategoryId(category_id);
+            } catch (error) {
+                console.log("Error While Fetching Category: ", error)
+            } finally {
+                setLoading(false)
+            }
         }
         getCategories()
     }, [catalogName])
@@ -36,17 +43,19 @@ const Catalog = () => {
                 const res = await getCatalogPageData(categoryId);
                 // console.log("Printing Res", res)
                 setCatalogPageData(res)
-                setLoading(false)
             } catch (err) {
                 console.log("Error : ", err)
+            } finally {
+                setLoading(false)
             }
+
         }
         if (categoryId) {
             getCategoryDetails();
         }
     }, [categoryId])
 
-    if (loading || !catalogPageData) {
+    if (loading) {
         return (
             <div className='flex h-[calc(100vh-3.5rem)] w-full justify-center items-center'>
                 <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 text-richblack-500'></div>
@@ -55,9 +64,17 @@ const Catalog = () => {
     }
     if (!loading && !catalogPageData.success) {
         return (
-            <div className='flex h-[calc(100vh-3.5rem)] w-full justify-center items-center'>
-                <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 text-richblack-500'></div>
+            <div className='flex justify-center flex-col h-[calc(100vh-3.5rem)] items-center text-red-500'>
+                <MdError className='text-[10rem]' />
+                <h1 className='text-4xl mb-4 font-bold'>Error 404 Page</h1>
+                <p className='text-center text-lg w-[30%]'>No Courses Found for "{catalogName}"</p>
+                <Link to={'/'}>
+                    <button className='border mt-4 bg-red-500 dark:text-dark-richblack-5 text-light-richblack-5 py-2 px-6 hover:dark:bg-red-700 hover:bg-red-400 rounded-md duration-200 transition-all cursor-pointer '>
+                        Go Back
+                    </button>
+                </Link>
             </div>
+
         )
     }
     return (
@@ -87,7 +104,7 @@ const Catalog = () => {
                     >Most Popular</p>
 
                     <p
-                        className={`px-4 py-2 ${active === 2  ? "dark:text-dark-yellow-25 text-red-500 border-b-red-500 border-b dark:border-b-dark-yellow-25" : "dark:text-dark-richblack-5 text-light-richblack-5"} cursor-pointer`}
+                        className={`px-4 py-2 ${active === 2 ? "dark:text-dark-yellow-25 text-red-500 border-b-red-500 border-b dark:border-b-dark-yellow-25" : "dark:text-dark-richblack-5 text-light-richblack-5"} cursor-pointer`}
                         onClick={() => setActive(2)}>New</p>
                 </div>
                 <div>
@@ -98,7 +115,7 @@ const Catalog = () => {
                 <div className='mx-auto box-content w-full max-w-maxContentTab  py-12 lg:max-w-maxContent'>
                     <div className='section_heading md:text-4xl text-2xl w-[90%]'>Similar to {catalogPageData?.data?.selectedCategory?.name}</div>
                     <div className='py-8'>
-                    <CourseSlider Courses={catalogPageData?.data?.differentCategory} />
+                        <CourseSlider Courses={catalogPageData?.data?.differentCategory} />
                     </div>
                 </div>
 

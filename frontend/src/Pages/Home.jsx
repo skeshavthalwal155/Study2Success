@@ -1,27 +1,25 @@
-import React, { useEffect, useRef } from 'react';
-import { FaArrowRight, FaCode, FaChalkboardTeacher, FaLaptopCode, FaUserGraduate } from 'react-icons/fa';
-import { IoIosRocket, IoMdTrendingUp } from 'react-icons/io';
-import { Link } from 'react-router-dom';
-import { TypeAnimation } from 'react-type-animation';
-import { useSelector } from 'react-redux';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from 'react';
+import { FaChalkboardTeacher, FaCode, FaLaptopCode, FaUserGraduate } from 'react-icons/fa';
+import { IoIosRocket, IoMdTrendingUp } from 'react-icons/io';
+import { useSelector } from 'react-redux';
+import { TypeAnimation } from 'react-type-animation';
 
 // Components
-import HighlightText from '../components/core/HomePage/HighlightText';
+import Footer from '../components/common/Footer';
 import CTAButton from "../components/core/HomePage/Button";
 import CodeBlocks from '../components/core/HomePage/CodeBlocks';
-import Footer from '../components/common/Footer';
-import LearningLanguageSection from '../components/core/HomePage/LearningLanguageSection';
-import TimeLineSection from '../components/core/HomePage/TimeLineSection';
 import InstructorSection from '../components/core/HomePage/InstructorSection';
+import LearningLanguageSection from '../components/core/HomePage/LearningLanguageSection';
 import ReviewSlider from '../components/core/HomePage/ReviewSlider';
+import TimeLineSection from '../components/core/HomePage/TimeLineSection';
 // import ExploreMore from '../components/core/HomePage/ExploreMore';
 
 // Assets
 import BannerDark from '../assets/Images/banner.mp4';
+import BannerBg from '../assets/Images/Bg-Header-bg.png';
 import BannerLight from '../assets/Images/Bg-Header.png';
-import BannerBg from '../assets/Images/Bg-Header-bg.png'
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);

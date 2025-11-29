@@ -13,7 +13,7 @@ const ReviewSlider = () => {
   const [Reviews, setReviews] = useState([])
   const theme = useSelector((state) => state.theme)
   const truncateWords = 15;
-    useEffect(() => {
+  useEffect(() => {
     const fetchAllReviews = async () => {
       const response = await apiConnector("GET", ratingsEndpoints.REVIEWS_DETAILS_API)
 
@@ -26,11 +26,11 @@ const ReviewSlider = () => {
   }, [])
   // console.log(Reviews)
   // if (loading) return <div>Loading reviews...</div>
-  if (!Reviews.length) return <div className='text-center'>No reviews found</div>
+  if (!Reviews || !Reviews.length) return <div className='text-center'>No reviews found</div>
   return (
     <div className='text-richblack-5 relative'>
       <div className="absolute w-[150px] h-[250px] top-[-14%] z-50 background-[linear(180deg,#f4f8ff,#fff0)]">  </div>
-      <div className='my-[50px] h-[184px] max-w-maxContentTab lg:max-w-maxContent'>     
+      <div className='my-[50px] h-[184px] max-w-maxContentTab lg:max-w-maxContent'>
         <Swiper
           allowSlidePrev={true}
           slidesPerView={1}
@@ -79,7 +79,7 @@ const ReviewSlider = () => {
                   </p>
                   <div className='flex items-center gap-2'>
                     <h3 className='font-semibold dark:text-dark-yellow-100 text-red-500 text-lg'>{review?.rating.toFixed(1)}</h3>
-                    <RatingStars Review_Count={review?.rating} />                   
+                    <RatingStars Review_Count={review?.rating} />
                   </div>
                 </div>
 

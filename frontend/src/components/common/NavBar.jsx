@@ -1,19 +1,18 @@
-import React, { useRef, useState, useEffect } from 'react';
-import logo from '../../assets/Logo/Logo-Full-Light.png';
-import { Link, matchPath, useNavigate, useLocation } from 'react-router-dom';
-import { NavbarLinks } from '../../data/navbar-links';
-import { useSelector, useDispatch } from 'react-redux';
-import ProfileDropDown from '../core/Auth/ProfileDropDown';
-import { ACCOUNT_TYPE } from "../../utils/constants";
+import { useEffect, useRef, useState } from 'react';
 import { AiOutlineMenu, AiOutlineShoppingCart } from 'react-icons/ai';
+import { BsChevronDown } from "react-icons/bs";
+import { FiMoon, FiSun } from 'react-icons/fi';
+import { HiSearch } from 'react-icons/hi';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, matchPath, useLocation, useNavigate } from 'react-router-dom';
+import logo from '../../assets/Logo/Logo-Full-Light.png';
+import { NavbarLinks } from '../../data/navbar-links';
+import useOnClickOutside from '../../hooks/useOnClickOutSide';
 import { apiConnector } from '../../services/apiconnector';
 import { categories } from '../../services/apis';
-import { BsChevronDown } from "react-icons/bs";
-import { FiSun, FiMoon } from 'react-icons/fi';
-import { IoIosClose } from "react-icons/io";
 import { toggle } from '../../slice/themeSlice';
-import { HiSearch } from 'react-icons/hi';
-import useOnClickOutside from '../../hooks/useOnClickOutSide';
+import { ACCOUNT_TYPE } from "../../utils/constants";
+import ProfileDropDown from '../core/Auth/ProfileDropDown';
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -33,6 +32,7 @@ const NavBar = () => {
   const [searchValue, setSearchValue] = useState("")
   const [searchActive, setSearchActive] = useState("icon")
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   // Refs
   const mobileNavRef = useRef(null);
@@ -45,18 +45,21 @@ const NavBar = () => {
   useEffect(() => {
     const fetchSublinks = async () => {
       try {
+        setLoading(true)
         const result = await apiConnector("GET", categories.CATEGORIES_API)
+        console.log("Fetch Sub Link : ", result)
         if (result?.data?.data?.length > 0) {
           setSubLinks(result?.data?.data);
         }
         localStorage.setItem("sublinks", JSON.stringify(result.data.data))
+        setLoading(false)
       } catch (err) {
         console.log("Could not the fetch the category list");
         console.log("Error : ", err)
       }
     }
     fetchSublinks()
-  }, [subLinks])
+  }, [])
 
   // Scroll Behavior
   useEffect(() => {
@@ -179,7 +182,7 @@ const NavBar = () => {
                               </p>
                             </Link>
                           ))
-                        ) : (<p className='text-white dark:text-dark-richblack-900'>Loading...</p>)}
+                        ) : loading ? (<p className='text-white dark:text-dark-richblack-900'>Loading...</p>) : "No Category Found"}
                     </div>
                   </div>
                 ) : (
@@ -316,7 +319,7 @@ const NavBar = () => {
           {
             token !== null && <ProfileDropDown />
           }
-        </div>    
+        </div>
 
         {/* Mobile Menu Overlay */}
         <div
