@@ -1,5 +1,5 @@
 Study2Success - EdTech Learning Platform
-https://study2success.vercel.app/assets/rzp-CylqVFZ7.png
+[https://study2success.vercel.app/assets/rzp-CylqVFZ7.png](https://study2success.vercel.app/assets/rzp-CylqVFZ7.png)
 
 **📚 Project Overview**
 Study2Success is a comprehensive EdTech platform built to revolutionize online learning by providing a seamless, interactive, and accessible educational experience. This full-stack web application empowers instructors to create, publish, and monetize educational content while enabling learners to access high-quality courses, track progress, and engage in peer discussions.
