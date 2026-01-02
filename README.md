@@ -210,11 +210,11 @@ All test cases have passed successfully with no critical defects encountered.
 ## 📄 Documentation
 For detailed implementation, refer to:
 
-[Project Report PDF](https://github.com/skeshavthalwal155/Study2Success/blob/36e9942627f55419b0cc923b523dfb0ab26b25a0/study2succes%20project%20report.docx) – Complete documentation including flowcharts, ER diagrams, and code explanations
-[React Documentation](https://react.dev/learn)
-[Node.js Documentation](https://nodejs.org/docs/latest/api/)
-[MongoDB Documentation](https://www.mongodb.com/docs/)
-[Tailwind CSS Documentation](https://tailwindcss.com/)
+- [Project Report PDF](https://github.com/skeshavthalwal155/Study2Success/blob/36e9942627f55419b0cc923b523dfb0ab26b25a0/study2succes%20project%20report.docx) – Complete documentation including flowcharts, ER diagrams, and code explanations
+- [React Documentation](https://react.dev/learn)
+- [Node.js Documentation](https://nodejs.org/docs/latest/api/)
+- [MongoDB Documentation](https://www.mongodb.com/docs/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/)
 
 ## 📝 License
 This project is developed as an academic project for BCA final year submission at Modern Institute of Technology, Rishikesh (Affiliated to H.N.B. Garhwal University).
@@ -228,5 +228,10 @@ Special thanks to all faculty members of the Computer Science and Information Te
 
 ## Live Demo Through Video
 
-[]"C:\Users\space\Desktop\Study2Success.mp4"
+
+
+
+[video](https://github.com/user-attachments/assets/40e99120-2794-4890-9bf6-fa3e9a07eaad)
+
+
 
