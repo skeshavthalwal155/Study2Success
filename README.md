@@ -210,22 +210,20 @@ All test cases have passed successfully with no critical defects encountered.
 ## 📄 Documentation
 For detailed implementation, refer to:
 
-Project Report PDF – Complete documentation including flowcharts, ER diagrams, and code explanations
+[Project Report PDF](https://github.com/skeshavthalwal155/Study2Success/blob/36e9942627f55419b0cc923b523dfb0ab26b25a0/study2succes%20project%20report.docx) – Complete documentation including flowcharts, ER diagrams, and code explanations
+[React Documentation](https://react.dev/learn)
+[Node.js Documentation](https://nodejs.org/docs/latest/api/)
+[MongoDB Documentation](https://www.mongodb.com/docs/)
+[Tailwind CSS Documentation](https://tailwindcss.com/)
 
-React Documentation
-
-Node.js Documentation
-
-MongoDB Documentation
-
-Tailwind CSS Documentation
-
-📝 License
+## 📝 License
 This project is developed as an academic project for BCA final year submission at Modern Institute of Technology, Rishikesh (Affiliated to H.N.B. Garhwal University).
 
-🤝 Acknowledgments
+## 🤝 Acknowledgments
 Special thanks to all faculty members of the Computer Science and Information Technology Department at Modern Institute of Technology, Rishikesh, for their continuous support and guidance throughout the project development.
 
+```bash
 "Empowering learners with quality education through technology"
+```
 
 
