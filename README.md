@@ -168,69 +168,46 @@ Key MongoDB collections:
 - **CourseProgress** – Student learning progress tracking
 - **Payments** – Transaction records
 
-🧪 Testing
+## 🧪 Testing
 The platform implements comprehensive testing:
 
-Unit Testing – Individual component validation
-
-Integration Testing – API endpoint and database interaction testing
-
-Functional Testing – User workflow validation
-
-System Testing – End-to-end platform testing
+- **Unit Testing** – Individual component validation
+- **Integration Testing** – API endpoint and database interaction testing
+- **Functional Testing** – User workflow validation
+- **System Testing** – End-to-end platform testing
 
 All test cases have passed successfully with no critical defects encountered.
 
-🎯 Future Enhancements
-AI-Powered Features
+## 🎯 Future Enhancements
 
-Personalized course recommendations
+1. **AI-Powered Features**
+   - Personalized course recommendations
+   - AI-based automated assessments
+   - Chatbot for instant doubt resolution
 
-AI-based automated assessments
+2. **Advanced Learning Tools**
+   - Live coding environments with real-time compilation
+   - Offline mode for downloadable content
+   - Peer programming sessions
 
-Chatbot for instant doubt resolution
+3. **Platform Expansion**
+   - Mobile applications (iOS & Android)
+   - Multilingual support for regional languages
+   - Corporate training modules
+   - Blockchain-verified digital certificates
 
-Advanced Learning Tools
+4. **Enhanced Collaboration**
+   - Live pair-coding sessions
+   - Mentorship programs with industry experts
+   - Enhanced discussion forums
 
-Live coding environments with real-time compilation
+## 👥 Contributors
+- Keshav Thalwal – Full Stack Developer & Project Lead
+- Ayush Kukreti – Co-Frontend Developer
+- Lakshya Kumar – Co-Developer
+- Abhay Sharma – UI/UX Designer & Logo Design
 
-Offline mode for downloadable content
-
-Peer programming sessions
-
-Platform Expansion
-
-Mobile applications (iOS & Android)
-
-Multilingual support for regional languages
-
-Corporate training modules
-
-Blockchain-verified digital certificates
-
-Enhanced Collaboration
-
-Live pair-coding sessions
-
-Mentorship programs with industry experts
-
-Enhanced discussion forums
-
-👥 Contributors
-Keshav Thalwal – Full Stack Developer & Project Lead
-
-Ayush Kukreti – Co-Frontend Developer
-
-Lakshya Kumar – Co-Developer
-
-Abhay Sharma – UI/UX Designer & Logo Design
-
-Faculty Guidance
-Mrs. Manorama Uniyal – Project Guide & Assistant Professor
-
-Dr. Pradeep Pokhriyal – Head of Department, CS & IT
-
-📄 Documentation
+## 📄 Documentation
 For detailed implementation, refer to:
 
 Project Report PDF – Complete documentation including flowcharts, ER diagrams, and code explanations
