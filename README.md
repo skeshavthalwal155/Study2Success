@@ -202,10 +202,10 @@ All test cases have passed successfully with no critical defects encountered.
    - Enhanced discussion forums
 
 ## 👥 Contributors
-- Keshav Thalwal – Full Stack Developer & Project Lead
-- Ayush Kukreti – Co-Frontend Developer
-- Lakshya Kumar – Co-Developer
-- Abhay Sharma – UI/UX Designer & Logo Design
+- **Keshav Thalwal** – Full Stack Developer & Project Lead
+- **Ayush Kukreti** – Co-Frontend Developer
+- **Lakshya Kumar** – Co-Developer
+- **Abhay Sharma** – UI/UX Designer & Logo Design
 
 ## 📄 Documentation
 For detailed implementation, refer to:
