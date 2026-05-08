@@ -16,17 +16,11 @@ const {
 
 export function sendOtp(email, navigate) {
   return async (dispatch) => {
-    // const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
-      const response = await apiConnector("POST", SENDOTP_API, {
-        email,
-      })
+      const response = await apiConnector("POST", SENDOTP_API, { email })
       dispatch(setProgress(100));
-      // console.log("SENDOTP API RESPONSE............", response)
-
-      // console.log(response.data.success)
-
+      
       if (!response?.data?.success) {
         console.log("Error=", response?.data?.message);
         toast.error(response?.data?.message || "Failed to send otp");
@@ -36,28 +30,26 @@ export function sendOtp(email, navigate) {
       toast.success("OTP Sent Successfully")
       navigate("/verify-email")
     } catch (error) {
-      console.log("SEND OTPERROR............", error);
-
-      // Handle 404 and other errors
+      console.log("SEND OTP ERROR............", error);
+      
+      // Log the actual error response from backend
       if (error.response) {
-        // The request was made and server responded with status code not in 2xx
-        const serverMessage = error.response.data?.message ||
-          `Request failed with status ${error.response.status}`;
-        toast.error(serverMessage);
+        console.log("Backend error response:", error.response.data);
+        console.log("Status code:", error.response.status);
+        console.log("Error message:", error.response.data?.message);
+        toast.error(error.response.data?.message || `Server error: ${error.response.status}`);
       } else if (error.request) {
-        // The request was made but no response received
+        console.log("No response received from server");
         toast.error("No response from server. Please try again.");
       } else {
-        // Something happened in setting up the request
+        console.log("Error setting up request:", error.message);
         toast.error(error.message || "Failed to send otp");
       }
     } finally {
-      // toast.dismiss(toastId);
       dispatch(setLoading(false));
     }
   };
 }
-
 export function signUp(
   accountType,
   firstName,

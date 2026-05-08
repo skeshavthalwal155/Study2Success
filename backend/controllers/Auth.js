@@ -184,7 +184,6 @@ exports.sendOtp = async (req, res) => {
     try {
         const { email } = req.body;
 
-        // Validate email
         if (!email) {
             return res.status(400).json({
                 success: false,
@@ -192,62 +191,29 @@ exports.sendOtp = async (req, res) => {
             });
         }
 
-        // Check if user already exists
         const checkUserPresent = await User.findOne({ email });
         if (checkUserPresent) {
             return res.status(409).json({
                 success: false,
-                message: "User is Already Registered",
+                message: `User is Already Registered`,
             });
         }
 
-        // Generate unique OTP
-        let otp = otpGenerator.generate(6, {
-            upperCaseAlphabets: false,
-            lowerCaseAlphabets: false,
-            specialChars: false,
-        });
+        // Generate OTP
+        const otp = Math.floor(100000 + Math.random() * 900000).toString();
         
-        // Check for duplicate OTP (fix infinite loop)
-        let existingOtp = await Otp.findOne({ otp: otp });
-        let attempts = 0;
-        while (existingOtp && attempts < 10) {
-            otp = otpGenerator.generate(6, {
-                upperCaseAlphabets: false,
-                lowerCaseAlphabets: false,
-                specialChars: false,
-            });
-            existingOtp = await Otp.findOne({ otp: otp });
-            attempts++;
-        }
-
-        // Delete old OTPs for this email
+        // Save to database
         await Otp.deleteMany({ email: email });
+        await Otp.create({ email, otp });       
 
-        // Create new OTP
-        const otpPayload = { email, otp };
-        await Otp.create(otpPayload);
-
-        // Send OTP via email (using your mailSender)
-        const emailSubject = "Your OTP for Registration";
-        const emailBody = `
-            <div>
-                <h2>Email Verification</h2>
-                <p>Your OTP is: <strong>${otp}</strong></p>
-                <p>This OTP is valid for 5 minutes.</p>
-            </div>
-        `;
-        
-        await mailSender(email, emailSubject, emailBody);
-
-        // Don't send OTP in response
+              
         res.status(200).json({
             success: true,
-            message: "OTP Sent Successfully to your email",
+            message: `OTP generated successfully`
         });
         
     } catch (error) {
-        console.error("Send OTP Error:", error.message);
+        console.error("Send OTP Error:", error);
         return res.status(500).json({ 
             success: false, 
             message: error.message 
