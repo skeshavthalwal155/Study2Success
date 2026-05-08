@@ -181,46 +181,86 @@ exports.login = async (req, res) => {
 };
 
 // sendOTP
+// sendOTP
 exports.sendOtp = async (req, res) => {
-	try {
-		// fetch email from req.body
-		const { email } = req.body;
+    try {
+        // fetch email from req.body
+        const { email } = req.body;
 
-		// check user present or not
-		const checkUserPresent = await User.findOne({ email })
-		if (checkUserPresent) {
-			return res.status(409).json({
-				success: false,
-				message: `User is Already Registered`,
-			})
-		}
-		var otp = otpGenerator.generate(6, {
-			upperCaseAlphabets: false,
-			lowerCaseAlphabets: false,
-			specialChars: false,
-		});
-		const result = await Otp.findOne({ otp: otp });
-		// console.log("Result is Generate OTP Func");
-		// console.log("OTP", otp);
-		// console.log("Result", result);
-		while (result) {
-			otp = otpGenerator.generate(6, {
-				upperCaseAlphabets: false,
-			});
-		}
-		const otpPayload = { email, otp };
-		const otpBody = await Otp.create(otpPayload);
-		// console.log("OTP Body", otpBody);
+        // Validate email
+        if (!email) {
+            return res.status(400).json({
+                success: false,
+                message: "Email is required"
+            });
+        }
 
-		res.status(200).json({
-			success: true,
-			message: `OTP Sent Successfully`,
-			otp,
-		});
-	} catch (error) {
-		// console.log(error.message);
-		return res.status(500).json({ success: false, error: error.message });
-	}
+        // check user present or not
+        const checkUserPresent = await User.findOne({ email });
+        if (checkUserPresent) {
+            return res.status(409).json({
+                success: false,
+                message: `User is Already Registered`,
+            });
+        }
+
+        // Generate unique OTP
+        let otp = otpGenerator.generate(6, {
+            upperCaseAlphabets: false,
+            lowerCaseAlphabets: false,
+            specialChars: false,
+        });
+        
+        // Check if OTP already exists and regenerate if needed
+        let existingOtp = await Otp.findOne({ otp: otp });
+        let attempts = 0;
+        const maxAttempts = 10;
+        
+        while (existingOtp && attempts < maxAttempts) {
+            otp = otpGenerator.generate(6, {
+                upperCaseAlphabets: false,
+                lowerCaseAlphabets: false,
+                specialChars: false,
+            });
+            existingOtp = await Otp.findOne({ otp: otp });
+            attempts++;
+        }
+
+        // Delete any existing OTPs for this email (optional but recommended)
+        await Otp.deleteMany({ email: email });
+
+        // Create OTP with expiration (MongoDB will auto-delete after 5 minutes)
+        const otpPayload = { email, otp };
+        const otpBody = await Otp.create(otpPayload);
+
+        // Send OTP via email using your mailSender utility
+        const emailSubject = "Your OTP for Registration";
+        const emailBody = `
+            <div style="font-family: Arial, sans-serif; padding: 20px;">
+                <h2>Email Verification OTP</h2>
+                <p>Your OTP for registration is:</p>
+                <h1 style="font-size: 32px; letter-spacing: 2px; color: #4F46E5;">${otp}</h1>
+                <p>This OTP is valid for 5 minutes.</p>
+                <p>If you didn't request this, please ignore this email.</p>
+            </div>
+        `;
+        
+        await mailSender(email, emailSubject, emailBody);
+
+        // DON'T send OTP in response - security risk!
+        res.status(200).json({
+            success: true,
+            message: `OTP Sent Successfully to your email`,
+        });
+        
+    } catch (error) {
+        console.error("Send OTP Error:", error.message);
+        return res.status(500).json({ 
+            success: false, 
+            message: "Failed to send OTP. Please try again.",
+            error: error.message 
+        });
+    }
 };
 
 // Controller for Changing Password
