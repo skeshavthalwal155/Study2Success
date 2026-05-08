@@ -20,20 +20,28 @@ database.dbConnect();
 const PORT = process.env.PORT || 8080;
 const app = express()
 
+// CORS configuration
+const corsOptions = {
+    origin: [
+        "https://study2success.vercel.app",
+        "http://192.168.108.178:5173",
+        "http://localhost:5173"
+    ],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Explicitly include OPTIONS
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Cookie'], // Explicitly allowed headers
+    optionsSuccessStatus: 200 // For older browsers
+}
 
-// middlewares
+// Apply CORS middleware BEFORE other middleware
+app.use(cors(corsOptions))
+
+// Handle preflight requests explicitly for all routes
+app.options('*', cors(corsOptions))
+
+// Other middlewares
 app.use(express.json())
 app.use(cookieParser())
-app.use(
-    cors({
-        origin: [
-            "https://study2success.vercel.app",
-            "http://192.168.108.178:5173",
-            "http://localhost:5173"
-        ],
-        credentials: true
-    })
-)
 app.use(
     fileUpload({
         useTempFiles: true,
